@@ -14,5 +14,5 @@ Installable web app (PWA) hosted on GitHub Pages, works offline once opened.
 Replace `index.html`, then bump `VERSION` in `sw.js` (e.g. `v2`) so phones pick up the change.
 
 ## Notes
-- Progress and your own example sentences are stored in the browser (localStorage) on each device.
+- Progress, your own example sentences and any edited English meanings (Reference table → ✎ Edit meaning) are stored in the browser (localStorage) on each device.
 - If you host several apps under the same `<username>.github.io`, they share browser storage; this app uses its own `dutch-connectives-*` keys, so they don't collide.
