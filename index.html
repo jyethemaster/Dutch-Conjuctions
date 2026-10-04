@@ -22,6 +22,7 @@ button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12
 .answer{width:100%;padding:14px;border:1px solid var(--line);border-radius:12px;margin-bottom:15px}.feedback{margin-top:18px;padding:17px;border-radius:14px;background:#f3f6fb;border:1px solid var(--line)}.feedback.good{background:#effaf3;border-color:#b8e4c7}.feedback.bad{background:#fff4f2;border-color:#f1c4bf}.feedback h3{margin:0 0 7px;font-size:16px}.feedback p{margin:6px 0}.example{font-style:italic;color:#334155;background:#fff;padding:10px 12px;border-radius:9px;margin-top:10px}.foot{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:22px}.score{font-weight:800;color:var(--green)}.reference{margin-top:24px}.reference h3{margin:0 0 10px}.reference-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}.reference table{width:100%;border-collapse:collapse;min-width:620px}.reference th,.reference td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}.reference th{background:#f5f7fb;font-size:13px}.reference tr:last-child td{border-bottom:0}.result{text-align:center}.result .big{font-size:56px;font-weight:900;color:var(--blue);line-height:1.2}.review{display:grid;gap:8px;margin-top:20px;text-align:left}.review-item{padding:10px 12px;border-radius:10px;background:#f5f7fb;display:flex;justify-content:space-between;gap:12px}.small{font-size:12px;color:var(--muted)}.editor-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);display:grid;place-items:center;padding:18px;z-index:50}.editor{background:white;border-radius:20px;max-width:760px;width:100%;max-height:90vh;overflow:auto;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.2)}.editor h3{margin:0 0 5px}.editor .sentence-row{display:flex;gap:8px;margin:9px 0;align-items:center}.editor .sentence-number{width:28px;height:28px;border-radius:50%;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}.editor .sentence-row input{flex:1;padding:10px 11px;border:1px solid var(--line);border-radius:10px}.editor .remove{background:#fff0ef;color:var(--red);padding:9px 12px}.sentence-count{font-size:12px;color:var(--muted);margin:8px 0 14px}
 .progress-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.progress-card{background:#f5f7fb;border:1px solid var(--line);border-radius:14px;padding:12px 14px}.progress-card strong{display:block;font-size:22px;color:var(--blue)}.progress-card span{font-size:12px;color:var(--muted)}.picker{margin-top:20px;border-top:1px solid var(--line);padding-top:20px}.picker-head{display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap}.picker-tools{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.picker-search{flex:1;min-width:180px;padding:10px 12px;border:1px solid var(--line);border-radius:11px}.word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:310px;overflow:auto;padding:2px}.word-choice{display:flex;align-items:center;gap:9px;padding:10px 11px;border:1px solid var(--line);border-radius:11px;background:white;text-align:left}.word-choice:hover{border-color:#9aafff;background:#f8faff}.word-choice input{accent-color:var(--blue)}.word-choice .word-main{font-weight:750}.word-choice .word-meaning{display:block;font-size:12px;color:var(--muted)}.selection-note{font-size:12px;color:var(--muted);margin:9px 0 0}.word-progress{display:grid;gap:7px;margin-top:12px}.word-progress-row{display:grid;grid-template-columns:minmax(120px,1fr) 110px 38px;gap:8px;align-items:center;font-size:13px}.word-progress-track{height:7px;background:#edf1f7;border-radius:99px;overflow:hidden}.word-progress-fill{height:100%;background:var(--green);border-radius:99px}@media(max-width:620px){.progress-summary{grid-template-columns:1fr 1fr}.word-list{grid-template-columns:1fr}.word-progress-row{grid-template-columns:minmax(100px,1fr) 80px 34px}}
 
+.meaning-cell{cursor:pointer}.meaning-cell:hover{background:#f8faff}
 .edited-tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;background:#fff4d6;color:#8a5a00;font-size:11px;font-weight:800;vertical-align:middle}
 @media(max-width:620px){
   body{font-size:16px;-webkit-text-size-adjust:100%}
@@ -42,15 +43,7 @@ button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12
   .answer{min-height:50px;font-size:16px;padding:13px}.feedback{padding:14px;margin-top:14px}.example{font-size:14px}
   .foot{flex-direction:column;align-items:stretch}.foot button{width:100%;min-height:48px}.score{text-align:center}
   .result .big{font-size:44px}.review-item{font-size:13px;padding:9px 10px}
-  .reference-wrap{margin:0;overflow:visible;border:0;border-radius:0}
-  .reference table,.reference tbody,.reference tr,.reference td{display:block;width:100%;min-width:0!important}
-  .reference thead{display:none}
-  .reference tr{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 10px;background:#fff}
-  .reference td{border:0!important;padding:2px 0!important}
-  .reference td:nth-child(1){font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-  .reference td:nth-child(2){font-size:20px;line-height:1.25}
-  .reference td:nth-child(3){color:#26334a;margin-bottom:6px}
-  .reference td:nth-child(4){border-top:1px solid var(--line)!important;margin-top:8px;padding-top:9px!important}
+  .reference-wrap{margin:0 -2px}.reference table{min-width:580px}
   .editor-backdrop{padding:8px}.editor{border-radius:16px;padding:15px;max-height:94vh}.editor .sentence-row{gap:6px}.editor .remove{padding:9px 10px}.editor .sentence-row input{min-height:44px}
 }
 @media(max-width:380px){.modes{grid-template-columns:1fr}.card{padding:13px}.qtitle{font-size:20px}.word-list{max-height:250px!important}}
@@ -103,7 +96,7 @@ button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12
       <div>
         <div class="eyebrow">Dutch Connectives Reference</div>
         <h2>Reference table</h2>
-        <p>Review all five example sentences for each expression. Click <b>View & edit sentences</b> to check or correct them, or <b>Edit meaning</b> to change the English translation.</p>
+        <p>Review all five example sentences for each expression. Click <b>View & edit sentences</b> to check or correct them, or tap an English meaning (or <b>Edit meaning</b>) to change the translation.</p>
       </div>
     </div>
     <div class="reference-search" style="margin-top:22px">
@@ -234,13 +227,13 @@ function renderReference(){
   const haystack=`${x.category} ${x.dutch} ${x.english}`.toLowerCase();
   if(query && !haystack.includes(query))return '';
   const sentences=getSentences(x,i);const n=sentences.length;
-  return `<tr><td>${esc(x.category)}</td><td><b>${esc(x.dutch)}</b></td><td>${esc(x.english)}${x.english!==x.defaultEnglish?' <span class="edited-tag">edited</span>':''}<div><button class="ghost edit-meaning" data-index="${i}" style="padding:6px 9px;margin-top:7px;font-size:12px">✎ Edit meaning</button></div></td><td><b>${n} sentence${n===1?'':'s'}</b><div class="small" style="margin-top:3px">${esc(sentences[0]||'')}</div><div><button class="ghost edit-sentence" data-index="${i}" style="padding:6px 9px;margin-top:7px;font-size:12px">View & edit sentences (${n}/15)</button></div></td></tr>`
+  return `<tr><td>${esc(x.category)}</td><td><b>${esc(x.dutch)}</b></td><td class=\"meaning-cell\" data-index=\"${i}\" title=\"Tap to edit this meaning\">${esc(x.english)}${x.english!==x.defaultEnglish?' <span class="edited-tag">edited</span>':''}<div><button class="ghost edit-meaning" data-index="${i}" style="padding:6px 9px;margin-top:7px;font-size:12px">✎ Edit meaning</button></div></td><td><b>${n} sentence${n===1?'':'s'}</b><div class="small" style="margin-top:3px">${esc(sentences[0]||'')}</div><div><button class="ghost edit-sentence" data-index="${i}" style="padding:6px 9px;margin-top:7px;font-size:12px">View & edit sentences (${n}/15)</button></div></td></tr>`
  }).join('');
  updateMeaningSummary();
 }
 renderReference();
 $('referenceSearch').addEventListener('input',renderReference);
-$('referenceBody').addEventListener('click',e=>{const b=e.target.closest('.edit-sentence');if(b)openEditor(+b.dataset.index);const m=e.target.closest('.edit-meaning');if(m)openMeaningEditor(+m.dataset.index)});
+$('referenceBody').addEventListener('click',e=>{const b=e.target.closest('.edit-sentence');if(b)openEditor(+b.dataset.index);const m=e.target.closest('.edit-meaning,.meaning-cell');if(m)openMeaningEditor(+m.dataset.index)});
 
 /* ---- Meaning editor ---- */
 let meaningIndex=-1;
