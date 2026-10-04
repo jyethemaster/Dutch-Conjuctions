@@ -500,6 +500,12 @@ if ("serviceWorker" in navigator && (location.protocol === "https:" || location.
     navigator.serviceWorker.register("./sw.js").catch(err => console.warn("Service worker registration failed:", err));
   });
 }
+
+// Stop password managers / keyboard autofill from offering logins, cards and addresses on practice fields.
+(function(){const A={autocomplete:'off','data-lpignore':'true','data-1p-ignore':'true','data-bwignore':'true','data-form-type':'other'};
+const fix=el=>{if(el.matches&&el.matches('input:not([type=checkbox]),textarea')){for(const k in A)el.setAttribute(k,A[k]);if(!el.name)el.name='f'+Math.random().toString(36).slice(2,8)}};
+document.querySelectorAll('input,textarea').forEach(fix);
+new MutationObserver(ms=>ms.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1){fix(n);n.querySelectorAll&&n.querySelectorAll('input,textarea').forEach(fix)}}))).observe(document.body,{childList:true,subtree:true});})();
 </script>
 </body>
 </html>
