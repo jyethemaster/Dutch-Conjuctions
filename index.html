@@ -69,6 +69,7 @@ button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12
       <button class="mode" data-mode="Fill in the blank">Fill in the blank</button>
       <button class="mode" data-mode="Translation">Translation</button>
       <button class="mode" data-mode="Reword the sentence">Reword the sentence</button>
+      <button class="mode" data-mode="Mixed" style="grid-column:1/-1">Mixed (variety)</button>
     </div></div>
     <div class="field hidden" id="fillSettings" style="margin-top:14px"><label>Fill in the blank · difficulty</label><div class="modes">
       <button class="mode active" data-fill-mode="Easy">Easy · multiple choice</button>
@@ -225,7 +226,7 @@ $('modes').addEventListener('click', e=>{
  const b=e.target.closest('[data-mode]'); if(!b)return;
  selectedMode=b.dataset.mode;
  $('modes').querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
- $('fillSettings').classList.toggle('hidden',selectedMode!=='Fill in the blank');
+ $('fillSettings').classList.toggle('hidden',selectedMode!=='Fill in the blank'&&selectedMode!=='Mixed');
 });
 $('fillSettings').addEventListener('click', e=>{
  const b=e.target.closest('[data-fill-mode]'); if(!b)return;
@@ -367,12 +368,15 @@ function makeFillText(sentence, expression){
  return out!==sentence ? out : '';
 }
 
+let mixOrder=[];
+function nextMixMode(){if(!mixOrder.length)mixOrder=['Multiple choice','Fill in the blank','Translation','Reword the sentence'].sort(()=>Math.random()-.5);return mixOrder.pop()}
 function makeQuestions(n){
+ mixOrder=[];
  const eligible=pool.filter(x=>selectedWords.has(x.dutch) && x.dutch && x.english);
  const qs=[];
  for(let i=0;i<n;i++){
   const item=eligible[(i*7+Math.floor(Math.random()*eligible.length))%eligible.length];
-  let mode=selectedMode; if(mode==='Reword the sentence'&&!item.rw)mode='Fill in the blank';
+  let mode=selectedMode; if(mode==='Mixed')mode=nextMixMode(); if(mode==='Reword the sentence'&&!item.rw)mode=selectedMode==='Mixed'?pick(['Multiple choice','Fill in the blank','Translation']):'Fill in the blank';
   let q={item,mode,category:item.category,correct:item.english,correctOrAnswer:item.english,example:item.example||''};
   if(mode==='Multiple choice'){
    q.prompt=`What does “${item.dutch}” mean in this context?`;
