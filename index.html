@@ -141,7 +141,7 @@ const EXPRESSIONS = [{"category":"Cause and reason","dutch":"omdat","english":"b
 document.getElementById('wordCount').textContent = EXPRESSIONS.length;
 let selectedMode = 'Multiple choice';
 let fillMode = 'Easy';
-let pool = [...EXPRESSIONS], selectedWords = new Set(), questions=[], index=0, score=0, current=null, chosen=null, checked=false, outcomes=[];
+let pool = [...EXPRESSIONS], selectedWords = new Set(), questions=[], index=0, score=0, current=null, chosen=null, checked=false, outcomes=[], total=0;
 const $ = id => document.getElementById(id);
 const progressKey = 'dutch-connectives-progress-v1';
 function loadProgress(){try{return JSON.parse(localStorage.getItem(progressKey)||'{}')||{}}catch(e){return {}}}
@@ -373,15 +373,19 @@ function nextMixMode(){if(!mixOrder.length)mixOrder=['Multiple choice','Fill in 
 function makeQuestions(n){
  mixOrder=[];
  const eligible=pool.filter(x=>selectedWords.has(x.dutch) && x.dutch && x.english);
+ if(!eligible.length)return [];
+ const dpool=new Set(eligible.map(x=>x.english)).size>=4&&new Set(eligible.map(x=>x.dutch)).size>=4?eligible:EXPRESSIONS;
+ let deck=[],last=null;
+ const nextItem=()=>{if(!deck.length){deck=[...eligible].sort(()=>Math.random()-.5);if(deck.length>1&&deck[deck.length-1]===last)deck.unshift(deck.pop())}last=deck.pop();return last};
  const qs=[];
  for(let i=0;i<n;i++){
-  const item=eligible[(i*7+Math.floor(Math.random()*eligible.length))%eligible.length];
+  const item=nextItem();
   let mode=selectedMode; if(mode==='Mixed')mode=nextMixMode(); if(mode==='Reword the sentence'&&!item.rw)mode=selectedMode==='Mixed'?pick(['Multiple choice','Fill in the blank','Translation']):'Fill in the blank';
   let q={item,mode,category:item.category,correct:item.english,correctOrAnswer:item.english,example:item.example||''};
   if(mode==='Multiple choice'){
    q.prompt=`What does “${item.dutch}” mean in this context?`;
    q.options=[item.english];
-   while(q.options.length<4){let distractor=pick(eligible).english;if(!q.options.includes(distractor))q.options.push(distractor)}
+   while(q.options.length<4){let distractor=pick(dpool).english;if(!q.options.includes(distractor))q.options.push(distractor)}
    q.options.sort(()=>Math.random()-.5);
   }else if(mode==='Fill in the blank'){
    const fillSentence=pick(getSentences(item,EXPRESSIONS.indexOf(item)));
@@ -392,7 +396,7 @@ function makeQuestions(n){
    q.fillMode=fillMode;
    if(fillMode==='Easy'){
     q.options=[item.dutch];
-    while(q.options.length<4){let distractor=pick(eligible).dutch;if(!q.options.includes(distractor))q.options.push(distractor)}
+    while(q.options.length<4){let distractor=pick(dpool).dutch;if(!q.options.includes(distractor))q.options.push(distractor)}
     q.options.sort(()=>Math.random()-.5);
    }
   }else if(mode==='Translation'){
@@ -411,11 +415,11 @@ function makeQuestions(n){
 
 function start(){
  if(!selectedMode || selectedWords.size===0){$('selectionNote').textContent='Select at least one expression before starting.';return}
- questions=makeQuestions(+$('count').value);if(!questions.length)return;index=0;score=0;outcomes=[];$('setup').classList.add('hidden');$('results').classList.add('hidden');$('game').classList.remove('hidden');render();
+ questions=makeQuestions(+$('count').value);if(!questions.length)return;total=questions.length;index=0;score=0;outcomes=[];$('setup').classList.add('hidden');$('results').classList.add('hidden');$('game').classList.remove('hidden');render();
 }
 function render(){
  current=questions[index];chosen=null;checked=false;
- $('kind').textContent=current.mode;$('counter').textContent=`Question ${index+1} / ${questions.length}`;$('points').textContent=`${score} points`;$('bar').style.width=`${index/questions.length*100}%`;
+ $('kind').textContent=current.mode+(current.retry?' · retry (no points)':'');$('counter').textContent=current.retry?`Retry ${index+1} / ${questions.length}`:`Question ${index+1} / ${questions.length}`;$('points').textContent=`${score} points`;$('bar').style.width=`${index/questions.length*100}%`;
  $('category').textContent=current.category;
  $('prompt').textContent=current.prompt;
  $('hint').textContent=current.mode==='Translation'?'Type the Dutch equivalent.':current.mode==='Fill in the blank'?(current.fillMode==='Easy'?'Choose the expression that completes the sentence.':'Type the missing Dutch expression.'):current.mode==='Reword the sentence'?'Rewrite the sentence so it keeps the same meaning and uses the target expression.':'Choose the best answer.';
@@ -460,22 +464,25 @@ function grade(){
  checked=true;
  const isMC=current.mode==='Multiple choice' || (current.mode==='Fill in the blank' && current.fillMode==='Easy');
  const correct=isMC ? chosen===current.correctOrAnswer : clean(chosen).toLowerCase()===clean(current.answer).toLowerCase();
- if(correct)score++;
- recordProgress(current.item,correct);
- outcomes.push({correct,question:current.prompt,answer:isMC?current.correctOrAnswer:current.answer});
+ if(correct&&!current.retry)score++;
+ if(!current.retry){recordProgress(current.item,correct);const o={correct,question:current.prompt,answer:isMC?current.correctOrAnswer:current.answer};outcomes.push(o);if(!correct)queueRetry(o)}
+ else if(correct&&current.outcome)current.outcome.recovered=true;
+ else if(!correct)queueRetry(current.outcome);
  if(isMC){document.querySelectorAll('.option').forEach(btn=>{if(btn.textContent===current.correctOrAnswer)btn.classList.add('correct');else if(btn.textContent===chosen)btn.classList.add('wrong')})}
- const fb=$('feedback');fb.className='feedback '+(correct?'good':'bad');fb.innerHTML=`<h3>${correct?'✓ Correct!':'✗ Not quite'}</h3>${!correct?`<p><b>Correct answer:</b> ${esc(isMC?current.correctOrAnswer:current.answer)}</p>`:''}${explain()}`;
+ const fb=$('feedback');fb.className='feedback '+(correct?'good':'bad');fb.innerHTML=`<h3>${correct?(current.retry?'✓ Correct (no points on a retry)':'✓ Correct!'):'✗ Not quite'}</h3>${!correct?`<p><b>Correct answer:</b> ${esc(isMC?current.correctOrAnswer:current.answer)}</p><p>This question comes back at the end (no points).</p>`:''}${explain()}`;
  $('points').textContent=`${score} points`;$('check').textContent=index===questions.length-1?'Finish session':'Next question';$('check').disabled=false;
  $('check').onclick=next;
 }
 
+function queueRetry(o){const c=Object.assign({},current,{retry:true,outcome:o});if(c.options)c.options=[...c.options].sort(()=>Math.random()-.5);questions.push(c)}
 function finishReword(correct){
- if(correct)score++;
- recordProgress(current.item,correct);
- outcomes.push({correct,question:current.prompt,answer:current.answer});
+ if(correct&&!current.retry)score++;
+ if(!current.retry){recordProgress(current.item,correct);const o={correct,question:current.prompt,answer:current.answer};outcomes.push(o);if(!correct)queueRetry(o)}
+ else if(correct&&current.outcome)current.outcome.recovered=true;
+ else if(!correct)queueRetry(current.outcome);
  $('points').textContent=`${score} points`;
  $('feedback').className='feedback '+(correct?'good':'bad');
- $('feedback').querySelector('h3').textContent=correct?'Marked as successful ✓':'Added to your review list';
+ $('feedback').querySelector('h3').textContent=correct?'Marked as successful ✓':'Coming back at the end';
  $('feedback').querySelectorAll('.actions').forEach(x=>x.remove());
  const b=document.createElement('button');b.textContent=index===questions.length-1?'Finish session':'Next question';b.style.marginTop='12px';b.onclick=next;$('feedback').appendChild(b);
 }
@@ -486,9 +493,9 @@ function next(){
 }
 function finish(){
  renderProgress();
- $('game').classList.add('hidden');$('results').classList.remove('hidden');$('finalScore').textContent=`${score}/${questions.length}`;
- const pct=Math.round(score/questions.length*100);$('summary').textContent=`${pct}% correct. ${pct>=85?'Excellent work — uitstekend!':pct>=65?'Good progress. Keep practising the expressions you missed.':'Keep going. Review the explanations and try another round.'}`;
- $('review').innerHTML=outcomes.map((o,i)=>`<div class="review-item"><span>${i+1}. ${esc(o.question)}</span><b style="color:${o.correct?'var(--green)':'var(--red)'}">${o.correct?'✓':'Review'}</b></div>`).join('');
+ $('game').classList.add('hidden');$('results').classList.remove('hidden');$('finalScore').textContent=`${score}/${total}`;
+ const pct=Math.round(score/total*100);$('summary').textContent=`${pct}% correct. ${pct>=85?'Excellent work — uitstekend!':pct>=65?'Good progress. Keep practising the expressions you missed.':'Keep going. Review the explanations and try another round.'}`;
+ $('review').innerHTML=outcomes.map((o,i)=>`<div class="review-item"><span>${i+1}. ${esc(o.question)}</span><b style="color:${o.correct?'var(--green)':o.recovered?'#b7791f':'var(--red)'}">${o.correct?'✓':o.recovered?'Fixed on retry':'Review'}</b></div>`).join('');
 }
 document.addEventListener('click',e=>{if(e.target.id==='editCurrentSentence')openEditor(EXPRESSIONS.indexOf(current.item));});
 $('start').onclick=start;$('check').onclick=grade;$('quit').onclick=()=>{$('game').classList.add('hidden');$('setup').classList.remove('hidden')};
