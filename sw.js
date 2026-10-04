@@ -1,5 +1,5 @@
 // Bump VERSION whenever you update the app so phones fetch the new files.
-const VERSION = "v5";
+const VERSION = "v6";
 const CACHE = "dutch-connectives-" + VERSION;
 const FILES = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png"];
 
