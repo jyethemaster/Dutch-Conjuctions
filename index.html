@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dutch Connectives Trainer · B1–C1</title>
+<meta name="theme-color" content="#3157c8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Connectives">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" href="./icon-192.png" type="image/png">
+<style>
+:root{--bg:#f4f7fb;--panel:#fff;--ink:#172033;--muted:#64748b;--line:#e2e8f0;--blue:#3157c8;--blue2:#eaf0ff;--green:#16834a;--red:#c2413b;--gold:#d59a19;--shadow:0 14px 40px rgba(22,34,58,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 17px;font-weight:700;background:var(--blue);color:white}button:disabled{opacity:.45;cursor:not-allowed}.secondary{background:#edf1f7;color:#26334a}.ghost{background:transparent;color:var(--blue);border:1px solid var(--line)}
+.wrap{max-width:900px;margin:36px auto;padding:0 18px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:var(--blue);color:white;display:grid;place-items:center;font-size:22px;font-weight:900}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800}.brand h1{font-size:20px;margin:0}.pill{border-radius:999px;padding:6px 11px;background:#e6f6ec;color:var(--green);font-size:12px;font-weight:800}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}.intro{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.intro h2{font-size:30px;line-height:1.15;margin:8px 0}.intro p{color:var(--muted);max-width:560px;margin:8px 0 0}.stat{background:var(--blue2);color:var(--blue);padding:14px 18px;border-radius:16px;text-align:center;min-width:110px}.stat strong{font-size:27px;display:block}.settings{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:24px 0}.field label{display:block;font-weight:750;font-size:13px;margin-bottom:7px}.field select,.field input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink)}.modes{display:flex;gap:8px;flex-wrap:wrap}.mode{border:1px solid var(--line);background:white;color:#334155;padding:9px 12px;border-radius:999px;font-size:13px}.mode.active{background:var(--blue2);border-color:#b8c8ff;color:var(--blue)}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.note{font-size:12px;color:var(--muted);margin-top:14px}.hidden{display:none!important}
+.quiz-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.tag{font-size:12px;font-weight:800;color:var(--blue);background:var(--blue2);padding:6px 10px;border-radius:999px}.progress{height:8px;background:#edf1f7;border-radius:99px;overflow:hidden;margin:15px 0 24px}.bar{height:100%;background:var(--blue);width:0;transition:width .25s}.qtitle{font-size:25px;line-height:1.35;margin:10px 0 18px}.hint{color:var(--muted);font-size:14px;margin:-8px 0 16px}.options{display:grid;gap:10px}.option{width:100%;text-align:left;background:white;color:var(--ink);border:1px solid var(--line);padding:14px 16px;border-radius:13px}.option:hover{border-color:#9aafff;background:#f8faff}.option.selected{border:2px solid var(--blue);background:var(--blue2);padding:13px 15px}.option.correct{border-color:var(--green);background:#eaf8ef}.option.wrong{border-color:var(--red);background:#fff0ef}
+.answer{width:100%;padding:14px;border:1px solid var(--line);border-radius:12px;margin-bottom:15px}.feedback{margin-top:18px;padding:17px;border-radius:14px;background:#f3f6fb;border:1px solid var(--line)}.feedback.good{background:#effaf3;border-color:#b8e4c7}.feedback.bad{background:#fff4f2;border-color:#f1c4bf}.feedback h3{margin:0 0 7px;font-size:16px}.feedback p{margin:6px 0}.example{font-style:italic;color:#334155;background:#fff;padding:10px 12px;border-radius:9px;margin-top:10px}.foot{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:22px}.score{font-weight:800;color:var(--green)}.reference{margin-top:24px}.reference h3{margin:0 0 10px}.reference-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}.reference table{width:100%;border-collapse:collapse;min-width:620px}.reference th,.reference td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}.reference th{background:#f5f7fb;font-size:13px}.reference tr:last-child td{border-bottom:0}.result{text-align:center}.result .big{font-size:56px;font-weight:900;color:var(--blue);line-height:1.2}.review{display:grid;gap:8px;margin-top:20px;text-align:left}.review-item{padding:10px 12px;border-radius:10px;background:#f5f7fb;display:flex;justify-content:space-between;gap:12px}.small{font-size:12px;color:var(--muted)}.editor-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);display:grid;place-items:center;padding:18px;z-index:50}.editor{background:white;border-radius:20px;max-width:760px;width:100%;max-height:90vh;overflow:auto;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.2)}.editor h3{margin:0 0 5px}.editor .sentence-row{display:flex;gap:8px;margin:9px 0;align-items:center}.editor .sentence-number{width:28px;height:28px;border-radius:50%;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:12px;flex:none}.editor .sentence-row input{flex:1;padding:10px 11px;border:1px solid var(--line);border-radius:10px}.editor .remove{background:#fff0ef;color:var(--red);padding:9px 12px}.sentence-count{font-size:12px;color:var(--muted);margin:8px 0 14px}
+.progress-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.progress-card{background:#f5f7fb;border:1px solid var(--line);border-radius:14px;padding:12px 14px}.progress-card strong{display:block;font-size:22px;color:var(--blue)}.progress-card span{font-size:12px;color:var(--muted)}.picker{margin-top:20px;border-top:1px solid var(--line);padding-top:20px}.picker-head{display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap}.picker-tools{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.picker-search{flex:1;min-width:180px;padding:10px 12px;border:1px solid var(--line);border-radius:11px}.word-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:310px;overflow:auto;padding:2px}.word-choice{display:flex;align-items:center;gap:9px;padding:10px 11px;border:1px solid var(--line);border-radius:11px;background:white;text-align:left}.word-choice:hover{border-color:#9aafff;background:#f8faff}.word-choice input{accent-color:var(--blue)}.word-choice .word-main{font-weight:750}.word-choice .word-meaning{display:block;font-size:12px;color:var(--muted)}.selection-note{font-size:12px;color:var(--muted);margin:9px 0 0}.word-progress{display:grid;gap:7px;margin-top:12px}.word-progress-row{display:grid;grid-template-columns:minmax(120px,1fr) 110px 38px;gap:8px;align-items:center;font-size:13px}.word-progress-track{height:7px;background:#edf1f7;border-radius:99px;overflow:hidden}.word-progress-fill{height:100%;background:var(--green);border-radius:99px}@media(max-width:620px){.progress-summary{grid-template-columns:1fr 1fr}.word-list{grid-template-columns:1fr}.word-progress-row{grid-template-columns:minmax(100px,1fr) 80px 34px}}
+
+@media(max-width:620px){
+  body{font-size:16px;-webkit-text-size-adjust:100%}
+  .wrap{width:100%;margin:0 auto;padding:0 10px}
+  .top{padding:12px 4px 10px;margin-bottom:8px;align-items:center}
+  .brand{gap:9px}.logo{width:38px;height:38px;border-radius:11px;font-size:18px}.brand h1{font-size:17px}.eyebrow{font-size:10px}.pill{display:none}
+  .card{border-radius:16px;padding:15px;box-shadow:0 6px 20px rgba(22,34,58,.07)}
+  .intro{grid-template-columns:1fr;gap:8px}.intro h2{font-size:24px;margin:5px 0}.intro p{font-size:14px;line-height:1.45}.stat{display:none}
+  .settings{grid-template-columns:1fr;gap:11px;margin:17px 0}
+  .field label{font-size:12px;margin-bottom:5px}.field select,.field input{min-height:46px;padding:10px 12px;font-size:16px}
+  .modes{display:grid;grid-template-columns:1fr 1fr;gap:7px}.mode{min-height:44px;padding:9px 8px;font-size:13px}
+  .actions{gap:8px}.actions button{flex:1;min-height:46px;padding:11px 12px}
+  .picker{padding:12px!important;margin-top:14px!important;border-radius:14px!important}.picker-head{gap:8px;align-items:flex-start}.picker-tools{margin-top:9px}.picker-search{min-height:46px!important}.word-list{max-height:300px!important;border-radius:10px!important}.word-choice{min-height:52px!important;padding:9px 10px!important}.word-choice input{width:20px;height:20px}.word-main{font-size:14px}.word-meaning{font-size:11px}
+  .progress-summary{grid-template-columns:repeat(3,1fr)!important;gap:6px!important}.progress-card{padding:9px 5px!important}.progress-card strong{font-size:19px!important}.progress-card span{font-size:10px!important}
+  .word-progress-row{padding:8px 0!important}.word-progress-track{height:6px!important}
+  .quiz-head{gap:7px}.tag{font-size:10px;padding:5px 8px}.qtitle{font-size:21px;line-height:1.3;margin:8px 0 14px}.hint{font-size:13px;margin:-5px 0 13px}
+  .options{gap:8px}.option{min-height:52px;padding:13px 14px;font-size:15px}.option.selected{padding:12px 13px}
+  .answer{min-height:50px;font-size:16px;padding:13px}.feedback{padding:14px;margin-top:14px}.example{font-size:14px}
+  .foot{flex-direction:column;align-items:stretch}.foot button{width:100%;min-height:48px}.score{text-align:center}
+  .result .big{font-size:44px}.review-item{font-size:13px;padding:9px 10px}
+  .reference-wrap{margin:0 -2px}.reference table{min-width:580px}
+  .editor-backdrop{padding:8px}.editor{border-radius:16px;padding:15px;max-height:94vh}.editor .sentence-row{gap:6px}.editor .remove{padding:9px 10px}.editor .sentence-row input{min-height:44px}
+}
+@media(max-width:380px){.modes{grid-template-columns:1fr}.card{padding:13px}.qtitle{font-size:20px}.word-list{max-height:250px!important}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="logo">NL</div><div><div class="eyebrow">B1–C1 language practice</div><h1>Dutch Connectives Trainer</h1></div></div>
+    <div class="pill">15-question challenge</div>
+  </header>
+
+  <section id="setup" class="card">
+    <div class="intro">
+      <div><div class="eyebrow">Build fluency, one connector at a time</div><h2>Make your Dutch flow.</h2><p>Practise conjunctions, linking adverbs and conditional expressions from your Excel list. Get instant feedback, grammar explanations and a score at the end.</p></div>
+      <div class="stat"><strong id="wordCount">0</strong><span>expressions</span></div>
+    </div>
+    <div class="settings">
+      <div class="field"><label for="stage">Learning stage · focus set</label><select id="stage"></select></div>
+      <div class="field"><label for="count">Questions per session</label><select id="count"><option>10</option><option selected>15</option><option>20</option><option>25</option></select></div>
+    </div>
+    <div class="field"><label>Exercise mode · choose one</label><div class="modes" id="modes">
+      <button class="mode active" data-mode="Multiple choice">Multiple choice</button>
+      <button class="mode" data-mode="Fill in the blank">Fill in the blank</button>
+      <button class="mode" data-mode="Translation">Translation</button>
+      <button class="mode" data-mode="Reword the sentence">Reword the sentence</button>
+    </div></div>
+    <div class="field hidden" id="fillSettings" style="margin-top:14px"><label>Fill in the blank · difficulty</label><div class="modes">
+      <button class="mode active" data-fill-mode="Easy">Easy · multiple choice</button>
+      <button class="mode" data-fill-mode="Hard">Hard · type the answer</button>
+    </div></div>
+    <div class="picker">
+      <div class="picker-head"><div><label><b>Choose expressions to practise</b></label><div class="selection-note" id="selectionNote">All expressions in this stage are selected.</div></div><div class="actions"><button class="secondary" id="selectAllWords" type="button">Select all</button><button class="ghost" id="clearWords" type="button">Clear</button></div></div>
+      <div class="picker-tools"><input id="wordSearch" class="picker-search" type="search" placeholder="Search Dutch or English…"></div>
+      <div class="word-list" id="wordList"></div>
+    </div>
+    <div class="picker" id="progressTracker"><div class="picker-head"><div><label><b>Your progress</b></label><div class="selection-note">Progress is saved in this browser.</div></div></div><div class="progress-summary"><div class="progress-card"><strong id="progressMastered">0</strong><span>mastered</span></div><div class="progress-card"><strong id="progressAttempted">0</strong><span>practised</span></div><div class="progress-card"><strong id="progressAccuracy">—</strong><span>accuracy</span></div></div><div class="word-progress" id="wordProgress"></div></div>
+
+    <div class="actions" style="margin-top:22px"><button id="start">Start training →</button></div>
+    <div class="actions" style="margin-top:22px">
+      <button class="secondary" id="openReference">Reference table →</button>
+    </div>
+    <p class="note">The workbook's categories, English meanings and examples are embedded in this standalone HTML file. Choose one stage and one exercise mode at a time. Stages are grouped by the workbook categories.</p>
+  </section>
+
+  <section id="referencePage" class="card hidden">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Dutch Connectives Reference</div>
+        <h2>Reference table</h2>
+        <p>Review all five example sentences for each expression. Click <b>View & edit sentences</b> to check or correct them.</p>
+      </div>
+    </div>
+    <div class="reference-search" style="margin-top:22px">
+      <input id="referenceSearch" class="picker-search" type="search" placeholder="Search Dutch, English or category…" autocomplete="off">
+    </div>
+    <div class="reference" style="margin-top:12px">
+      <div class="reference-wrap"><table><thead><tr><th>Category</th><th>Dutch</th><th>English</th><th>Sentences</th></tr></thead><tbody id="referenceBody"></tbody></table></div>
+    </div>
+    <div class="actions" style="margin-top:20px">
+      <button class="secondary" id="backToTraining">← Back to training</button>
+    </div>
+  </section>
+
+  <div id="editorModal" class="editor-backdrop hidden">
+    <div class="editor">
+      <div class="eyebrow">Sentence editor</div>
+      <h3 id="editorTitle">Edit sentences</h3>
+      <p class="note" style="margin-top:4px">Keep up to 15 varied sentences for this expression. The game randomly uses the saved pool, so you learn the expression rather than one memorised sentence.</p>
+      <div id="sentenceList"></div>
+      <div class="sentence-count" id="sentenceCount"></div>
+      <div class="actions"><button id="addSentence" class="secondary">+ Add sentence</button><button id="saveSentences">Save</button><button id="cancelEdit" class="ghost">Cancel</button></div>
+    </div>
+  </div>
+
+  <section id="game" class="card hidden">
+    <div class="quiz-head"><span class="tag" id="kind">Multiple choice</span><span class="small" id="counter">Question 1 / 15</span><span class="score" id="points">0 points</span></div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div class="eyebrow" id="category">Category</div>
+    <h2 class="qtitle" id="prompt"></h2>
+    <p class="hint" id="hint"></p>
+    <div id="response"></div>
+    <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+    <div class="foot"><button class="secondary" id="quit">End session</button><button id="check" disabled>Check answer</button></div>
+  </section>
+
+  <section id="results" class="card hidden result">
+    <div class="eyebrow">Session complete</div><h2>Goed gedaan!</h2><div class="big" id="finalScore">0/15</div><p id="summary"></p>
+    <div class="review" id="review"></div>
+    <div class="actions" style="justify-content:center;margin-top:22px"><button id="again">Play again</button><button class="secondary" id="home">Back to settings</button></div>
+  </section>
+</div>
+<script>
+const EXPRESSIONS = [{"category": "Cause and reason", "dutch": "omdat", "english": "because", "example": "Ik blijf thuis omdat ik ziek ben.", "sentences": ["Ik blijf thuis omdat ik ziek ben.", "Ik neem een paraplu mee omdat het regent.", "We kwamen later aan omdat de trein vertraging had.", "Lisa bleef thuis omdat ze zich niet goed voelde.", "Ik heb de vergadering gemist omdat ik ziek was."]}, {"category": "Cause and reason", "dutch": "doordat", "english": "because / due to the fact that", "example": "Doordat het regende, bleef ik thuis.", "sentences": ["Doordat het regende, bleef ik thuis.", "Doordat de weg glad was, reden we voorzichtig.", "Doordat een storing ontstond, lag het systeem tijdelijk stil.", "We kwamen te laat doordat de bus niet op tijd kwam.", "Doordat hij hard werkte, was het project snel klaar."]}, {"category": "Cause and reason", "dutch": "aangezien", "english": "since / given that", "example": "Aangezien het laat is, vertrekken we.", "sentences": ["Aangezien het laat is, vertrekken we.", "Aangezien het laat is, gaan we naar huis.", "Aangezien je al klaar bent, kunnen we vertrekken.", "Aangezien er weinig tijd is, beginnen we meteen.", "Aangezien morgen een vrije dag is, hoeven we niet vroeg op te staan."]}, {"category": "Cause and reason", "dutch": "daar", "english": "since / because (formal)", "example": "Daar hij ziek was, bleef hij thuis.", "sentences": ["Daar hij ziek was, bleef hij thuis.", "Daar het gebouw gesloten was, konden we niet naar binnen.", "Daar de deadline is verstreken, kunnen we de aanvraag niet meer wijzigen.", "Daar er geen bezwaar was, ging de vergadering door.", "Daar hij niet aanwezig was, nam zijn collega het woord."]}, {"category": "Cause and reason", "dutch": "immers", "english": "after all", "example": "Het is immers noodzakelijk.", "sentences": ["Het is immers noodzakelijk.", "We moeten nu vertrekken; het is immers al laat.", "Je kunt hem vertrouwen; hij heeft je immers nog nooit bedrogen.", "Dat voorstel is logisch. Het bespaart immers veel tijd.", "We hoeven ons geen zorgen te maken; alles is immers goed voorbereid."]}, {"category": "Cause and reason", "dutch": "vanwege", "english": "because of", "example": "Vanwege het slechte weer bleven we thuis.", "sentences": ["Vanwege het slechte weer bleven we thuis.", "De vlucht had vertraging vanwege technische problemen.", "Vanwege een storing was de machine tijdelijk buiten gebruik.", "We hebben de afspraak verplaatst vanwege de drukte op de weg.", "De wedstrijd werd afgelast vanwege de storm."]}, {"category": "Cause and reason", "dutch": "wegens", "english": "due to", "example": "Wegens omstandigheden is de winkel gesloten.", "sentences": ["Wegens omstandigheden is de winkel gesloten.", "Wegens werkzaamheden is de ingang vandaag gesloten.", "De trein rijdt niet wegens een technisch probleem.", "Wegens ziekte van de docent gaat de les niet door.", "Het kantoor is morgen dicht wegens een feestdag."]}, {"category": "Cause and reason", "dutch": "dankzij", "english": "thanks to", "example": "Dankzij jouw hulp is het gelukt.", "sentences": ["Dankzij jouw hulp is het gelukt.", "Dankzij jouw hulp hebben we het project op tijd afgerond.", "We vonden de juiste oplossing dankzij haar ervaring.", "Dankzij de nieuwe software werken we veel sneller.", "Het team bleef rustig dankzij de goede voorbereiding."]}, {"category": "Cause and reason", "dutch": "ten gevolge van", "english": "as a result of", "example": "Ten gevolge van de crisis...", "sentences": ["Ten gevolge van de crisis...", "Ten gevolge van een stroomstoring lag het systeem tijdelijk stil.", "De levering liep vertraging op ten gevolge van het slechte weer.", "Ten gevolge van de werkzaamheden was de weg afgesloten.", "Er ontstond schade ten gevolge van de hevige storm."]}, {"category": "Cause and reason", "dutch": "als gevolg van", "english": "as a result of", "example": "Als gevolg van de vertraging...", "sentences": ["Als gevolg van de vertraging...", "Als gevolg van de storing werden alle vluchten vertraagd.", "De productie viel stil als gevolg van een technisch probleem.", "Als gevolg van de hoge vraag zijn de voorraden snel gedaald.", "Er waren lange wachtrijen als gevolg van de vertraging."]}, {"category": "Result and consequence", "dutch": "daarom", "english": "therefore / that's why", "example": "Het regent, daarom blijf ik thuis.", "sentences": ["Het regent, daarom blijf ik thuis.", "Het regent; daarom neem ik een paraplu mee.", "Ik was moe, en daarom ging ik vroeg naar bed.", "De winkel was gesloten; daarom gingen we ergens anders heen.", "Er was geen bus, daarom namen we een taxi."]}, {"category": "Result and consequence", "dutch": "daardoor", "english": "as a result", "example": "Hij was ziek, daardoor miste hij de trein.", "sentences": ["Hij was ziek, daardoor miste hij de trein.", "Het had de hele nacht gevroren; daardoor waren de wegen glad.", "De printer was kapot en daardoor konden we niets afdrukken.", "Ze miste haar trein en kwam daardoor te laat.", "Er was een fout in het systeem; daardoor werd de bestelling niet verwerkt."]}, {"category": "Result and consequence", "dutch": "hierdoor", "english": "as a result of this", "example": "Hierdoor ontstond een probleem.", "sentences": ["Hierdoor ontstond een probleem.", "Er is een fout gemaakt; hierdoor duurt de procedure langer.", "De prijzen zijn gestegen en hierdoor moeten we meer betalen.", "De deur bleef openstaan; hierdoor werd het kantoor koud.", "De planning veranderde op het laatste moment; hierdoor ontstond verwarring."]}, {"category": "Result and consequence", "dutch": "zodoende", "english": "consequently / thereby", "example": "Hij had goed geoefend en zodoende slaagde hij.", "sentences": ["Hij had goed geoefend en zodoende slaagde hij.", "Hij controleerde alle gegevens en zodoende voorkwam hij fouten.", "We hebben de planning aangepast en zodoende tijd bespaard.", "Ze oefende iedere dag en zodoende verbeterde haar uitspraak.", "Het team werkte volgens een vaste procedure en zodoende bleef alles overzichtelijk."]}, {"category": "Result and consequence", "dutch": "bijgevolg", "english": "consequently", "example": "De kosten zijn gestegen; bijgevolg betalen we meer.", "sentences": ["De kosten zijn gestegen; bijgevolg betalen we meer.", "De kosten zijn gestegen; bijgevolg wordt het project duurder.", "Er was onvoldoende bewijs; bijgevolg werd de aanvraag afgewezen.", "De vraag nam sterk toe; bijgevolg moesten we meer produceren.", "Het contract is verlopen; bijgevolg kunnen we de oude voorwaarden niet meer toepassen."]}, {"category": "Result and consequence", "dutch": "vandaar", "english": "hence / that's why", "example": "Vandaar mijn beslissing.", "sentences": ["Vandaar mijn beslissing.", "Ik had geen tijd, vandaar mijn korte antwoord.", "De weg was afgesloten; vandaar moesten we omrijden.", "Het was zijn laatste werkdag; vandaar gaf hij een afscheidsfeest.", "Ze was ziek; vandaar bleef ze thuis."]}, {"category": "Result and consequence", "dutch": "waardoor", "english": "as a result of which", "example": "Het sneeuwde, waardoor de wegen glad werden.", "sentences": ["Het sneeuwde, waardoor de wegen glad werden.", "Het regende hard, waardoor de straten onder water kwamen te staan.", "De trein had vertraging, waardoor we te laat aankwamen.", "Er viel een onderdeel uit, waardoor de machine stopte.", "De planning veranderde, waardoor het team opnieuw moest beginnen."]}, {"category": "Time and sequence", "dutch": "nadat", "english": "after", "example": "Nadat ik gegeten had, ging ik weg.", "sentences": ["Nadat ik gegeten had, ging ik weg.", "Nadat ik had gegeten, ging ik wandelen.", "We gingen naar huis nadat de film was afgelopen.", "Nadat ze haar werk had afgerond, stuurde ze het rapport.", "Bel me even nadat je bent aangekomen."]}, {"category": "Time and sequence", "dutch": "voordat", "english": "before", "example": "Voordat ik vertrek, bel ik je.", "sentences": ["Voordat ik vertrek, bel ik je.", "Voordat ik vertrek, controleer ik mijn e-mail.", "Was je handen voordat je gaat eten.", "Voordat we beginnen, bespreken we de planning.", "Ik wil eerst nadenken voordat ik een beslissing neem."]}, {"category": "Time and sequence", "dutch": "alvorens", "english": "before (formal)", "example": "Alvorens te vertrekken, controleerde hij alles.", "sentences": ["Alvorens te vertrekken, controleerde hij alles.", "Alvorens de vergadering begint, nemen we de agenda door.", "Alvorens u verdergaat, moet u het formulier invullen.", "Lees de instructies alvorens u het apparaat gebruikt.", "Alvorens hij een beslissing nam, onderzocht hij alle opties."]}, {"category": "Time and sequence", "dutch": "zodra", "english": "as soon as", "example": "Zodra ik klaar ben, bel ik je.", "sentences": ["Zodra ik klaar ben, bel ik je.", "We vertrekken zodra de regen stopt.", "Zodra de bestelling binnenkomt, sturen we haar door.", "Bel me zodra je nieuws hebt.", "Zodra de winkel opent, kunnen we naar binnen."]}, {"category": "Time and sequence", "dutch": "totdat", "english": "until", "example": "Ik wacht totdat je terugkomt.", "sentences": ["Ik wacht totdat je terugkomt.", "We wachten hier totdat de bus komt.", "Blijf op kantoor totdat de vergadering voorbij is.", "Ik blijf oefenen totdat ik de oefening goed beheers.", "Ze werkte door totdat het rapport af was."]}, {"category": "Time and sequence", "dutch": "tot", "english": "until", "example": "We blijven hier tot hij terugkomt.", "sentences": ["We blijven hier tot hij terugkomt.", "We wachten tot de bus komt.", "Blijf hier tot ik terug ben.", "Je kunt de software gebruiken tot de licentie verloopt.", "We blijven open tot acht uur."]}, {"category": "Time and sequence", "dutch": "terwijl", "english": "while / whereas", "example": "Terwijl ik kook, luistert hij muziek.", "sentences": ["Terwijl ik kook, luistert hij muziek.", "Ik kook terwijl mijn partner de tafel dekt.", "Zij luisterde naar muziek terwijl ze werkte.", "Terwijl de ene groep vertrok, kwam de andere binnen.", "Hij leest de krant terwijl hij koffie drinkt."]}, {"category": "Time and sequence", "dutch": "gedurende", "english": "during", "example": "Gedurende de vergadering...", "sentences": ["Gedurende de vergadering...", "Gedurende de vergadering werden er veel vragen gesteld.", "We bleven binnen gedurende de storm.", "Gedurende de zomer werkt het restaurant langer open.", "Er was veel verkeer gedurende de ochtendspits."]}, {"category": "Time and sequence", "dutch": "zolang", "english": "as long as / while", "example": "Zolang je oefent, zul je verbeteren.", "sentences": ["Zolang je oefent, zul je verbeteren.", "Zolang je blijft oefenen, zul je vooruitgaan.", "Je mag hier blijven zolang je rustig bent.", "Zolang het weer goed blijft, gaan we fietsen.", "Ik help je zolang je het nodig hebt."]}, {"category": "Time and sequence", "dutch": "intussen", "english": "meanwhile", "example": "Intussen is er veel veranderd.", "sentences": ["Intussen is er veel veranderd.", "Ik maak het eten; intussen kun jij de tafel dekken.", "De monteurs repareren de machine; intussen wachten wij hier.", "Zij belde met de klant; intussen controleerde ik de gegevens.", "We wachten op de trein; intussen drinken we koffie."]}, {"category": "Time and sequence", "dutch": "ondertussen", "english": "in the meantime", "example": "Ondertussen wachtte iedereen.", "sentences": ["Ondertussen wachtte iedereen.", "Ik werk verder; ondertussen kun jij de documenten controleren.", "De kinderen speelden buiten; ondertussen maakte hun moeder het eten.", "We wachten op antwoord; ondertussen zoeken we naar een andere oplossing.", "Hij praatte met de manager; ondertussen bleef ik bij de ingang."]}, {"category": "Time and sequence", "dutch": "inmiddels", "english": "by now / meanwhile", "example": "Inmiddels is hij afgestudeerd.", "sentences": ["Inmiddels is hij afgestudeerd.", "Inmiddels is de situatie behoorlijk veranderd.", "We zijn inmiddels al een uur onderweg.", "Inmiddels heeft zij haar rijbewijs gehaald.", "De bestelling is inmiddels verzonden."]}, {"category": "Time and sequence", "dutch": "achteraf", "english": "afterwards / in retrospect", "example": "Achteraf bleek het een fout te zijn.", "sentences": ["Achteraf bleek het een fout te zijn.", "Achteraf bleek de beslissing toch verstandig te zijn.", "We zagen pas achteraf wat er mis was gegaan.", "Achteraf had ik liever eerst meer informatie gevraagd.", "Het was achteraf duidelijk dat we te weinig tijd hadden."]}, {"category": "Time and sequence", "dutch": "vooraf", "english": "beforehand", "example": "Je moet je vooraf aanmelden.", "sentences": ["Je moet je vooraf aanmelden.", "Lees de instructies vooraf zorgvuldig.", "We moeten de documenten vooraf controleren.", "Je kunt de afspraak vooraf online bevestigen.", "Ik stuur de deelnemers vooraf de agenda."]}, {"category": "Time and sequence", "dutch": "sindsdien", "english": "ever since", "example": "Sindsdien spreken we elkaar regelmatig.", "sentences": ["Sindsdien spreken we elkaar regelmatig.", "We hebben elkaar toen ontmoet en sindsdien spreken we regelmatig.", "Ze verhuisde naar Utrecht en woont sindsdien daar.", "Ik ben begonnen met Nederlands leren en sindsdien oefen ik iedere dag.", "Het systeem is vernieuwd en werkt sindsdien veel beter."]}, {"category": "Conditions", "dutch": "als", "english": "if / when", "example": "Als ik tijd heb, kom ik langs.", "sentences": ["Als ik tijd heb, kom ik langs.", "Als het morgen regent, blijven we thuis.", "Bel me als je hulp nodig hebt.", "Als je klaar bent, kunnen we vertrekken.", "Ik neem een jas mee als het koud is."]}, {"category": "Conditions", "dutch": "indien", "english": "if (formal)", "example": "Indien nodig, kunt u contact opnemen.", "sentences": ["Indien nodig, kunt u contact opnemen.", "Indien u vragen heeft, kunt u contact opnemen.", "We nemen extra maatregelen indien dat nodig is.", "Indien de levering vertraagd is, informeren we de klant.", "U kunt de afspraak wijzigen indien dat noodzakelijk is."]}, {"category": "Conditions", "dutch": "mits", "english": "provided that", "example": "Je mag meegaan, mits je op tijd bent.", "sentences": ["Je mag meegaan, mits je op tijd bent.", "We kunnen morgen vertrekken, mits het weer goed blijft.", "Je krijgt toegang mits je je vooraf registreert.", "Het plan kan doorgaan, mits iedereen akkoord gaat.", "Je kunt de auto lenen, mits je hem vanavond terugbrengt."]}, {"category": "Conditions", "dutch": "tenzij", "english": "unless", "example": "Ik kom, tenzij ik ziek word.", "sentences": ["Ik kom, tenzij ik ziek word.", "Ik kom morgen, tenzij ik ziek word.", "We gaan wandelen, tenzij het hard regent.", "Je kunt de deur sluiten, tenzij iemand nog binnen moet.", "De winkel is open, tenzij het een feestdag is."]}, {"category": "Conditions", "dutch": "op voorwaarde dat", "english": "on condition that", "example": "Je mag blijven op voorwaarde dat je stil bent.", "sentences": ["Je mag blijven op voorwaarde dat je stil bent.", "Je mag blijven, op voorwaarde dat je rustig blijft.", "We accepteren het voorstel, op voorwaarde dat de prijs niet verandert.", "De bestelling wordt vandaag geleverd, op voorwaarde dat iemand aanwezig is.", "Je kunt thuiswerken, op voorwaarde dat je bereikbaar blijft."]}, {"category": "Conditions", "dutch": "voor zover", "english": "insofar as / as far as", "example": "Voor zover ik weet, klopt dat.", "sentences": ["Voor zover ik weet, klopt dat.", "Voor zover ik weet, is de informatie correct.", "Voor zover mogelijk zullen we de planning aanpassen.", "Dit is toegestaan voor zover het beleid dat toelaat.", "Voor zover ik kan beoordelen, is er geen probleem."]}, {"category": "Conditions", "dutch": "voor het geval dat", "english": "in case", "example": "Neem een paraplu mee voor het geval dat het regent.", "sentences": ["Neem een paraplu mee voor het geval dat het regent.", "Neem een jas mee voor het geval dat het koud wordt.", "Ik noteer je nummer voor het geval dat we je moeten bereiken.", "We nemen extra materiaal mee voor het geval dat er iets kapotgaat.", "Bewaar de factuur voor het geval dat je die later nodig hebt."]}, {"category": "Conditions", "dutch": "stel dat", "english": "suppose that", "example": "Stel dat je morgen niet kunt komen?", "sentences": ["Stel dat je morgen niet kunt komen?", "Stel dat je morgen niet kunt komen, wat doen we dan?", "Stel dat de trein uitvalt, nemen we een taxi.", "Stel dat het plan niet werkt, wat is ons alternatief?", "Stel dat je de baan krijgt, zou je verhuizen?"]}, {"category": "Conditions", "dutch": "aangenomen dat", "english": "assuming that", "example": "Aangenomen dat alles goed gaat, vertrekken we morgen.", "sentences": ["Aangenomen dat alles goed gaat, vertrekken we morgen.", "Aangenomen dat alles goed gaat, kunnen we vrijdag vertrekken.", "Aangenomen dat de cijfers kloppen, is het project winstgevend.", "Aangenomen dat hij akkoord gaat, beginnen we volgende week.", "Aangenomen dat er geen vertraging is, zijn we om zes uur thuis."]}, {"category": "Conditions", "dutch": "ervan uitgaande dat", "english": "assuming that", "example": "Ervan uitgaande dat je gelijk hebt...", "sentences": ["Ervan uitgaande dat je gelijk hebt...", "Ervan uitgaande dat de informatie klopt, kunnen we verder.", "Ervan uitgaande dat iedereen akkoord gaat, ondertekenen we vandaag.", "Ervan uitgaande dat de levering op tijd komt, starten we maandag.", "Ervan uitgaande dat het budget voldoende is, kunnen we extra personeel inzetten."]}, {"category": "Conditions", "dutch": "zolang", "english": "as long as", "example": "Je mag blijven zolang je je gedraagt.", "sentences": ["Je mag blijven zolang je je gedraagt.", "Zolang je blijft oefenen, zul je vooruitgaan.", "Je mag hier blijven zolang je rustig bent.", "Zolang het weer goed blijft, gaan we fietsen.", "Ik help je zolang je het nodig hebt."]}, {"category": "Conditions", "dutch": "behoudens", "english": "except for / unless (formal)", "example": "Behoudens uitzonderingen is dit verplicht.", "sentences": ["Behoudens uitzonderingen is dit verplicht.", "Behoudens enkele uitzonderingen is het kantoor iedere dag geopend.", "Behoudens onvoorziene omstandigheden blijft de planning ongewijzigd.", "Behoudens toestemming van de manager mag niemand de ruimte betreden.", "Behoudens kleine verschillen zijn de resultaten identiek."]}, {"category": "Conditions", "dutch": "op voorwaarde van", "english": "on condition of", "example": "Op voorwaarde van toestemming...", "sentences": ["Op voorwaarde van toestemming...", "Toegang is toegestaan op voorwaarde van registratie.", "De korting geldt op voorwaarde van een minimale bestelling.", "De lening wordt verstrekt op voorwaarde van voldoende zekerheid.", "Het contract wordt verlengd op voorwaarde van schriftelijke goedkeuring."]}, {"category": "Conditions", "dutch": "tenzij anders bepaald", "english": "unless otherwise specified", "example": "De regel geldt, tenzij anders bepaald.", "sentences": ["De regel geldt, tenzij anders bepaald.", "De betalingstermijn is dertig dagen, tenzij anders bepaald.", "Deze regel geldt voor alle medewerkers, tenzij anders bepaald.", "Alle gegevens worden digitaal opgeslagen, tenzij anders bepaald.", "De afspraak blijft van kracht, tenzij anders bepaald."]}, {"category": "Contrast and opposition", "dutch": "hoewel", "english": "although", "example": "Hoewel het regent, ga ik wandelen.", "sentences": ["Hoewel het regent, ga ik wandelen.", "Hoewel het regent, gaan we wandelen.", "Hoewel hij moe was, werkte hij door.", "Hoewel de taak moeilijk was, lukte het haar.", "Hoewel het laat werd, bleven de gasten nog even."]}, {"category": "Contrast and opposition", "dutch": "alhoewel", "english": "although", "example": "Alhoewel hij moe is, werkt hij door.", "sentences": ["Alhoewel hij moe is, werkt hij door.", "Alhoewel het druk was, nam hij de tijd voor ons.", "Alhoewel ze weinig ervaring had, deed ze het uitstekend.", "Alhoewel het koud was, gingen we naar buiten.", "Alhoewel de route lang was, genoten we van de wandeling."]}, {"category": "Contrast and opposition", "dutch": "ofschoon", "english": "although (formal)", "example": "Ofschoon het moeilijk was, lukte het.", "sentences": ["Ofschoon het moeilijk was, lukte het.", "Ofschoon het voorstel interessant is, is het te duur.", "Ofschoon hij weinig tijd had, hielp hij ons.", "Ofschoon de taak complex was, werd ze snel uitgevoerd.", "Ofschoon er bezwaren waren, ging het plan door."]}, {"category": "Contrast and opposition", "dutch": "ondanks dat", "english": "despite the fact that", "example": "Ondanks dat hij ziek was, kwam hij werken.", "sentences": ["Ondanks dat hij ziek was, kwam hij werken.", "Ondanks dat het hard regende, gingen ze fietsen.", "Ondanks dat we weinig tijd hadden, hebben we alles afgerond.", "Ondanks dat de machine oud is, werkt ze nog goed.", "Ondanks dat het druk was, vond zij toch een rustige plek."]}, {"category": "Contrast and opposition", "dutch": "ondanks", "english": "despite", "example": "Ondanks de regen gingen we wandelen.", "sentences": ["Ondanks de regen gingen we wandelen.", "Ondanks zijn vermoeidheid bleef hij werken.", "Ondanks de hoge kosten kochten ze het apparaat.", "Ondanks de problemen bleef het project op schema.", "Ondanks de vertraging arriveerden we nog op tijd."]}, {"category": "Contrast and opposition", "dutch": "daarentegen", "english": "on the other hand / in contrast", "example": "Hij is rustig, zij daarentegen is druk.", "sentences": ["Hij is rustig, zij daarentegen is druk.", "Jan werkt graag alleen; zijn collega daarentegen liever in een team.", "De eerste oplossing is goedkoop; de tweede is daarentegen duurder.", "In de zomer is het hier druk; in de winter is het daarentegen rustig.", "Het oude model is zwaar; het nieuwe is daarentegen licht."]}, {"category": "Contrast and opposition", "dutch": "echter", "english": "however", "example": "Het is duur. Het is echter van goede kwaliteit.", "sentences": ["Het is duur. Het is echter van goede kwaliteit.", "Het voorstel is interessant; echter is het te duur.", "We wilden vertrekken. Het regende echter hard.", "De oplossing werkt goed, maar is echter moeilijk te onderhouden.", "Het hotel was mooi; de kamer was echter klein."]}, {"category": "Contrast and opposition", "dutch": "evenwel", "english": "nevertheless / however", "example": "Het voorstel is interessant, evenwel niet haalbaar.", "sentences": ["Het voorstel is interessant, evenwel niet haalbaar.", "Het idee is interessant; evenwel is het moeilijk uitvoerbaar.", "De resultaten zijn positief, evenwel blijven er risico’s.", "We hebben weinig tijd; evenwel moeten we dit vandaag afronden.", "Het plan is goedgekeurd, evenwel zijn enkele wijzigingen nodig."]}, {"category": "Contrast and opposition", "dutch": "niettemin", "english": "nevertheless", "example": "Het was moeilijk; niettemin gaf hij niet op.", "sentences": ["Het was moeilijk; niettemin gaf hij niet op.", "Het was een moeilijke opdracht; niettemin hebben we haar afgerond.", "Er waren veel bezwaren; niettemin ging de vergadering door.", "Het regende de hele dag; niettemin gingen we naar buiten.", "De kosten waren hoog; niettemin koos het bedrijf voor kwaliteit."]}, {"category": "Contrast and opposition", "dutch": "desondanks", "english": "despite that", "example": "Hij was moe. Desondanks ging hij sporten.", "sentences": ["Hij was moe. Desondanks ging hij sporten.", "Het regende hard. desondanks gingen we wandelen.", "Hij was moe. desondanks maakte hij het werk af.", "Er waren problemen. desondanks bleef het team rustig.", "De prijs was hoog. desondanks kocht ze het product."]}, {"category": "Contrast and opposition", "dutch": "toch", "english": "nevertheless / still", "example": "Het regende, toch gingen we naar buiten.", "sentences": ["Het regende, toch gingen we naar buiten.", "Het regende, maar we gingen toch wandelen.", "Hij was moe, maar hij werkte toch door.", "Ik wist dat het moeilijk was; ik probeerde het toch.", "Ze had weinig tijd, maar ze hielp ons toch."]}, {"category": "Contrast and opposition", "dutch": "integendeel", "english": "on the contrary", "example": "Dat is niet moeilijk, integendeel.", "sentences": ["Dat is niet moeilijk, integendeel.", "Ik ben niet boos; integendeel ben ik blij met de beslissing.", "Het probleem werd niet groter; integendeel werd het kleiner.", "Het was niet moeilijk. integendeel, het was verrassend eenvoudig.", "Hij is niet ontevreden; integendeel is hij zeer tevreden."]}, {"category": "Contrast and opposition", "dutch": "terwijl", "english": "whereas", "example": "Hij houdt van voetbal, terwijl ik tennis prefereer.", "sentences": ["Hij houdt van voetbal, terwijl ik tennis prefereer.", "Ik kook terwijl mijn partner de tafel dekt.", "Zij luisterde naar muziek terwijl ze werkte.", "Terwijl de ene groep vertrok, kwam de andere binnen.", "Hij leest de krant terwijl hij koffie drinkt."]}, {"category": "Purpose and intention", "dutch": "zodat", "english": "so that", "example": "Ik spreek langzaam zodat je me begrijpt.", "sentences": ["Ik spreek langzaam zodat je me begrijpt.", "Ik zet de wekker zodat ik op tijd wakker word.", "We spreken langzaam zodat iedereen ons kan volgen.", "Ze schreef het op zodat ze het niet zou vergeten.", "Ik stuur je de details zodat je alles kunt controleren."]}, {"category": "Purpose and intention", "dutch": "opdat", "english": "so that (formal)", "example": "Hij herhaalde het opdat iedereen het begreep.", "sentences": ["Hij herhaalde het opdat iedereen het begreep.", "We spreken duidelijk opdat iedereen ons begrijpt.", "Ze herhaalde de uitleg opdat niemand de instructies zou missen.", "Het formulier is aangepast opdat klanten het makkelijker kunnen invullen.", "Hij werkt extra hard opdat het project op tijd klaar is."]}, {"category": "Purpose and intention", "dutch": "teneinde", "english": "in order to (formal)", "example": "Teneinde fouten te voorkomen...", "sentences": ["Teneinde fouten te voorkomen...", "Teneinde fouten te voorkomen, controleerde hij alles nogmaals.", "Teneinde tijd te besparen, maakten we vooraf een planning.", "Het bedrijf investeerde in software teneinde de administratie te versnellen.", "Ze volgde een cursus teneinde haar kennis te verbeteren."]}, {"category": "Purpose and intention", "dutch": "met als doel", "english": "with the aim of", "example": "Met als doel de kwaliteit te verbeteren...", "sentences": ["Met als doel de kwaliteit te verbeteren...", "We starten een campagne met als doel meer klanten te bereiken.", "Het bedrijf investeert in nieuwe machines met als doel de productie te verhogen.", "Ze organiseerden een workshop met als doel medewerkers beter te informeren.", "Het onderzoek werd uitgevoerd met als doel de oorzaken van het probleem te begrijpen."]}, {"category": "Purpose and intention", "dutch": "ter voorkoming van", "english": "to prevent", "example": "Ter voorkoming van ongelukken...", "sentences": ["Ter voorkoming van ongelukken...", "Ter voorkoming van ongelukken dragen medewerkers beschermende kleding.", "We voeren extra controles uit ter voorkoming van fouten.", "Er zijn hekken geplaatst ter voorkoming van ongevallen.", "De gegevens worden beveiligd ter voorkoming van misbruik."]}, {"category": "Purpose and intention", "dutch": "om ervoor te zorgen dat", "english": "to ensure that", "example": "Ik controleer alles om ervoor te zorgen dat het klopt.", "sentences": ["Ik controleer alles om ervoor te zorgen dat het klopt.", "Ik controleer alles om ervoor te zorgen dat het rapport foutloos is.", "We plannen extra personeel in om ervoor te zorgen dat iedereen op tijd geholpen wordt.", "Ze schreef duidelijke instructies om ervoor te zorgen dat niemand fouten maakt.", "Ik stuur een herinnering om ervoor te zorgen dat iedereen de deadline kent."]}, {"category": "Addition and enumeration", "dutch": "bovendien", "english": "moreover / furthermore", "example": "Bovendien is het goedkoper.", "sentences": ["Bovendien is het goedkoper.", "Het hotel is goedkoop en bovendien ligt het dicht bij het station.", "Ze spreekt goed Nederlands; bovendien leert ze snel nieuwe woorden.", "De machine is zuinig en bovendien gemakkelijk te onderhouden.", "Het voorstel is duidelijk en bovendien goed onderbouwd."]}, {"category": "Addition and enumeration", "dutch": "daarnaast", "english": "additionally / besides", "example": "Daarnaast biedt het veel voordelen.", "sentences": ["Daarnaast biedt het veel voordelen.", "Het product is betaalbaar; daarnaast is het gemakkelijk te gebruiken.", "We bieden training aan en leveren daarnaast technische ondersteuning.", "Ze werkt overdag en studeert daarnaast in de avond.", "Het gebouw heeft kantoren en daarnaast een grote vergaderruimte."]}, {"category": "Addition and enumeration", "dutch": "tevens", "english": "also / furthermore (formal)", "example": "Tevens is onderzoek noodzakelijk.", "sentences": ["Tevens is onderzoek noodzakelijk.", "Het rapport is duidelijk en tevens goed onderbouwd.", "De cursus biedt theorie en tevens praktische oefeningen.", "Het bedrijf levert machines en verzorgt tevens het onderhoud.", "De maatregel verlaagt de kosten en verbetert tevens de veiligheid."]}, {"category": "Addition and enumeration", "dutch": "eveneens", "english": "likewise / also", "example": "Dit geldt eveneens voor jongeren.", "sentences": ["Dit geldt eveneens voor jongeren.", "De nieuwe regeling geldt voor werknemers en eveneens voor stagiairs.", "Zij was aanwezig en haar collega was eveneens aanwezig.", "Deze oplossing is goedkoper en eveneens betrouwbaarder.", "Het tweede team heeft eveneens toestemming gekregen."]}, {"category": "Addition and enumeration", "dutch": "enerzijds", "english": "on the one hand", "example": "Enerzijds is het voordelig.", "sentences": ["Enerzijds is het voordelig.", "Enerzijds is thuiswerken flexibel, anderzijds kan het eenzaam zijn.", "Enerzijds bespaart de maatregel geld, anderzijds kost de invoering tijd.", "Enerzijds is de locatie centraal, anderzijds is parkeren lastig.", "Enerzijds biedt het plan kansen, anderzijds brengt het risico’s mee."]}, {"category": "Addition and enumeration", "dutch": "anderzijds", "english": "on the other hand", "example": "Anderzijds brengt het risico's met zich mee.", "sentences": ["Anderzijds brengt het risico's met zich mee.", "Het plan is goedkoop; anderzijds levert het minder kwaliteit.", "We kunnen nu beginnen; anderzijds kunnen we ook nog even wachten.", "De baan betaalt goed; anderzijds is de reistijd lang.", "Het product is klein; anderzijds is de capaciteit beperkt."]}, {"category": "Addition and enumeration", "dutch": "niet alleen ... maar ook", "english": "not only ... but also", "example": "Niet alleen hij, maar ook zijn broer kwam.", "sentences": ["Niet alleen hij, maar ook zijn broer kwam.", "Het bedrijf verkoopt niet alleen ... maar ook machines maar ook onderdelen.", "Zij spreekt niet alleen ... maar ook Nederlands, maar ook Duits.", "We moeten niet alleen ... maar ook de kosten verlagen, maar ook de kwaliteit verbeteren.", "Hij is niet alleen ... maar ook snel, maar ook nauwkeurig."]}, {"category": "Addition and enumeration", "dutch": "zowel ... als", "english": "both ... and", "example": "Zowel studenten als docenten waren aanwezig.", "sentences": ["Zowel studenten als docenten waren aanwezig.", "We verkopen zowel ... als machines als onderdelen.", "Zij spreekt zowel ... als Nederlands als Duits.", "Het systeem is zowel ... als snel als betrouwbaar.", "We hebben zowel ... als tijd als geld nodig."]}, {"category": "Alternatives and choices", "dutch": "of", "english": "or", "example": "Wil je thee of koffie?", "sentences": ["Wil je thee of koffie?", "Wil je koffie of thee?", "Kun je vandaag of morgen komen?", "We kunnen met de trein of met de bus gaan.", "Laat me weten of je akkoord bent."]}, {"category": "Alternatives and choices", "dutch": "hetzij ... hetzij", "english": "either ... or", "example": "Hetzij vandaag, hetzij morgen.", "sentences": ["Hetzij vandaag, hetzij morgen.", "Je kunt hetzij ... hetzij vandaag hetzij morgen vertrekken.", "We leveren de bestelling hetzij ... hetzij maandag hetzij dinsdag.", "Neem contact op per e-mail, hetzij ... hetzij telefonisch.", "We kiezen hetzij ... hetzij voor optie A hetzij voor optie B."]}, {"category": "Alternatives and choices", "dutch": "ofwel ... ofwel", "english": "either ... or", "example": "Ofwel je vertrekt nu, ofwel je blijft hier.", "sentences": ["Ofwel je vertrekt nu, ofwel je blijft hier.", "Ofwel ... ofwel je accepteert het voorstel, ofwel je doet een tegenvoorstel.", "We gaan ofwel ... ofwel vandaag, ofwel we vertrekken morgen.", "Je kunt ofwel ... ofwel thuiswerken, ofwel je komt naar kantoor.", "We nemen ofwel ... ofwel de trein, ofwel de bus."]}, {"category": "Alternatives and choices", "dutch": "in plaats daarvan", "english": "instead", "example": "Hij ging niet werken; in plaats daarvan bleef hij thuis.", "sentences": ["Hij ging niet werken; in plaats daarvan bleef hij thuis.", "Ik wilde de trein nemen, maar ik ging in plaats daarvan met de bus.", "Ze kocht geen nieuwe telefoon; ze repareerde haar oude in plaats daarvan.", "We gingen niet uit eten en kookten in plaats daarvan thuis.", "Hij nam geen taxi, maar liep in plaats daarvan naar huis."]}, {"category": "Alternatives and choices", "dutch": "veeleer", "english": "rather", "example": "Het is veeleer een kwestie van tijd.", "sentences": ["Het is veeleer een kwestie van tijd.", "Het probleem is veeleer een kwestie van planning dan van geld.", "Ze is veeleer voorzichtig dan onzeker.", "We moeten veeleer de oorzaak aanpakken dan het gevolg.", "De keuze was veeleer praktisch dan emotioneel."]}, {"category": "Explanation and clarification", "dutch": "namelijk", "english": "namely / because", "example": "Ik kan niet komen, ik ben namelijk ziek.", "sentences": ["Ik kan niet komen, ik ben namelijk ziek.", "Ik kan vandaag niet komen, namelijk ik heb een afspraak bij de dokter.", "Er is één probleem, namelijk de deadline is al morgen.", "We nemen de trein, namelijk de weg is druk.", "Ik bel je later, namelijk ik zit nu in een vergadering."]}, {"category": "Explanation and clarification", "dutch": "immers", "english": "after all", "example": "Dat is immers logisch.", "sentences": ["Dat is immers logisch.", "We moeten nu vertrekken; het is immers al laat.", "Je kunt hem vertrouwen; hij heeft je immers nog nooit bedrogen.", "Dat voorstel is logisch. Het bespaart immers veel tijd.", "We hoeven ons geen zorgen te maken; alles is immers goed voorbereid."]}, {"category": "Explanation and clarification", "dutch": "oftewel", "english": "in other words", "example": "Hij is tweetalig, oftewel hij spreekt twee talen.", "sentences": ["Hij is tweetalig, oftewel hij spreekt twee talen.", "Het is een tijdelijk contract, oftewel het eindigt binnenkort.", "We hebben een tekort aan personeel, oftewel we hebben te weinig mensen.", "Het apparaat is defect, oftewel het werkt niet goed.", "Hij is zelfstandig ondernemer, oftewel hij werkt voor eigen rekening."]}, {"category": "Explanation and clarification", "dutch": "met andere woorden", "english": "in other words", "example": "Met andere woorden, we moeten opnieuw beginnen.", "sentences": ["Met andere woorden, we moeten opnieuw beginnen.", "We moeten opnieuw beginnen; met andere woorden, we moeten alles nog een keer doen.", "Het budget is beperkt; met andere woorden, we kunnen niet onbeperkt uitgeven.", "De afspraak is vrijblijvend; met andere woorden, je bent niet verplicht te komen.", "De cijfers zijn stabiel; met andere woorden, ze veranderen nauwelijks."]}, {"category": "Explanation and clarification", "dutch": "dat wil zeggen", "english": "that is to say", "example": "Het is een tijdelijk contract, dat wil zeggen dat het binnenkort afloopt.", "sentences": ["Het is een tijdelijk contract, dat wil zeggen dat het binnenkort afloopt.", "Het contract is tijdelijk, dat wil zeggen het heeft een einddatum.", "De levering is vertraagd, dat wil zeggen ze komt later dan gepland.", "We werken hybride, dat wil zeggen deels thuis en deels op kantoor.", "Het antwoord is voorlopig, dat wil zeggen het kan nog veranderen."]}, {"category": "Explanation and clarification", "dutch": "anders gezegd", "english": "put differently", "example": "Anders gezegd, we hebben geen keuze.", "sentences": ["Anders gezegd, we hebben geen keuze.", "We hebben weinig tijd; anders gezegd, we moeten snel beslissen.", "De kosten zijn te hoog; anders gezegd, het plan is financieel niet haalbaar.", "Het resultaat is onzeker; anders gezegd, we weten nog niet wat er gebeurt.", "De regel geldt niet voor iedereen; anders gezegd, er zijn uitzonderingen."]}, {"category": "Explanation and clarification", "dutch": "bijvoorbeeld", "english": "for example", "example": "Er zijn verschillende opties, bijvoorbeeld...", "sentences": ["Er zijn verschillende opties, bijvoorbeeld...", "Er zijn verschillende oplossingen, bijvoorbeeld door extra personeel in te zetten.", "Je kunt met het openbaar vervoer reizen, bijvoorbeeld met de trein.", "We verkopen verschillende producten, bijvoorbeeld filters en slangen.", "Veel steden, bijvoorbeeld Utrecht en Rotterdam, hebben dit probleem."]}, {"category": "Explanation and clarification", "dutch": "ter verduidelijking", "english": "for clarification", "example": "Ter verduidelijking wil ik één punt toevoegen.", "sentences": ["Ter verduidelijking wil ik één punt toevoegen.", "Ter verduidelijking geef ik nog een concreet voorbeeld.", "Ter verduidelijking wil ik één belangrijk punt benadrukken.", "Ter verduidelijking voeg ik een korte uitleg toe.", "Ter verduidelijking volgt hieronder een overzicht van de belangrijkste stappen."]}, {"category": "Explanation and clarification", "dutch": "in dit verband", "english": "in this regard", "example": "In dit verband is onderzoek relevant.", "sentences": ["In dit verband is onderzoek relevant.", "In dit verband is goede communicatie essentieel.", "In dit verband speelt veiligheid een belangrijke rol.", "In dit verband moeten we ook naar de kosten kijken.", "In dit verband is extra training een goede investering."]}, {"category": "Explanation and clarification", "dutch": "wat betreft", "english": "regarding", "example": "Wat betreft de kosten...", "sentences": ["Wat betreft de kosten...", "Wat betreft de planning kunnen we volgende week starten.", "Wat betreft de kosten moeten we nog een beslissing nemen.", "Wat betreft de kwaliteit zijn de resultaten uitstekend.", "Wat betreft de levering verwacht ik geen problemen."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "daarom", "english": "therefore / for that reason", "example": "Daarom heb ik besloten te vertrekken.", "sentences": ["Daarom heb ik besloten te vertrekken.", "Het regent; daarom neem ik een paraplu mee.", "Ik was moe, en daarom ging ik vroeg naar bed.", "De winkel was gesloten; daarom gingen we ergens anders heen.", "Er was geen bus, daarom namen we een taxi."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "daardoor", "english": "because of that", "example": "Daardoor ontstond verwarring.", "sentences": ["Daardoor ontstond verwarring.", "Het had de hele nacht gevroren; daardoor waren de wegen glad.", "De printer was kapot en daardoor konden we niets afdrukken.", "Ze miste haar trein en kwam daardoor te laat.", "Er was een fout in het systeem; daardoor werd de bestelling niet verwerkt."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "daarvoor", "english": "for that / before that", "example": "Daarvoor heb ik toestemming nodig.", "sentences": ["Daarvoor heb ik toestemming nodig.", "We moeten eerst toestemming vragen; daarvoor hebben we een formulier nodig.", "Ik heb een nieuwe sleutel nodig; daarvoor moet ik een aanvraag indienen.", "Je moet je registreren en daarvoor je gegevens invullen.", "We hadden geen reserveonderdeel; daarvoor moesten we wachten op de levering."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "daarnaast", "english": "besides", "example": "Daarnaast zijn er andere mogelijkheden.", "sentences": ["Daarnaast zijn er andere mogelijkheden.", "Het product is betaalbaar; daarnaast is het gemakkelijk te gebruiken.", "We bieden training aan en leveren daarnaast technische ondersteuning.", "Ze werkt overdag en studeert daarnaast in de avond.", "Het gebouw heeft kantoren en daarnaast een grote vergaderruimte."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "daarentegen", "english": "in contrast", "example": "Daarentegen is deze optie goedkoper.", "sentences": ["Daarentegen is deze optie goedkoper.", "Jan werkt graag alleen; zijn collega daarentegen liever in een team.", "De eerste oplossing is goedkoop; de tweede is daarentegen duurder.", "In de zomer is het hier druk; in de winter is het daarentegen rustig.", "Het oude model is zwaar; het nieuwe is daarentegen licht."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "daarmee", "english": "with that / thereby", "example": "Daarmee lossen we het probleem op.", "sentences": ["Daarmee lossen we het probleem op.", "Ik heb het document ondertekend en daarmee is de aanvraag compleet.", "We gebruiken een nieuwe methode; daarmee besparen we tijd.", "Ze gaf hem de sleutel en daarmee kon hij naar binnen.", "Het team heeft een plan gemaakt en daarmee kunnen we verder."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "hierdoor", "english": "as a result", "example": "Hierdoor wordt het eenvoudiger.", "sentences": ["Hierdoor wordt het eenvoudiger.", "Er is een fout gemaakt; hierdoor duurt de procedure langer.", "De prijzen zijn gestegen en hierdoor moeten we meer betalen.", "De deur bleef openstaan; hierdoor werd het kantoor koud.", "De planning veranderde op het laatste moment; hierdoor ontstond verwarring."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "hieruit", "english": "from this", "example": "Hieruit blijkt dat...", "sentences": ["Hieruit blijkt dat...", "Hieruit blijkt dat de methode goed werkt.", "We kunnen hieruit concluderen dat de kosten zijn gedaald.", "Hieruit blijkt hoe belangrijk goede voorbereiding is.", "Je kunt hieruit afleiden dat er een fout in de berekening zit."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "hieraan", "english": "to this / from this", "example": "Hieraan kun je zien dat...", "sentences": ["Hieraan kun je zien dat...", "Hieraan kun je zien dat de machine goed onderhouden is.", "We moeten hieraan extra aandacht besteden.", "Het succes is hieraan te danken dat iedereen goed samenwerkte.", "Je merkt hieraan dat de situatie is veranderd."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "hierom", "english": "for this reason", "example": "Hierom heb ik bezwaar gemaakt.", "sentences": ["Hierom heb ik bezwaar gemaakt.", "Hierom heb ik de afspraak verplaatst.", "Ik was ziek en hierom bleef ik thuis.", "Er was geen bewijs; hierom konden we niets bevestigen.", "De levering was vertraagd en hierom namen we contact op met de leverancier."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "waarop", "english": "upon which / whereupon", "example": "Het moment waarop alles veranderde...", "sentences": ["Het moment waarop alles veranderde...", "We kregen een bericht, waarop we meteen reageerden.", "Er kwam een vraag, waarop de manager antwoord gaf.", "Ze deed een voorstel, waarop iedereen enthousiast reageerde.", "Hij kreeg een waarschuwing, waarop hij zijn gedrag aanpaste."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "waardoor", "english": "as a result of which", "example": "De situatie waardoor hij vertrok...", "sentences": ["De situatie waardoor hij vertrok...", "Het regende hard, waardoor de straten onder water kwamen te staan.", "De trein had vertraging, waardoor we te laat aankwamen.", "Er viel een onderdeel uit, waardoor de machine stopte.", "De planning veranderde, waardoor het team opnieuw moest beginnen."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "waaraan", "english": "to which", "example": "De kwestie waaraan we werken...", "sentences": ["De kwestie waaraan we werken...", "We werken aan een project waaraan veel tijd wordt besteed.", "Dit is het probleem waaraan we nu moeten werken.", "Ze stelde een vraag waaraan niemand had gedacht.", "Het is een doel waaraan we veel waarde hechten."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "waaruit", "english": "from which", "example": "De gegevens waaruit dit blijkt...", "sentences": ["De gegevens waaruit dit blijkt...", "We ontvingen een rapport waaruit blijkt dat de kosten zijn gestegen.", "Dit is de tabel waaruit je de resultaten kunt aflezen.", "Ze kregen een pakket waaruit drie documenten kwamen.", "De gegevens vormen de basis waaruit we onze conclusie trekken."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "waarmee", "english": "with which", "example": "Het instrument waarmee hij werkt...", "sentences": ["Het instrument waarmee hij werkt...", "Dit is het gereedschap waarmee je de machine kunt openen.", "Ze gebruikte een programma waarmee ze de gegevens analyseerde.", "We hebben een systeem waarmee klanten online kunnen bestellen.", "Dat is de methode waarmee we de fout hebben gevonden."]}, {"category": "Daar-, hier- and waar- expressions", "dutch": "waarvoor", "english": "for which", "example": "De reden waarvoor hij kwam...", "sentences": ["De reden waarvoor hij kwam...", "Dit is de reden waarvoor ik contact met je opneem.", "Het geld is bedoeld voor een project waarvoor extra personeel nodig is.", "We hebben een formulier waarvoor je je kunt aanmelden.", "Dat is precies de vraag waarvoor we een antwoord zoeken."]}, {"category": "Formal and academic C1 expressions", "dutch": "in tegenstelling tot", "english": "in contrast to", "example": "In tegenstelling tot vroeger...", "sentences": ["In tegenstelling tot vroeger...", "In tegenstelling tot vorig jaar zijn de resultaten nu veel beter.", "In tegenstelling tot het oude model is deze versie veel lichter.", "In tegenstelling tot wat eerder werd verwacht, is de levering op tijd.", "In tegenstelling tot andere systemen gebruikt dit apparaat weinig energie."]}, {"category": "Formal and academic C1 expressions", "dutch": "met betrekking tot", "english": "with regard to", "example": "Met betrekking tot dit onderwerp...", "sentences": ["Met betrekking tot dit onderwerp...", "Met betrekking tot de planning hebben we nog geen definitieve beslissing genomen.", "Ik heb een vraag met betrekking tot de nieuwe procedure.", "Met betrekking tot uw aanvraag ontvangt u binnenkort bericht.", "Er zijn nieuwe regels met betrekking tot gegevensbescherming."]}, {"category": "Formal and academic C1 expressions", "dutch": "ten aanzien van", "english": "with respect to", "example": "Ten aanzien van deze kwestie...", "sentences": ["Ten aanzien van deze kwestie...", "Ten aanzien van de veiligheid gelden strenge regels.", "We hebben nog vragen ten aanzien van de voorgestelde wijzigingen.", "Het bedrijf heeft een duidelijk standpunt ten aanzien van thuiswerken.", "Ten aanzien van de kwaliteit verwachten we geen problemen."]}, {"category": "Formal and academic C1 expressions", "dutch": "in het licht van", "english": "in light of", "example": "In het licht van de recente ontwikkelingen...", "sentences": ["In het licht van de recente ontwikkelingen...", "In het licht van de recente ontwikkelingen passen we het plan aan.", "We moeten de cijfers opnieuw bekijken in het licht van de nieuwe informatie.", "In het licht van de risico’s is extra controle verstandig.", "Het besluit moet worden herzien in het licht van de huidige situatie."]}, {"category": "Formal and academic C1 expressions", "dutch": "naar aanleiding van", "english": "following / in response to", "example": "Naar aanleiding van uw verzoek...", "sentences": ["Naar aanleiding van uw verzoek...", "Naar aanleiding van uw vraag stuur ik u meer informatie.", "We hebben de procedure aangepast naar aanleiding van de ontvangen feedback.", "Naar aanleiding van het incident is een onderzoek gestart.", "Ik neem contact met u op naar aanleiding van uw bericht."]}, {"category": "Formal and academic C1 expressions", "dutch": "in aanmerking nemende dat", "english": "considering that", "example": "In aanmerking nemende dat...", "sentences": ["In aanmerking nemende dat...", "In aanmerking nemende dat er weinig tijd is, kiezen we voor de eenvoudigste oplossing.", "In aanmerking nemende dat de kosten zijn gestegen, moeten we het budget aanpassen.", "In aanmerking nemende dat hij weinig ervaring heeft, heeft hij goed gepresteerd.", "In aanmerking nemende dat de omstandigheden zijn veranderd, is een nieuwe planning nodig."]}, {"category": "Formal and academic C1 expressions", "dutch": "rekening houdend met", "english": "taking into account", "example": "Rekening houdend met de kosten...", "sentences": ["Rekening houdend met de kosten...", "Rekening houdend met de kosten kiezen we voor een eenvoudiger oplossing.", "We maken een nieuwe planning rekening houdend met de beschikbare tijd.", "Rekening houdend met de risico’s nemen we extra maatregelen.", "Het voorstel is redelijk rekening houdend met de huidige omstandigheden."]}, {"category": "Formal and academic C1 expressions", "dutch": "ongeacht of", "english": "regardless of whether", "example": "Ongeacht of je het ermee eens bent...", "sentences": ["Ongeacht of je het ermee eens bent...", "We helpen je ongeacht of je het ermee eens bent.", "Het resultaat blijft hetzelfde ongeacht of je vandaag of morgen komt.", "Je moet de deadline halen ongeacht of je het druk hebt.", "We voeren de controle uit ongeacht of er klachten zijn."]}, {"category": "Formal and academic C1 expressions", "dutch": "voor zover van toepassing", "english": "insofar as applicable", "example": "Voor zover van toepassing...", "sentences": ["Voor zover van toepassing...", "Vul de gegevens in, voor zover van toepassing.", "Deze regel geldt voor alle afdelingen, voor zover van toepassing.", "Gebruik de aanvullende instructies, voor zover van toepassing.", "Voeg de documenten toe, voor zover van toepassing."]}, {"category": "Formal and academic C1 expressions", "dutch": "niettegenstaande", "english": "notwithstanding", "example": "Niettegenstaande de bezwaren...", "sentences": ["Niettegenstaande de bezwaren...", "Niettegenstaande de bezwaren werd het voorstel goedgekeurd.", "Niettegenstaande het slechte weer ging de wedstrijd door.", "Niettegenstaande de hogere kosten bleef het project binnen het budget.", "Niettegenstaande eerdere problemen werkt het systeem nu goed."]}, {"category": "Formal and academic C1 expressions", "dutch": "onder voorbehoud van", "english": "subject to", "example": "Onder voorbehoud van goedkeuring...", "sentences": ["Onder voorbehoud van goedkeuring...", "De overeenkomst wordt goedgekeurd onder voorbehoud van toestemming van de directie.", "We accepteren het voorstel onder voorbehoud van enkele kleine wijzigingen.", "De levering is bevestigd onder voorbehoud van beschikbaarheid van de voorraad.", "De afspraak staat vast onder voorbehoud van schriftelijke bevestiging."]}, {"category": "Formal and academic C1 expressions", "dutch": "bij gebrek aan", "english": "in the absence of", "example": "Bij gebrek aan bewijs...", "sentences": ["Bij gebrek aan bewijs...", "Bij gebrek aan bewijs konden we de oorzaak niet vaststellen.", "Bij gebrek aan informatie namen we geen beslissing.", "Bij gebrek aan ruimte werd de vergadering online gehouden.", "Bij gebrek aan tijd kozen we voor een snelle oplossing."]}, {"category": "Formal and academic C1 expressions", "dutch": "in geval van", "english": "in the event of", "example": "In geval van nood...", "sentences": ["In geval van nood...", "In geval van nood moet je direct het alarmnummer bellen.", "Neem contact op met de receptie in geval van problemen.", "In geval van brand moet iedereen het gebouw verlaten.", "Bewaar deze gegevens voor in geval van een storing."]}, {"category": "Formal and academic C1 expressions", "dutch": "ten koste van", "english": "at the expense of", "example": "Ten koste van de kwaliteit...", "sentences": ["Ten koste van de kwaliteit...", "De kosten werden verlaagd ten koste van de kwaliteit.", "Ze wilde sneller werken, maar niet ten koste van de veiligheid.", "De winst steeg ten koste van de arbeidsvoorwaarden.", "We mogen niet besparen ten koste van de betrouwbaarheid."]}, {"category": "Formal and academic C1 expressions", "dutch": "met uitzondering van", "english": "with the exception of", "example": "Met uitzondering van maandag...", "sentences": ["Met uitzondering van maandag...", "Met uitzondering van maandag zijn we iedere dag geopend.", "Alle medewerkers, met uitzondering van de stagiairs, moeten deelnemen.", "Alles is klaar, met uitzondering van de laatste controle.", "Alle kamers zijn beschikbaar, met uitzondering van kamer 12."]}, {"category": "Formal and academic C1 expressions", "dutch": "alles in aanmerking genomen", "english": "all things considered", "example": "Alles in aanmerking genomen...", "sentences": ["Alles in aanmerking genomen...", "Alles in aanmerking genomen is dit de beste oplossing.", "Alles in aanmerking genomen kunnen we het voorstel accepteren.", "Alles in aanmerking genomen was de beslissing verstandig.", "Alles in aanmerking genomen kiezen we toch voor de duurdere optie."]}, {"category": "Formal and academic C1 expressions", "dutch": "per slot van rekening", "english": "after all / ultimately", "example": "Per slot van rekening...", "sentences": ["Per slot van rekening...", "Per slot van rekening moeten we zelf de beslissing nemen.", "We kennen hem goed; per slot van rekening heeft hij veel ervaring.", "Het is niet zo vreemd; per slot van rekening is het een moeilijke taak.", "We kunnen blijven twijfelen, maar per slot van rekening moet er een keuze worden gemaakt."]}, {"category": "Formal and academic C1 expressions", "dutch": "onverminderd het feit dat", "english": "without prejudice to the fact that", "example": "Onverminderd het feit dat...", "sentences": ["Onverminderd het feit dat...", "Onverminderd het feit dat hij het niet eens is met het besluit, blijft de regel van kracht.", "Onverminderd het feit dat er nog vragen zijn, gaat de procedure verder.", "Onverminderd het feit dat de situatie is veranderd, blijven de bestaande afspraken gelden.", "Onverminderd het feit dat er bezwaren zijn ingediend, wordt het besluit uitgevoerd."]}];
+document.getElementById('wordCount').textContent = EXPRESSIONS.length;
+let selectedMode = 'Multiple choice';
+let fillMode = 'Easy';
+let pool = [...EXPRESSIONS], selectedWords = new Set(), questions=[], index=0, score=0, current=null, chosen=null, checked=false, outcomes=[];
+const $ = id => document.getElementById(id);
+const progressKey = 'dutch-connectives-progress-v1';
+function loadProgress(){try{return JSON.parse(localStorage.getItem(progressKey)||'{}')||{}}catch(e){return {}}}
+function saveProgress(data){localStorage.setItem(progressKey,JSON.stringify(data))}
+function wordProgress(item){const data=loadProgress();return data[item.dutch]||{attempts:0,correct:0,streak:0,last:null}}
+function recordProgress(item,correct){const data=loadProgress(),key=item.dutch,old=data[key]||{attempts:0,correct:0,streak:0,last:null};old.attempts++;if(correct){old.correct++;old.streak++}else old.streak=0;old.last=Date.now();data[key]=old;saveProgress(data)}
+function accuracyFor(item){const p=wordProgress(item);return p.attempts?Math.round(p.correct/p.attempts*100):0}
+function isMastered(item){const p=wordProgress(item);return p.attempts>=3&&accuracyFor(item)>=80}
+
+// Each workbook category becomes a manageable learning stage.
+const STAGES = [...new Set(EXPRESSIONS.map(x=>x.category))];
+STAGES.forEach((name,i)=>{const option=document.createElement('option');option.value=name;option.textContent=`Stage ${i+1} · ${name} (${EXPRESSIONS.filter(x=>x.category===name).length})`;$('stage').appendChild(option)});
+function renderWordPicker(){
+ const query=($('wordSearch').value||'').trim().toLowerCase();
+ $('wordList').innerHTML=pool.filter(x=>!query||x.dutch.toLowerCase().includes(query)||x.english.toLowerCase().includes(query)).map(x=>{const checked=selectedWords.has(x.dutch)?'checked':'';const p=wordProgress(x),acc=p.attempts?`${accuracyFor(x)}%`:'New';return `<label class="word-choice"><input type="checkbox" data-word="${esc(x.dutch)}" ${checked}><span><span class="word-main">${esc(x.dutch)}</span><span class="word-meaning">${esc(x.english)} · ${acc}</span></span></label>`}).join('')||'<div class="selection-note">No expressions match your search.</div>';
+ const n=selectedWords.size;$('selectionNote').textContent=n===pool.length?`All ${n} expressions in this stage are selected.`:`${n} of ${pool.length} expressions selected.`;renderProgress();
+}
+function renderProgress(){
+ const attempted=EXPRESSIONS.filter(x=>wordProgress(x).attempts>0).length,mastered=EXPRESSIONS.filter(isMastered).length;let attempts=0,correct=0;EXPRESSIONS.forEach(x=>{const p=wordProgress(x);attempts+=p.attempts;correct+=p.correct});
+ $('progressMastered').textContent=mastered;$('progressAttempted').textContent=attempted;$('progressAccuracy').textContent=attempts?`${Math.round(correct/attempts*100)}%`:'—';
+ const visible=pool.filter(x=>wordProgress(x).attempts>0||selectedWords.has(x.dutch)).slice(0,30);
+ $('wordProgress').innerHTML=visible.map(x=>{const p=wordProgress(x),acc=p.attempts?accuracyFor(x):0;return `<div class="word-progress-row"><span>${esc(x.dutch)}</span><span class="word-progress-track"><span class="word-progress-fill" style="width:${acc}%"></span></span><span>${p.attempts?acc+'%':'New'}</span></div>`}).join('')||'<div class="selection-note">Start practising to see word-level progress here.</div>';
+}
+function setStage(){const stage=$('stage').value;pool=EXPRESSIONS.filter(x=>x.category===stage);selectedWords=new Set(pool.map(x=>x.dutch));renderWordPicker()}
+$('stage').onchange=setStage;
+setStage();
+// Keep sentence pools locally so corrections and extra examples survive a refresh.
+const sentenceKey=i=>`dutch-connectives-sentences-${i}`;
+function getSentences(item,i){
+ try{const saved=JSON.parse(localStorage.getItem(sentenceKey(i))||'null');if(Array.isArray(saved)&&saved.length)return saved.filter(Boolean).slice(0,15)}catch(e){}
+ return (Array.isArray(item.sentences)&&item.sentences.length?item.sentences:[item.example]).filter(Boolean).slice(0,15);
+}
+function saveSentencesFor(i,arr){localStorage.setItem(sentenceKey(i),JSON.stringify(arr.filter(x=>x.trim()).slice(0,15)))}
+function openEditor(i){
+ const item=EXPRESSIONS[i], list=$('sentenceList');list.innerHTML='';$('editorTitle').textContent=`${item.dutch} · sentence pool`;
+ getSentences(item,i).forEach(addSentenceRow);updateSentenceCount();$('editorModal').classList.remove('hidden');
+}
+function addSentenceRow(value=''){
+ if($('sentenceList').children.length>=15)return;
+ const row=document.createElement('div');row.className='sentence-row';
+ const num=document.createElement('span');num.className='sentence-number';num.textContent=$('sentenceList').children.length+1;
+ const input=document.createElement('input');input.value=value;input.placeholder='Write a natural Dutch sentence using the expression…';
+ const del=document.createElement('button');del.className='remove';del.textContent='Remove';del.onclick=()=>{row.remove();updateSentenceCount()};
+ row.append(num,input,del);$('sentenceList').appendChild(row);updateSentenceCount();
+}
+function updateSentenceCount(){[...$('sentenceList').children].forEach((row,i)=>{const n=row.querySelector('.sentence-number');if(n)n.textContent=i+1});$('sentenceCount').textContent=`${$('sentenceList').children.length}/15 sentence slots`;$('addSentence').disabled=$('sentenceList').children.length>=15}
+$('addSentence').onclick=()=>addSentenceRow();
+$('cancelEdit').onclick=()=>$('editorModal').classList.add('hidden');
+$('saveSentences').onclick=()=>{
+ const i=EXPRESSIONS.findIndex(x=>`${x.dutch} · sentence pool`===$('editorTitle').textContent);
+ if(i<0)return;
+ const vals=[...$('sentenceList').querySelectorAll('input')].map(x=>x.value.trim()).filter(Boolean).slice(0,15);
+ if(vals.length){saveSentencesFor(i,vals);EXPRESSIONS[i].example=vals[0];renderReference();}else{localStorage.removeItem(sentenceKey(i));}
+ $('editorModal').classList.add('hidden');
+};
+function renderReference(){
+ const query=($('referenceSearch')?.value||'').trim().toLowerCase();
+ $('referenceBody').innerHTML=EXPRESSIONS.map((x,i)=>{
+  const haystack=`${x.category} ${x.dutch} ${x.english}`.toLowerCase();
+  if(query && !haystack.includes(query))return '';
+  const sentences=getSentences(x,i);const n=sentences.length;
+  return `<tr><td>${esc(x.category)}</td><td><b>${esc(x.dutch)}</b></td><td>${esc(x.english)}</td><td><b>${n} sentence${n===1?'':'s'}</b><div class="small" style="margin-top:3px">${esc(sentences[0]||'')}</div><div><button class="ghost edit-sentence" data-index="${i}" style="padding:6px 9px;margin-top:7px;font-size:12px">View & edit sentences (${n}/15)</button></div></td></tr>`
+ }).join('');
+}
+renderReference();
+$('referenceSearch').addEventListener('input',renderReference);
+$('referenceBody').addEventListener('click',e=>{const b=e.target.closest('.edit-sentence');if(b)openEditor(+b.dataset.index)});
+$('openReference').onclick=()=>{
+ $('setup').classList.add('hidden');
+ $('game').classList.add('hidden');
+ $('results').classList.add('hidden');
+ $('referencePage').classList.remove('hidden');
+};
+$('backToTraining').onclick=()=>{
+ $('referencePage').classList.add('hidden');
+ $('setup').classList.remove('hidden');
+};
+
+$('modes').addEventListener('click', e=>{
+ const b=e.target.closest('[data-mode]'); if(!b)return;
+ selectedMode=b.dataset.mode;
+ $('modes').querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));
+ $('fillSettings').classList.toggle('hidden',selectedMode!=='Fill in the blank');
+});
+$('fillSettings').addEventListener('click', e=>{
+ const b=e.target.closest('[data-fill-mode]'); if(!b)return;
+ fillMode=b.dataset.fillMode;
+ $('fillSettings').querySelectorAll('[data-fill-mode]').forEach(x=>x.classList.toggle('active',x===b));
+});
+$('wordSearch').addEventListener('input',renderWordPicker);
+$('wordList').addEventListener('change',e=>{const cb=e.target.closest('input[data-word]');if(!cb)return;if(cb.checked)selectedWords.add(cb.dataset.word);else selectedWords.delete(cb.dataset.word);renderWordPicker()});
+$('selectAllWords').onclick=()=>{pool.forEach(x=>selectedWords.add(x.dutch));renderWordPicker()};
+$('clearWords').onclick=()=>{selectedWords.clear();renderWordPicker()};
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function clean(s){return (s||'').replace(/\.\.\.$/,'').trim()}
+function rewordSource(item){
+ const d=item.dutch.toLowerCase();
+ const replacements={
+  'omdat':'Ik ben ziek. Daarom blijf ik thuis.',
+  'doordat':'Het regende. Daarom bleef ik thuis.',
+  'aangezien':'Het is laat. Daarom vertrekken we.',
+  'daar':'Hij was ziek. Daarom bleef hij thuis.',
+  'immers':'Het is noodzakelijk. Dat spreekt voor zich.',
+  'vanwege':'Het weer was slecht. Daarom bleven we thuis.',
+  'wegens':'Er waren omstandigheden. Daarom is de winkel gesloten.',
+  'dankzij':'Jouw hulp maakte het mogelijk. Het is gelukt.',
+  'ten gevolge van':'Er was een crisis. Daardoor ontstond dit probleem.',
+  'als gevolg van':'Er was vertraging. Daardoor liep alles uit.',
+  'daarom':'Het regent. Om die reden blijf ik thuis.',
+  'daardoor':'Hij was ziek. Als gevolg daarvan miste hij de trein.',
+  'hierdoor':'Er was een probleem. Als gevolg daarvan ontstond vertraging.',
+  'zodoende':'Hij had goed geoefend. Daardoor slaagde hij.',
+  'bijgevolg':'De kosten zijn gestegen. Daarom betalen we meer.',
+  'vandaar':'Dat is de reden voor mijn beslissing.',
+  'waardoor':'Het sneeuwde. Als gevolg daarvan werden de wegen glad.',
+  'nadat':'Ik had gegeten. Daarna ging ik weg.',
+  'voordat':'Ik vertrek pas daarna. Eerst bel ik je.',
+  'alvorens':'Hij zou vertrekken. Eerst controleerde hij alles.',
+  'zodra':'Ik ben klaar. Dan bel ik je meteen.',
+  'totdat':'Je komt terug. Tot dat moment wacht ik.',
+  'tot':'Hij komt terug. Tot dat moment blijven we hier.',
+  'terwijl':'Ik kook. Tegelijkertijd luistert hij naar muziek.',
+  'gedurende':'De vergadering duurde een uur. In die periode gebeurde er veel.',
+  'zolang':'Je blijft oefenen. In die periode zul je verbeteren.',
+  'intussen':'Er gebeurde iets anders. Ondertussen ging het werk door.',
+  'ondertussen':'Iedereen wachtte. In de tussentijd veranderde er niets.',
+  'inmiddels':'Hij is afgestudeerd. Dat is nu al zo.',
+  'achteraf':'Het bleek later een fout te zijn.',
+  'vooraf':'Je moet je eerst aanmelden.',
+  'sindsdien':'We hadden toen contact. Vanaf dat moment spreken we elkaar regelmatig.',
+  'als':'Ik heb tijd. Dan kom ik langs.',
+  'indien':'Het is nodig. Dan kunt u contact opnemen.',
+  'mits':'Je bent op tijd. Dan mag je meegaan.',
+  'tenzij':'Ik kom. Alleen als ik ziek word, kom ik niet.',
+  'op voorwaarde dat':'Je bent stil. Dan mag je blijven.',
+  'voor zover':'Dit is wat ik weet. Volgens mijn kennis klopt dat.',
+  'voor het geval dat':'Het kan gaan regenen. Neem daarom een paraplu mee.',
+  'stel dat':'Je kunt morgen niet komen. Wat doen we dan?',
+  'aangenomen dat':'Alles gaat goed. Dan vertrekken we morgen.',
+  'ervan uitgaande dat':'Je hebt gelijk. Op basis daarvan kunnen we verder.',
+  'behoudens':'Er zijn uitzonderingen. Zonder die uitzonderingen is dit verplicht.',
+  'op voorwaarde van':'We hebben toestemming. Alleen dan kan het doorgaan.',
+  'tenzij anders bepaald':'Er is geen andere bepaling. De regel geldt dus.',
+  'hoewel':'Het regent. Toch ga ik wandelen.',
+  'alhoewel':'Hij is moe. Toch werkt hij door.',
+  'ofschoon':'Het was moeilijk. Toch lukte het.',
+  'ondanks dat':'Hij was ziek. Toch kwam hij werken.',
+  'ondanks':'Het regende. Toch gingen we wandelen.',
+  'daarentegen':'Hij is rustig. Zij is juist druk.',
+  'echter':'Het is duur. Aan de andere kant is het van goede kwaliteit.',
+  'evenwel':'Het voorstel is interessant. Het is alleen niet haalbaar.',
+  'niettemin':'Het was moeilijk. Toch gaf hij niet op.',
+  'desondanks':'Hij was moe. Toch ging hij sporten.',
+  'toch':'Het regende. We gingen desondanks naar buiten.',
+  'integendeel':'Dat is niet moeilijk. Het is juist eenvoudig.',
+  'zodat':'Ik spreek langzaam. Je kunt me daardoor begrijpen.',
+  'opdat':'Hij herhaalde het. Daardoor begreep iedereen het.',
+  'teneinde':'Hij wilde fouten voorkomen. Daarom nam hij extra maatregelen.',
+  'met als doel':'Hij wil de kwaliteit verbeteren. Dat is zijn doel.',
+  'ter voorkoming van':'Hij wil ongelukken voorkomen. Daarom nam hij maatregelen.',
+  'om ervoor te zorgen dat':'Ik controleer alles. Zo weet ik zeker dat het klopt.',
+  'bovendien':'Het is goedkoper. Daarnaast heeft het nog andere voordelen.',
+  'daarnaast':'Het biedt veel voordelen. Er zijn ook andere pluspunten.',
+  'tevens':'Onderzoek is noodzakelijk. Dat is bovendien zo.',
+  'eveneens':'Dit geldt voor volwassenen. Hetzelfde geldt voor jongeren.',
+  'enerzijds':'Het is voordelig. Aan de andere kant zijn er nadelen.',
+  'anderzijds':'Het brengt risico’s met zich mee. Aan de andere kant heeft het voordelen.',
+  'niet alleen ... maar ook':'Hij kwam. Zijn broer kwam ook.',
+  'zowel ... als':'Studenten waren aanwezig. Docenten waren ook aanwezig.',
+  'of':'Wil je thee? Of wil je koffie?',
+  'hetzij ... hetzij':'Het kan vandaag. Het kan ook morgen.',
+  'ofwel ... ofwel':'Je vertrekt nu. Anders blijf je hier.',
+  'in plaats daarvan':'Hij ging niet werken. Hij bleef thuis.',
+  'veeleer':'Het is geen kwestie van geld. Het is eerder een kwestie van tijd.',
+  'namelijk':'Ik kan niet komen. Ik ben ziek.',
+  'oftewel':'Hij is tweetalig. Hij spreekt dus twee talen.',
+  'met andere woorden':'We moeten opnieuw beginnen. Anders gezegd: we moeten van voren af aan beginnen.',
+  'dat wil zeggen':'Het is een tijdelijk contract. Het loopt binnenkort af.',
+  'anders gezegd':'We hebben geen keuze. Er is geen alternatief.',
+  'bijvoorbeeld':'Er zijn verschillende opties. Een daarvan is optie A.',
+  'ter verduidelijking':'Ik wil één punt extra uitleggen.',
+  'in dit verband':'Onderzoek is in deze context relevant.',
+  'wat betreft':'Over de kosten wil ik nog iets zeggen.',
+  'daarvoor':'Ik heb toestemming nodig. Die toestemming is voor die stap.',
+  'daarmee':'We gebruiken dit. Op die manier lossen we het probleem op.',
+  'hieruit':'Dit blijkt uit de gegevens. De gegevens laten dit zien.',
+  'hieraan':'Je kunt dit hieraan zien. Dit punt maakt het duidelijk.',
+  'hierom':'Ik heb een bezwaar. Dat is de reden dat ik bezwaar heb gemaakt.',
+  'waarop':'Alles veranderde op dat moment. Dat was het moment waarop alles veranderde.',
+  'waaraan':'We werken aan een kwestie. Dat is de kwestie waar we aan werken.',
+  'waaruit':'Dit blijkt uit de gegevens. De gegevens laten dit zien.',
+  'waarmee':'Hij werkt met een instrument. Dat is het instrument dat hij gebruikt.',
+  'waarvoor':'Hij kwam voor een reden. Dat is de reden voor zijn komst.',
+  'in tegenstelling tot':'Vroeger was het anders. Nu is de situatie anders.',
+  'met betrekking tot':'Over dit onderwerp wil ik iets zeggen.',
+  'ten aanzien van':'Over deze kwestie hebben we een standpunt.',
+  'in het licht van':'Er zijn recente ontwikkelingen. We moeten daarmee rekening houden.',
+  'naar aanleiding van':'U deed een verzoek. Daarom neem ik contact met u op.',
+  'in aanmerking nemende dat':'Er zijn belangrijke omstandigheden. We moeten die meewegen.',
+  'rekening houdend met':'We bekijken de kosten. We nemen die mee in onze beslissing.',
+  'ongeacht of':'Het maakt niet uit of je het ermee eens bent.',
+  'voor zover van toepassing':'Als dit van toepassing is, geldt de regel.',
+  'niettegenstaande':'Er waren bezwaren. Toch ging het plan door.',
+  'onder voorbehoud van':'Goedkeuring is nog nodig. Daarna kan het doorgaan.',
+  'bij gebrek aan':'Er was geen bewijs. Daarom konden we niets aantonen.',
+  'in geval van':'Er is nood. Dan moet je direct contact opnemen.',
+  'ten koste van':'De kwaliteit werd lager. Er werd op de kosten bespaard.',
+  'met uitzondering van':'Maandag is anders. Op alle andere dagen geldt de regel.',
+  'alles in aanmerking genomen':'We hebben alle factoren bekeken. Uiteindelijk is dit de beste keuze.',
+  'per slot van rekening':'We hebben alles besproken. Uiteindelijk blijft dit de beste keuze.',
+  'onverminderd het feit dat':'Dat feit blijft gelden. Daarnaast nemen we deze beslissing.'
+ };
+ return replacements[d] || `${item.example||'Deze zin heeft dezelfde betekenis.'}`;
+}
+
+function makeFillText(sentence, expression){
+ if(!sentence || !expression)return '';
+ // Blank every occurrence so the answer is never still visible elsewhere.
+ const parts=expression.split(/\s+\.\.\.\s+/).map(x=>x.trim()).filter(Boolean);
+ if(parts.length>1){
+   let out=sentence;
+   parts.forEach(part=>{out=out.replace(new RegExp(part.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),'_____')});
+   return out;
+ }
+ const escaped=expression.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+ const out=sentence.replace(new RegExp(escaped,'gi'),'_____');
+ return out!==sentence ? out : '';
+}
+
+function makeQuestions(n){
+ const eligible=pool.filter(x=>selectedWords.has(x.dutch) && x.dutch && x.english);
+ const qs=[];
+ for(let i=0;i<n;i++){
+  const item=eligible[(i*7+Math.floor(Math.random()*eligible.length))%eligible.length];
+  const mode=selectedMode;
+  let q={item,mode,category:item.category,correct:item.english,correctOrAnswer:item.english,example:item.example||''};
+  if(mode==='Multiple choice'){
+   q.prompt=`What does “${item.dutch}” mean in this context?`;
+   q.options=[item.english];
+   while(q.options.length<4){let distractor=pick(eligible).english;if(!q.options.includes(distractor))q.options.push(distractor)}
+   q.options.sort(()=>Math.random()-.5);
+  }else if(mode==='Fill in the blank'){
+   const fillSentence=pick(getSentences(item,EXPRESSIONS.indexOf(item)));
+   const fillText=makeFillText(fillSentence,item.dutch);
+   q.prompt=fillText ? `Complete the sentence: ${fillText}` : `Fill in the Dutch expression meaning “${item.english}”.`;
+   q.answer=item.dutch;
+   q.correctOrAnswer=item.dutch;
+   q.fillMode=fillMode;
+   if(fillMode==='Easy'){
+    q.options=[item.dutch];
+    while(q.options.length<4){let distractor=pick(eligible).dutch;if(!q.options.includes(distractor))q.options.push(distractor)}
+    q.options.sort(()=>Math.random()-.5);
+   }
+  }else if(mode==='Translation'){
+   q.prompt=`Translate this expression into Dutch: “${item.english}”`;
+   q.answer=item.dutch;
+  }else if(mode==='Reword the sentence'){
+   const sentences=getSentences(item,EXPRESSIONS.indexOf(item));
+   q.source=rewordSource(item);
+   q.prompt=`Rewrite the sentence using “${item.dutch}”:`;
+   q.answer=pick(sentences) || item.example || `Use “${item.dutch}” naturally while keeping the same meaning.`;
+  }
+  qs.push(q);
+ }
+ return qs;
+}
+
+function start(){
+ if(!selectedMode || selectedWords.size===0){$('selectionNote').textContent='Select at least one expression before starting.';return}
+ questions=makeQuestions(+$('count').value);if(!questions.length)return;index=0;score=0;outcomes=[];$('setup').classList.add('hidden');$('results').classList.add('hidden');$('game').classList.remove('hidden');render();
+}
+function render(){
+ current=questions[index];chosen=null;checked=false;
+ $('kind').textContent=current.mode;$('counter').textContent=`Question ${index+1} / ${questions.length}`;$('points').textContent=`${score} points`;$('bar').style.width=`${index/questions.length*100}%`;
+ $('category').textContent=current.category;
+ $('prompt').textContent=current.prompt;
+ $('hint').textContent=current.mode==='Translation'?'Type the Dutch equivalent.':current.mode==='Fill in the blank'?(current.fillMode==='Easy'?'Choose the expression that completes the sentence.':'Type the missing Dutch expression.'):current.mode==='Reword the sentence'?'Rewrite the sentence so it keeps the same meaning and uses the target expression.':'Choose the best answer.';
+ $('feedback').classList.add('hidden');$('feedback').innerHTML='';$('response').innerHTML='';
+ if(current.mode==='Multiple choice' || (current.mode==='Fill in the blank' && current.fillMode==='Easy')){
+  const wrap=document.createElement('div');wrap.className='options';
+  current.options.forEach(opt=>{const btn=document.createElement('button');btn.className='option';btn.textContent=opt;btn.onclick=()=>{if(checked)return;chosen=opt;[...wrap.children].forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');$('check').disabled=false};wrap.appendChild(btn)});
+  $('response').appendChild(wrap);
+ }else if(current.mode==='Fill in the blank'||current.mode==='Translation'){
+  const inp=document.createElement('input');inp.className='answer';inp.placeholder='Type your answer here…';inp.autocomplete='off';inp.addEventListener('input',()=>{chosen=inp.value;$('check').disabled=!inp.value.trim()});inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!$('check').disabled)$('check').click()});$('response').appendChild(inp);inp.focus();
+ }else if(current.mode==='Reword the sentence'){
+  const source=document.createElement('div');source.className='example';source.style.fontStyle='normal';source.innerHTML=`<b>Original sentence:</b> ${esc(current.source)}`;$('response').appendChild(source);
+  const area=document.createElement('textarea');area.className='answer';area.rows=3;area.placeholder=`Rewrite it using “${current.item.dutch}”…`;area.addEventListener('input',()=>{chosen=area.value;$('check').disabled=!area.value.trim()});$('response').appendChild(area);area.focus();
+ }
+ $('check').classList.remove('hidden');$('check').disabled=true;$('check').textContent='Check answer';
+}
+
+function explain(){
+ let item=current.item;
+ const ei=EXPRESSIONS.indexOf(item); const sentences=getSentences(item,ei); return `<p><b>Meaning:</b> ${esc(item.english)}</p><p><b>Explanation:</b> ${esc(explanation(item))}</p>${sentences[0]?`<div class="example"><b>Example:</b> ${esc(sentences[0])}</div>`:''}<button class="ghost" id="editCurrentSentence" style="margin-top:10px">Edit / add sentences (${sentences.length}/15)</button>`;
+}
+function explanation(item){
+ const s=item.dutch.toLowerCase();
+ if(['omdat','doordat','aangezien','daar'].includes(s))return 'This expression introduces a reason or cause. When used as a subordinating conjunction, the conjugated verb goes to the end of its clause.';
+ if(['mits','tenzij','indien','als'].includes(s))return 'This expression introduces a condition. With a subordinating conjunction, the conjugated verb normally goes to the end of the clause.';
+ if(['hoewel','ofschoon','alhoewel'].includes(s))return 'This introduces a contrast or concession. The conjugated verb goes to the end of the subordinate clause.';
+ if(['daarom','daardoor','hierdoor','desondanks','bovendien','echter','derhalve','bijgevolg'].includes(s))return 'This is a linking adverb. When it begins a main clause, inversion follows: the finite verb comes immediately after it.';
+ return 'Pay attention to the function of this expression and the example sentence. If it introduces a subordinate clause, the conjugated verb usually moves to the end; linking adverbs in a main clause commonly trigger inversion.';
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function grade(){
+ if(checked)return;
+ if(current.mode==='Reword the sentence'){
+  checked=true;
+  const fb=$('feedback');fb.className='feedback';
+  fb.innerHTML=`<h3>Compare your rewrite with the model</h3><div class="example">${esc(current.answer)}</div><p>Give yourself a point if your sentence is grammatical, uses <b>${esc(current.item.dutch)}</b>, and keeps the same meaning.</p><div class="actions"><button id="rewordYes">I did it ✓</button><button class="secondary" id="rewordNo">Needs work</button></div>${explain()}`;
+  $('check').classList.add('hidden');
+  $('rewordYes').onclick=()=>finishReword(true);
+  $('rewordNo').onclick=()=>finishReword(false);
+  return;
+ }
+ checked=true;
+ const isMC=current.mode==='Multiple choice' || (current.mode==='Fill in the blank' && current.fillMode==='Easy');
+ const correct=isMC ? chosen===current.correctOrAnswer : clean(chosen).toLowerCase()===clean(current.answer).toLowerCase();
+ if(correct)score++;
+ recordProgress(current.item,correct);
+ outcomes.push({correct,question:current.prompt,answer:isMC?current.correctOrAnswer:current.answer});
+ if(isMC){document.querySelectorAll('.option').forEach(btn=>{if(btn.textContent===current.correctOrAnswer)btn.classList.add('correct');else if(btn.textContent===chosen)btn.classList.add('wrong')})}
+ const fb=$('feedback');fb.className='feedback '+(correct?'good':'bad');fb.innerHTML=`<h3>${correct?'✓ Correct!':'✗ Not quite'}</h3>${!correct?`<p><b>Correct answer:</b> ${esc(isMC?current.correctOrAnswer:current.answer)}</p>`:''}${explain()}`;
+ $('points').textContent=`${score} points`;$('check').textContent=index===questions.length-1?'Finish session':'Next question';$('check').disabled=false;
+ $('check').onclick=next;
+}
+
+function finishReword(correct){
+ if(correct)score++;
+ recordProgress(current.item,correct);
+ outcomes.push({correct,question:current.prompt,answer:current.answer});
+ $('points').textContent=`${score} points`;
+ $('feedback').className='feedback '+(correct?'good':'bad');
+ $('feedback').querySelector('h3').textContent=correct?'Marked as successful ✓':'Added to your review list';
+ $('feedback').querySelectorAll('.actions').forEach(x=>x.remove());
+ const b=document.createElement('button');b.textContent=index===questions.length-1?'Finish session':'Next question';b.style.marginTop='12px';b.onclick=next;$('feedback').appendChild(b);
+}
+function next(){
+ if(!checked){grade();return}
+ index++;if(index>=questions.length){finish();return}
+ $('check').onclick=grade;render();
+}
+function finish(){
+ renderProgress();
+ $('game').classList.add('hidden');$('results').classList.remove('hidden');$('finalScore').textContent=`${score}/${questions.length}`;
+ const pct=Math.round(score/questions.length*100);$('summary').textContent=`${pct}% correct. ${pct>=85?'Excellent work — uitstekend!':pct>=65?'Good progress. Keep practising the expressions you missed.':'Keep going. Review the explanations and try another round.'}`;
+ $('review').innerHTML=outcomes.map((o,i)=>`<div class="review-item"><span>${i+1}. ${esc(o.question)}</span><b style="color:${o.correct?'var(--green)':'var(--red)'}">${o.correct?'✓':'Review'}</b></div>`).join('');
+}
+document.addEventListener('click',e=>{if(e.target.id==='editCurrentSentence')openEditor(EXPRESSIONS.indexOf(current.item));});
+$('start').onclick=start;$('check').onclick=grade;$('quit').onclick=()=>{$('game').classList.add('hidden');$('setup').classList.remove('hidden')};
+$('again').onclick=start;$('home').onclick=()=>{$('results').classList.add('hidden');$('setup').classList.remove('hidden')};
+</script>
+<script>
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(err => console.warn("Service worker registration failed:", err));
+  });
+}
+</script>
+</body>
+</html>
