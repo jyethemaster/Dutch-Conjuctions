@@ -1,6 +1,6 @@
 // Offline app shell. Keep every release in its own cache so a refresh cannot mix
 // an old index with newer assets. Bump VERSION for every shipped build.
-const VERSION = "v32-offline-editor-fix";
+const VERSION = "v34-sentence-translations";
 const CACHE = "dutch-connectives-" + VERSION;
 const FILES = [
   "./",

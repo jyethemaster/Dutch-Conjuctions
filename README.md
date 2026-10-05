@@ -40,3 +40,8 @@ Bump `VERSION` in `sw.js` for each deployment.
 - v31 bundles an English translation for every built-in Dutch example sentence directly in `EXPRESSIONS[].sentenceTranslations` (570 translations total).
 - The Sentence Scrambler does not use an online translator or a separate translation `localStorage` database.
 - The service worker cache is versioned as `v31-bundled-sentence-translations`; after deployment, refresh once to install the new cache.
+
+
+## v34  rewritten sentence translations
+
+All 570 bundled English sentence translations (`EXPRESSIONS[].sentenceTranslations`) were rewritten as natural English. The previous ones were word-by-word glosses that left Dutch words in the English text. The data is identical in `index.html` and `app.js`.
