@@ -14,5 +14,7 @@ Installable web app (PWA) hosted on GitHub Pages, works offline once opened.
 Replace `index.html`, then bump `VERSION` in `sw.js` (e.g. `v2`) so phones pick up the change.
 
 ## Notes
+- Stages run from the most to the least common connectors (a rough everyday-frequency estimate), spreading competing words over different stages; the two C1 stages come last.
+- Translation and fill-in questions show a cue under the prompt (word class, what it points to, tone, nuance). Twin words (e.g. als gevolg van / ten gevolge van) are both accepted.
 - Progress, your own example sentences and any edited English meanings (Reference table → ✎ Edit meaning) are stored in the browser (localStorage) on each device.
 - If you host several apps under the same `<username>.github.io`, they share browser storage; this app uses its own `dutch-connectives-*` keys, so they don't collide.
