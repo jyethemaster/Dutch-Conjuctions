@@ -617,16 +617,49 @@ function makeQuestions(n){
  const eligible=pool.filter(x=>selectedWords.has(x.dutch) && x.dutch && x.english);
  if(!eligible.length)return [];
  const dpool=new Set(eligible.map(x=>x.english)).size>=4&&new Set(eligible.map(x=>x.dutch)).size>=4?eligible:EXPRESSIONS;
- let deck=[],last=null;
- const nextItem=()=>{if(!deck.length){deck=[...eligible].sort(()=>Math.random()-.5);if(deck.length>1&&deck[deck.length-1]===last)deck.unshift(deck.pop())}last=deck.pop();return last};
+ let deck=[],recent=[];
+ /* Draw every word once before any word returns; when the deck is refilled, keep recently used words at the back so repeats are spread out. */
+ const nextItem=()=>{
+  if(!deck.length){
+   deck=[...eligible].sort(()=>Math.random()-.5);
+   const keep=new Set(recent.slice(-Math.max(1,Math.min(4,Math.floor(deck.length/2)))));
+   deck=[...deck.filter(x=>keep.has(x)),...deck.filter(x=>!keep.has(x))];
+  }
+  const it=deck.pop();recent.push(it);return it;
+ };
+ /* If a word has to come back (more questions than words), the same mode is fine as long as the question itself is different (another sentence). Translation and Reword have only one version, so they are asked once per word. */
+ const used=new Map();
+ const usedSet=(item,mode)=>{let m=used.get(item);if(!m){m=new Map();used.set(item,m)}let u=m.get(mode);if(!u){u=new Set();m.set(mode,u)}return u};
+ const variants=(item,mode)=>{
+  const idx=EXPRESSIONS.indexOf(item);
+  if(mode==='Multiple choice'){const l=getSentences(item,idx).filter(t=>markExpr(t,item.dutch));return l.length?l:['']}
+  if(mode==='Fill in the blank'){const l=getSentences(item,idx);return l.length?l:['']}
+  if(mode==='Translation')return ['T'];
+  if(mode==='Reword the sentence')return item.rw?['R']:[];
+  return [''];
+ };
+ const fresh=(item,mode)=>variants(item,mode).filter(v=>!usedSet(item,mode).has(v));
+ const take=(item,mode)=>{
+  const u=usedSet(item,mode);let c=fresh(item,mode);
+  if(!c.length){u.clear();c=variants(item,mode)}
+  const t=pick(c);u.add(t);return t;
+ };
+ const chooseMode=item=>{
+  if(selectedMode!=='Mixed')return (selectedMode==='Reword the sentence'&&!item.rw)?'Fill in the blank':selectedMode;
+  const all=['Multiple choice','Fill in the blank','Translation','Reword the sentence'];
+  let ok=all.filter(m=>fresh(item,m).length);
+  if(!ok.length){used.delete(item);ok=all.filter(m=>fresh(item,m).length)}
+  let m=null;for(let t=0;t<4&&!m;t++){const c=nextMixMode();if(ok.includes(c))m=c}
+  return m||pick(ok);
+ };
  const qs=[];
  for(let i=0;i<n;i++){
   const item=nextItem();
-  let mode=selectedMode; if(mode==='Mixed')mode=nextMixMode(); if(mode==='Reword the sentence'&&!item.rw)mode=selectedMode==='Mixed'?pick(['Multiple choice','Fill in the blank','Translation']):'Fill in the blank';
+  const mode=chooseMode(item);
   let q={item,mode,category:item.category,correct:item.english,correctOrAnswer:item.english,example:item.example||''};
   if(mode==='Multiple choice'){
    const withWord=getSentences(item,EXPRESSIONS.indexOf(item)).filter(t=>markExpr(t,item.dutch));
-   q.context=withWord.length?pick(withWord):'';
+   q.context=take(item,mode);
    q.prompt=q.context?`What does “${item.dutch}” mean in this sentence?`:`What does “${item.dutch}” mean?`;
    let ds=pickDistractors(item,eligible,3);
    if(ds.length<2)ds=ds.concat(pickDistractors(item,EXPRESSIONS,2-ds.length,ds));
@@ -634,7 +667,7 @@ function makeQuestions(n){
    q.distractorItems=ds;
    q.options=[item.english,...ds.map(x=>x.english)].sort(()=>Math.random()-.5);
   }else if(mode==='Fill in the blank'){
-   const fillSentence=pick(getSentences(item,EXPRESSIONS.indexOf(item)));
+   const fillSentence=take(item,mode)||undefined;
    const fillText=makeFillText(fillSentence,item.dutch);
    q.prompt=fillText ? `Complete the sentence: ${fillText}` : `Fill in the Dutch expression meaning “${item.english}”.`;
    q.answer=item.dutch;
@@ -646,11 +679,12 @@ function makeQuestions(n){
     q.options.sort(()=>Math.random()-.5);
    }
   }else if(mode==='Translation'){
+   take(item,mode);
    q.prompt=`Translate this expression into Dutch: “${item.english}”`;
    q.cue=cueOf(item);
    q.answer=item.dutch;
   }else if(mode==='Reword the sentence'){
-   const sentences=getSentences(item,EXPRESSIONS.indexOf(item));
+   take(item,mode);
    q.source=item.rw[0];
    q.prompt=`Rewrite the sentence using “${item.dutch}”:`;
    q.answer=item.rw[1];
