@@ -1,5 +1,5 @@
 // Bump VERSION whenever you update the app so phones fetch the new files.
-const VERSION = "v25-sentence-translation";
+const VERSION = "v28-offline-sentence-translations";
 const CACHE = "dutch-connectives-" + VERSION;
 const FILES = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png"];
 
