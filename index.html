@@ -51,6 +51,23 @@ details.picker>summary{list-style:none;cursor:pointer;position:relative;padding-
 }
 @media(max-width:380px){.modes{grid-template-columns:1fr}.card{padding:13px}.qtitle{font-size:20px}.word-list{max-height:250px!important}}
 
+
+/* collapsible panels: obvious click targets */
+details.picker{background:#f8faff;border:1.5px solid #c9d6f5!important;border-radius:14px!important;padding:14px 16px!important}
+details.picker:hover:not([open]){border-color:var(--blue)!important;background:var(--blue2)}
+details.picker>summary{padding-right:84px;min-height:30px}
+details.picker>summary b{font-size:16px}
+details.picker>summary .chev{right:0;top:-2px;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--blue2);color:var(--blue);font-size:13px;font-weight:800;line-height:1.2}
+details.picker:hover>summary .chev{background:var(--blue);color:#fff}
+details.picker>summary .chev::before{content:'Show'}
+details.picker[open]>summary .chev::before{content:'Hide'}
+details.picker[open]>summary .chev{transform:none}
+details.picker>summary:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:8px}
+details.picker>summary .chev::after{content:'';width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .15s}
+details.picker[open]>summary .chev::after{transform:translateY(2px) rotate(-135deg)}
+details.picker>summary .chev{font-size:0}
+details.picker>summary .chev::before{font-size:13px}
+details.picker .progress-summary{margin:6px 0 14px}
 </style>
 </head>
 <body>
@@ -86,14 +103,13 @@ details.picker>summary{list-style:none;cursor:pointer;position:relative;padding-
       <div class="picker-tools"><input id="wordSearch" class="picker-search" type="search" placeholder="Search Dutch or English…"></div>
       <div class="word-list" id="wordList"></div>
     </details>
-    <div class="picker" id="progressTracker"><div class="picker-head"><div><label><b>Your progress</b></label><div class="selection-note">Progress is saved in this browser.</div></div></div><div class="progress-summary"><div class="progress-card"><strong id="progressMastered">0</strong><span>mastered</span></div><div class="progress-card"><strong id="progressAttempted">0</strong><span>practised</span></div><div class="progress-card"><strong id="progressAccuracy">—</strong><span>accuracy</span></div></div><div class="word-progress" id="wordProgress"></div></div>
+    <details class="picker" id="progressTracker"><summary class="pickersum"><b>Your progress</b><span class="chev">▾</span><div class="selection-note">Progress is saved in this browser.</div></summary><div class="progress-summary"><div class="progress-card"><strong id="progressMastered">0</strong><span>mastered</span></div><div class="progress-card"><strong id="progressAttempted">0</strong><span>practised</span></div><div class="progress-card"><strong id="progressAccuracy">—</strong><span>accuracy</span></div></div><div class="word-progress" id="wordProgress"></div></details>
 
     <div class="actions" style="margin-top:22px"><button id="start">Start training →</button></div>
     <div class="actions" style="margin-top:22px">
       <button class="secondary" id="openLesson">📖 Lesson for this stage →</button>
       <button class="secondary" id="openReference">Reference table →</button>
     </div>
-    <p class="note">The workbook's categories, English meanings and examples are embedded in this standalone HTML file. Choose one stage and one exercise mode at a time. Stages run from the most to the least common connectors, with competing words spread across different stages; the two C1 stages come last. Under each Dutch/English prompt you also see the word class and a short cue (tone, what it points to).</p>
   </section>
 
   <section id="lessonPage" class="card hidden">
