@@ -21,6 +21,22 @@ Replace `index.html`, then bump `VERSION` in `sw.js` (e.g. `v2`) so phones pick 
 
 ## Sentence scrambler
 
-The trainer now includes a **Sentence scrambler** mode. A saved Dutch example sentence is split into clickable word tiles and shuffled. Tap the words in the correct order, then check your answer. Clicking a word in the assembled sentence returns it to the word bank. The English meaning remains available as an optional hint.
+The trainer includes a **Sentence scrambler** mode. A saved Dutch example sentence is split into clickable word tiles and shuffled. Tap the words in the correct order, then check your answer. Clicking a word in the assembled sentence returns it to the word bank. The English meaning remains available as an optional hint.
 
 Mixed mode **always includes at least one Sentence scrambler question** in every Mixed game; the remaining questions use the other exercise types for variety.
+
+
+## v31 — bundled sentence translations and refresh stability
+
+Sentence-scrambler translations are read from built-in app data (`sentenceTranslations`)
+when present; the practice screen does not call an online translation service. The
+translation layer is no longer stored separately in `localStorage`.
+
+The service worker uses a versioned, cache-first app shell and caches `app.js` together
+with `index.html`. This prevents refreshes from mixing files from different releases.
+Bump `VERSION` in `sw.js` for each deployment.
+
+
+- v31 bundles an English translation for every built-in Dutch example sentence directly in `EXPRESSIONS[].sentenceTranslations` (570 translations total).
+- The Sentence Scrambler does not use an online translator or a separate translation `localStorage` database.
+- The service worker cache is versioned as `v31-bundled-sentence-translations`; after deployment, refresh once to install the new cache.
