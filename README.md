@@ -45,3 +45,22 @@ Bump `VERSION` in `sw.js` for each deployment.
 ## v34  rewritten sentence translations
 
 All 570 bundled English sentence translations (`EXPRESSIONS[].sentenceTranslations`) were rewritten as natural English. The previous ones were word-by-word glosses that left Dutch words in the English text. The data is identical in `index.html` and `app.js`.
+
+
+## v35  bug fixes
+
+- Editing sentences for the second *terwijl* (stage 3) saved them into the first *terwijl* (stage 1). The editor now remembers which entry it opened.
+- Progress for the two *terwijl* entries is now tracked separately.
+- The sentence scrambler now shows English translations you typed in the sentence editor (it only used the bundled ones before).
+- The sentence editor no longer copies the bundled English into browser storage, so future translation fixes show up. A one-time clean-up removes copies of the old word-by-word translations that earlier saves left behind; translations you typed yourself are kept.
+- Typed answers ignore case, extra spaces, trailing punctuation and how the gap in two-part expressions is typed (`zowel ... als`, `zowel...als`, `zowel als`).
+- Multiple choice always shows four options, also when only 1-3 expressions are selected.
+- Progress and sentence saves no longer break the answer flow if browser storage is unavailable.
+- Removed `app.js`: it was an older, out-of-date copy of the script that `index.html` already contains inline, and was never loaded. The service worker no longer caches it.
+
+
+## v36  lesson explanations in feedback, complete Reword set
+
+- The explanation shown after each answer is now the word's lesson explanation (the text from its stage lesson), including any edits you saved in the app. The old generic text is only a fallback.
+- Reword now has data for all 114 expressions (36 new rewrite pairs, mainly stages 6-10). Reword mode no longer falls back to fill-in-the-blank.
+- Two Reword prompts no longer contain the target word: *of* and *tot*.

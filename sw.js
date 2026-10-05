@@ -1,11 +1,10 @@
 // Offline app shell. Keep every release in its own cache so a refresh cannot mix
 // an old index with newer assets. Bump VERSION for every shipped build.
-const VERSION = "v34-sentence-translations";
+const VERSION = "v36-lesson-feedback-reword";
 const CACHE = "dutch-connectives-" + VERSION;
 const FILES = [
   "./",
   "./index.html",
-  "./app.js",
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",
