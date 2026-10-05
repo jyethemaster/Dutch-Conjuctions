@@ -183,6 +183,7 @@ details.picker .progress-summary{margin:6px 0 14px}
     <div class="eyebrow" id="category">Category</div>
     <h2 class="qtitle" id="prompt"></h2>
     <p class="cue" id="cue"></p>
+    <p class="cue hidden" id="scrambleTranslation"></p>
     <div id="fillHint" class="fill-hint hidden"><button type="button" class="ghost" id="showFillHint">💡 Show English hint</button></div>
     <p class="hint" id="hint"></p>
     <div id="response"></div>
@@ -650,6 +651,22 @@ function scrambleId(item){return item.category+'|'+item.dutch}
 function rememberScramble(item,sentence,pool){const h=loadScrambleHistory(),id=scrambleId(item);let v=Array.isArray(h[id])?h[id].filter(x=>pool.includes(x)):[];if(!v.includes(sentence))v.push(sentence);const max=Math.max(0,pool.length-1);if(v.length>max)v=v.slice(v.length-max);h[id]=v;saveScrambleHistory(h)}
 function takeScrambleSentence(item){const idx=EXPRESSIONS.indexOf(item),pool=getSentences(item,idx).filter(Boolean);if(!pool.length)return '';const local=scrambleUsed.get(item)||new Set();let candidates=pool.filter(x=>!local.has(x));const h=loadScrambleHistory(),recent=Array.isArray(h[scrambleId(item)])?h[scrambleId(item)]:[];const across=candidates.filter(x=>!recent.includes(x));if(across.length)candidates=across;if(!candidates.length){local.clear();candidates=pool.filter(x=>!recent.includes(x));if(!candidates.length){delete h[scrambleId(item)];saveScrambleHistory(h);candidates=[...pool]}}const sentence=pick(candidates);local.add(sentence);scrambleUsed.set(item,local);rememberScramble(item,sentence,pool);return sentence}
 function scrambleTokens(sentence){return String(sentence).match(/\S+/g)||[]}
+const scrambleTranslationKey='dutch-connectives-scrambler-translations-v1';
+function loadScrambleTranslations(){try{const x=JSON.parse(localStorage.getItem(scrambleTranslationKey)||'{}');return x&&typeof x==='object'?x:{}}catch(e){return {}}}
+function saveScrambleTranslations(x){try{localStorage.setItem(scrambleTranslationKey,JSON.stringify(x))}catch(e){}}
+async function loadScrambleTranslation(sentence){
+ const el=$('scrambleTranslation');if(!el||!sentence)return;
+ const cache=loadScrambleTranslations();
+ if(cache[sentence]){el.textContent=`English translation: ${cache[sentence]}`;return}
+ try{
+  const r=await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(sentence)}&langpair=nl|en`);
+  const j=await r.json();
+  const t=j?.responseData?.translatedText?.trim();
+  if(t){cache[sentence]=t;saveScrambleTranslations(cache);if(current&&current.mode==='Sentence scrambler'&&current.answer===sentence)el.textContent=`English translation: ${t}`;return}
+ }catch(e){}
+ if(current&&current.mode==='Sentence scrambler'&&current.answer===sentence)el.textContent='English translation: unavailable offline';
+}
+
 function shuffleDifferent(arr){const original=arr.join(' '),copy=[...arr];if(copy.length<2)return copy;for(let i=0;i<8;i++){copy.sort(()=>Math.random()-.5);if(copy.join(' ')!==original)return copy}return [copy[1],copy[0],...copy.slice(2)]}
 
 function makeQuestions(n){
@@ -783,7 +800,9 @@ function render(){
  $('category').textContent=current.category;
  $('prompt').textContent=current.prompt;
  $('cue').textContent=current.cue||'';
- $('fillHint').classList.toggle('hidden',current.mode!=='Fill in the blank'&&current.mode!=='Sentence scrambler');
+ $('fillHint').classList.toggle('hidden',current.mode!=='Fill in the blank');
+ $('scrambleTranslation').classList.toggle('hidden',current.mode!=='Sentence scrambler');
+ $('scrambleTranslation').textContent=current.mode==='Sentence scrambler'?'English translation: Translating…':'';
  $('showFillHint').textContent='💡 Show English hint';
  $('showFillHint').disabled=false;
  $('showFillHint').onclick=()=>{
@@ -791,6 +810,7 @@ function render(){
    $('showFillHint').textContent='English hint shown';
    $('showFillHint').disabled=true;
  };
+ if(current.mode==='Sentence scrambler') loadScrambleTranslation(current.answer);
  $('hint').textContent=current.mode==='Translation'?'Type the Dutch equivalent.':current.mode==='Fill in the blank'?(current.fillMode==='Easy'?'Choose the expression that completes the sentence.':'Type the missing Dutch expression.'):current.mode==='Reword the sentence'?'Rewrite the sentence so it keeps the same meaning and uses the target expression.':current.mode==='Sentence scrambler'?'Tap the words in the correct order to rebuild the sentence.':'Choose the best answer.';
  $('feedback').classList.add('hidden');$('feedback').innerHTML='';$('response').innerHTML='';
  if(current.mode==='Multiple choice' || (current.mode==='Fill in the blank' && current.fillMode==='Easy')){
