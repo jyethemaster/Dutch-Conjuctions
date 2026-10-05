@@ -27,6 +27,7 @@ details.picker>summary{list-style:none;cursor:pointer;position:relative;padding-
 
 .meaning-cell{cursor:pointer}.expl-cell{cursor:pointer;min-width:240px}.expl-cell:hover{background:#f8faff}.expl-text{font-size:14px;line-height:1.45}.editor textarea.expl-input{width:100%;min-height:150px;padding:12px;border:1px solid var(--line);border-radius:12px;font:inherit;line-height:1.5;resize:vertical;color:var(--ink)}.meaning-cell:hover{background:#f8faff}
 .edited-tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;background:#fff4d6;color:#8a5a00;font-size:11px;font-weight:800;vertical-align:middle}
+.scramble-board{display:grid;gap:12px}.scramble-zone{border:1px dashed #cbd5e1;border-radius:14px;padding:12px;background:#f8fafc;min-height:58px}.scramble-label{font-size:12px;font-weight:800;color:var(--muted);margin-bottom:8px}.scramble-words{display:flex;flex-wrap:wrap;gap:8px}.scramble-word{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:10px 12px;min-height:44px;font-size:15px;font-weight:650;cursor:pointer}.scramble-word:hover{border-color:#9aafff;background:var(--blue2)}.scramble-word:focus-visible{outline:2px solid var(--blue);outline-offset:2px}.scramble-actions{display:flex;gap:8px;flex-wrap:wrap}.scramble-actions button{min-height:42px}.scramble-empty{font-size:13px;color:var(--muted);font-style:italic}
 @media(max-width:620px){
   body{font-size:16px;-webkit-text-size-adjust:100%}
   .wrap{width:100%;margin:0 auto;padding:0 10px}
@@ -91,6 +92,7 @@ details.picker .progress-summary{margin:6px 0 14px}
       <button class="mode" data-mode="Fill in the blank">Fill in the blank</button>
       <button class="mode" data-mode="Translation">Translation</button>
       <button class="mode" data-mode="Reword the sentence">Reword the sentence</button>
+      <button class="mode" data-mode="Sentence scrambler">Sentence scrambler</button>
       <button class="mode" data-mode="Mixed" style="grid-column:1/-1">Mixed (variety)</button>
     </div></div>
     <div class="field hidden" id="fillSettings" style="margin-top:14px"><label>Fill in the blank · difficulty</label><div class="modes">
@@ -211,6 +213,7 @@ EXPRESSIONS.forEach(x=>{x.defaultEnglish=x.english});
 document.getElementById('wordCount').textContent = EXPRESSIONS.length;
 let selectedMode = 'Multiple choice';
 let fillMode = 'Easy';
+let scrambleUsed = new Map();
 let pool = [...EXPRESSIONS], selectedWords = new Set(), questions=[], index=0, score=0, current=null, chosen=null, checked=false, outcomes=[], total=0;
 const $ = id => document.getElementById(id);
 const progressKey = 'dutch-connectives-progress-v1';
@@ -541,7 +544,7 @@ function makeFillText(sentence, expression){
 }
 
 let mixOrder=[];
-function nextMixMode(){if(!mixOrder.length)mixOrder=['Multiple choice','Fill in the blank','Translation','Reword the sentence'].sort(()=>Math.random()-.5);return mixOrder.pop()}
+function nextMixMode(){if(!mixOrder.length)mixOrder=['Multiple choice','Fill in the blank','Translation','Reword the sentence','Sentence scrambler'].sort(()=>Math.random()-.5);return mixOrder.pop()}
 /* ---- Multiple choice helpers: look-alike English meanings never share a question ---- */
 const GLOSS_STOP=new Set(['to','of','the','a','an','in','on','with','for','and','or','that','is','at','by','from','as','be','it','one','other','formal','informal','something','someone','oneself','this','these','those','upon']);
 /* Words that mean (nearly) the same thing, so two glosses containing them are never shown together. */
@@ -640,6 +643,15 @@ function rememberMixedSentence(item,sentence,pool){
  if(v.length>max)v=v.slice(v.length-max);
  h[id]=v;saveMixedSentenceHistory(h);
 }
+const scrambleHistoryKey='dutch-connectives-scrambler-v1';
+function loadScrambleHistory(){try{const x=JSON.parse(localStorage.getItem(scrambleHistoryKey)||'{}');return x&&typeof x==='object'?x:{}}catch(e){return {}}}
+function saveScrambleHistory(x){try{localStorage.setItem(scrambleHistoryKey,JSON.stringify(x))}catch(e){}}
+function scrambleId(item){return item.category+'|'+item.dutch}
+function rememberScramble(item,sentence,pool){const h=loadScrambleHistory(),id=scrambleId(item);let v=Array.isArray(h[id])?h[id].filter(x=>pool.includes(x)):[];if(!v.includes(sentence))v.push(sentence);const max=Math.max(0,pool.length-1);if(v.length>max)v=v.slice(v.length-max);h[id]=v;saveScrambleHistory(h)}
+function takeScrambleSentence(item){const idx=EXPRESSIONS.indexOf(item),pool=getSentences(item,idx).filter(Boolean);if(!pool.length)return '';const local=scrambleUsed.get(item)||new Set();let candidates=pool.filter(x=>!local.has(x));const h=loadScrambleHistory(),recent=Array.isArray(h[scrambleId(item)])?h[scrambleId(item)]:[];const across=candidates.filter(x=>!recent.includes(x));if(across.length)candidates=across;if(!candidates.length){local.clear();candidates=pool.filter(x=>!recent.includes(x));if(!candidates.length){delete h[scrambleId(item)];saveScrambleHistory(h);candidates=[...pool]}}const sentence=pick(candidates);local.add(sentence);scrambleUsed.set(item,local);rememberScramble(item,sentence,pool);return sentence}
+function scrambleTokens(sentence){return String(sentence).match(/\S+/g)||[]}
+function shuffleDifferent(arr){const original=arr.join(' '),copy=[...arr];if(copy.length<2)return copy;for(let i=0;i<8;i++){copy.sort(()=>Math.random()-.5);if(copy.join(' ')!==original)return copy}return [copy[1],copy[0],...copy.slice(2)]}
+
 function makeQuestions(n){
  mixOrder=[];
  const eligible=pool.filter(x=>selectedWords.has(x.dutch) && x.dutch && x.english);
@@ -647,13 +659,19 @@ function makeQuestions(n){
  const dpool=new Set(eligible.map(x=>x.english)).size>=4&&new Set(eligible.map(x=>x.dutch)).size>=4?eligible:EXPRESSIONS;
  let deck=[],recent=[];
  /* Draw every word once before any word returns; when the deck is refilled, keep recently used words at the back so repeats are spread out. */
- const nextItem=()=>{
+ const nextItem=(requireScrambler=false)=>{
   if(!deck.length){
    deck=[...eligible].sort(()=>Math.random()-.5);
    const keep=new Set(recent.slice(-Math.max(1,Math.min(4,Math.floor(deck.length/2)))));
    deck=[...deck.filter(x=>keep.has(x)),...deck.filter(x=>!keep.has(x))];
   }
-  const it=deck.pop();recent.push(it);return it;
+  let it;
+  if(requireScrambler){
+   const si=deck.findIndex(x=>getSentences(x,EXPRESSIONS.indexOf(x)).length>0);
+   if(si>=0)it=deck.splice(si,1)[0];
+  }
+  if(!it)it=deck.pop();
+  recent.push(it);return it;
  };
  /* If a word has to come back (more questions than words), the same mode is fine as long as the question itself is different (another sentence). Translation and Reword have only one version, so they are asked once per word. */
  const used=new Map();
@@ -664,9 +682,10 @@ function makeQuestions(n){
   if(mode==='Fill in the blank'){const l=getSentences(item,idx);return l.length?l:['']}
   if(mode==='Translation')return ['T'];
   if(mode==='Reword the sentence')return item.rw?['R']:[];
+  if(mode==='Sentence scrambler')return getSentences(item,idx).length?getSentences(item,idx):[];
   return [''];
  };
- const sentenceModes=new Set(['Multiple choice','Fill in the blank']);
+ const sentenceModes=new Set(['Multiple choice','Fill in the blank','Sentence scrambler']);
  const fresh=(item,mode)=>{
   let c=variants(item,mode).filter(v=>!usedSet(item,mode).has(v));
   if(selectedMode==='Mixed'&&sentenceModes.has(mode)&&c.length){
@@ -694,9 +713,10 @@ function makeQuestions(n){
   }
   return t;
  };
- const chooseMode=item=>{
+ const chooseMode=(item,forceScrambler=false)=>{
+  if(forceScrambler&&getSentences(item,EXPRESSIONS.indexOf(item)).length)return 'Sentence scrambler';
   if(selectedMode!=='Mixed')return (selectedMode==='Reword the sentence'&&!item.rw)?'Fill in the blank':selectedMode;
-  const all=['Multiple choice','Fill in the blank','Translation','Reword the sentence'];
+  const all=['Multiple choice','Fill in the blank','Translation','Reword the sentence','Sentence scrambler'];
   let ok=all.filter(m=>fresh(item,m).length);
   if(!ok.length){used.delete(item);ok=all.filter(m=>fresh(item,m).length)}
   let m=null;for(let t=0;t<4&&!m;t++){const c=nextMixMode();if(ok.includes(c))m=c}
@@ -704,8 +724,9 @@ function makeQuestions(n){
  };
  const qs=[];
  for(let i=0;i<n;i++){
-  const item=nextItem();
-  const mode=chooseMode(item);
+  const forceScrambler=selectedMode==='Mixed'&&i===0;
+  const item=nextItem(forceScrambler);
+  const mode=chooseMode(item,forceScrambler);
   let q={item,mode,category:item.category,correct:item.english,correctOrAnswer:item.english,example:item.example||''};
   if(mode==='Multiple choice'){
    const withWord=getSentences(item,EXPRESSIONS.indexOf(item)).filter(t=>markExpr(t,item.dutch));
@@ -738,6 +759,14 @@ function makeQuestions(n){
    q.source=item.rw[0];
    q.prompt=`Rewrite the sentence using “${item.dutch}”:`;
    q.answer=item.rw[1];
+  }else if(mode==='Sentence scrambler'){
+   const sentence=takeScrambleSentence(item);
+   q.prompt='Put the words in the correct order:';
+   q.scrambleAnswer=scrambleTokens(sentence);
+   q.scrambleWords=shuffleDifferent(q.scrambleAnswer);
+   q.answer=sentence;
+   q.correctOrAnswer=sentence;
+   q.cue=cueOf(item);
   }
   qs.push(q);
  }
@@ -754,14 +783,15 @@ function render(){
  $('category').textContent=current.category;
  $('prompt').textContent=current.prompt;
  $('cue').textContent=current.cue||'';
- $('fillHint').classList.toggle('hidden',current.mode!=='Fill in the blank');
+ $('fillHint').classList.toggle('hidden',current.mode!=='Fill in the blank'&&current.mode!=='Sentence scrambler');
  $('showFillHint').textContent='💡 Show English hint';
+ $('showFillHint').disabled=false;
  $('showFillHint').onclick=()=>{
    $('cue').textContent=`Meaning: “${current.item.english}”`+(cueOf(current.item)?` · ${cueOf(current.item)}`:'');
    $('showFillHint').textContent='English hint shown';
    $('showFillHint').disabled=true;
  };
- $('hint').textContent=current.mode==='Translation'?'Type the Dutch equivalent.':current.mode==='Fill in the blank'?(current.fillMode==='Easy'?'Choose the expression that completes the sentence.':'Type the missing Dutch expression.'):current.mode==='Reword the sentence'?'Rewrite the sentence so it keeps the same meaning and uses the target expression.':'Choose the best answer.';
+ $('hint').textContent=current.mode==='Translation'?'Type the Dutch equivalent.':current.mode==='Fill in the blank'?(current.fillMode==='Easy'?'Choose the expression that completes the sentence.':'Type the missing Dutch expression.'):current.mode==='Reword the sentence'?'Rewrite the sentence so it keeps the same meaning and uses the target expression.':current.mode==='Sentence scrambler'?'Tap the words in the correct order to rebuild the sentence.':'Choose the best answer.';
  $('feedback').classList.add('hidden');$('feedback').innerHTML='';$('response').innerHTML='';
  if(current.mode==='Multiple choice' || (current.mode==='Fill in the blank' && current.fillMode==='Easy')){
   if(current.mode==='Multiple choice'&&current.context){const ctx=document.createElement('div');ctx.className='example';ctx.style.cssText='font-style:normal;margin:0 0 14px;font-size:17px';ctx.innerHTML=markExpr(current.context,current.item.dutch);$('response').appendChild(ctx)}
@@ -770,6 +800,17 @@ function render(){
   $('response').appendChild(wrap);
  }else if(current.mode==='Fill in the blank'||current.mode==='Translation'){
   const inp=document.createElement('input');inp.className='answer';inp.placeholder='Type your answer here…';inp.autocomplete='off';inp.addEventListener('input',()=>{chosen=inp.value;$('check').disabled=!inp.value.trim()});inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!$('check').disabled)$('check').click()});$('response').appendChild(inp);inp.focus();
+ }else if(current.mode==='Sentence scrambler'){
+  const board=document.createElement('div');board.className='scramble-board';
+  const selectedZone=document.createElement('div');selectedZone.className='scramble-zone';
+  const selectedLabel=document.createElement('div');selectedLabel.className='scramble-label';selectedLabel.textContent='Your sentence';
+  const selectedWordsEl=document.createElement('div');selectedWordsEl.className='scramble-words';
+  const selectedActions=document.createElement('div');selectedActions.className='scramble-actions';
+  const reset=document.createElement('button');reset.type='button';reset.className='ghost';reset.textContent='↺ Reset';selectedActions.appendChild(reset);selectedZone.append(selectedLabel,selectedWordsEl,selectedActions);
+  const bankZone=document.createElement('div');bankZone.className='scramble-zone';const bankLabel=document.createElement('div');bankLabel.className='scramble-label';bankLabel.textContent='Scrambled words';const bank=document.createElement('div');bank.className='scramble-words';bankZone.append(bankLabel,bank);board.append(selectedZone,bankZone);$('response').appendChild(board);
+  const available=current.scrambleWords.map((word,i)=>({word,i}));const chosenTiles=[];
+  const refresh=()=>{selectedWordsEl.innerHTML='';bank.innerHTML='';if(!chosenTiles.length){const e=document.createElement('span');e.className='scramble-empty';e.textContent='Tap words below to build the sentence.';selectedWordsEl.appendChild(e)}chosenTiles.forEach((tile,pos)=>{const b=document.createElement('button');b.type='button';b.className='scramble-word';b.textContent=tile.word;b.setAttribute('aria-label',`Remove ${tile.word} from your sentence`);b.onclick=()=>{chosenTiles.splice(pos,1);refresh()};selectedWordsEl.appendChild(b)});available.filter(t=>!chosenTiles.some(x=>x.i===t.i)).forEach(tile=>{const b=document.createElement('button');b.type='button';b.className='scramble-word';b.textContent=tile.word;b.onclick=()=>{chosenTiles.push(tile);refresh()};bank.appendChild(b)});$('check').disabled=chosenTiles.length!==current.scrambleAnswer.length;};
+  reset.onclick=()=>{chosenTiles.length=0;refresh()};current.getScrambleAnswer=()=>chosenTiles.map(x=>x.word).join(' ');refresh();
  }else if(current.mode==='Reword the sentence'){
   const source=document.createElement('div');source.className='example';source.style.fontStyle='normal';source.innerHTML=`<b>Original sentence:</b> ${esc(current.source)}`;$('response').appendChild(source);
   const area=document.createElement('textarea');area.className='answer';area.rows=3;area.placeholder=`Rewrite it using “${current.item.dutch}”…`;area.addEventListener('input',()=>{chosen=area.value;$('check').disabled=!area.value.trim()});$('response').appendChild(area);area.focus();
@@ -779,7 +820,7 @@ function render(){
 
 function explain(){
  let item=current.item;
- const ei=EXPRESSIONS.indexOf(item); const sentences=getSentences(item,ei); return `<p><b>Meaning:</b> ${esc(item.english)}</p><p><b>Explanation:</b> ${esc(explanation(item))}</p>${(current.context||sentences[0])?`<div class="example"><b>Example:</b> ${esc(current.context||sentences[0])}</div>`:''}<button class="ghost" id="editCurrentSentence" style="margin-top:10px">Edit / add sentences (${sentences.length}/15)</button>`;
+ const ei=EXPRESSIONS.indexOf(item); const sentences=getSentences(item,ei); return `<p><b>Meaning:</b> ${esc(item.english)}</p><p><b>Explanation:</b> ${esc(explanation(item))}</p>${(current.context||current.answer||sentences[0])?`<div class="example"><b>Example:</b> ${esc(current.context||current.answer||sentences[0])}</div>`:''}<button class="ghost" id="editCurrentSentence" style="margin-top:10px">Edit / add sentences (${sentences.length}/15)</button>`;
 }
 function explanation(item){
  const s=item.dutch.toLowerCase();
@@ -792,6 +833,11 @@ function explanation(item){
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function grade(){
  if(checked)return;
+ if(current.mode==='Sentence scrambler'){
+  const answer=current.getScrambleAnswer?current.getScrambleAnswer():'';checked=true;const correct=clean(answer)===clean(current.answer);
+  if(correct&&!current.retry)score++;if(!current.retry){recordProgress(current.item,correct);const o={correct,question:current.prompt,answer:current.answer};outcomes.push(o);if(!correct)queueRetry(o)}else if(correct&&current.outcome)current.outcome.recovered=true;else if(!correct)queueRetry(current.outcome);
+  const fb=$('feedback');fb.className='feedback '+(correct?'good':'bad');fb.innerHTML=`<h3>${correct?(current.retry?'✓ Correct (no points on a retry)':'✓ Correct!'):'✗ Not quite'}</h3>${!correct?`<p><b>Correct sentence:</b> ${esc(current.answer)}</p><p>This question comes back at the end (no points).</p>`:''}${explain()}`;$('points').textContent=`${score} points`;$('check').textContent=index===questions.length-1?'Finish session':'Next question';$('check').disabled=false;$('check').onclick=next;return;
+ }
  if(current.mode==='Reword the sentence'){
   checked=true;
   const fb=$('feedback');fb.className='feedback';
