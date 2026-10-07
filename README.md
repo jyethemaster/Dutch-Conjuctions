@@ -64,3 +64,8 @@ All 570 bundled English sentence translations (`EXPRESSIONS[].sentenceTranslatio
 - The explanation shown after each answer is now the word's lesson explanation (the text from its stage lesson), including any edits you saved in the app. The old generic text is only a fallback.
 - Reword now has data for all 114 expressions (36 new rewrite pairs, mainly stages 6-10). Reword mode no longer falls back to fill-in-the-blank.
 - Two Reword prompts no longer contain the target word: *of* and *tot*.
+
+## v37  Reword model answers corrected
+- Fixed 27 Reword exercises whose model answer did not match the sentence shown. For example *bovendien* showed a two-sentence prompt but the model answer was a single sentence that dropped the second half; *hierdoor* reversed cause and effect; *zolang*, *anderzijds*, *enerzijds*, *daarnaast* and the second *terwijl* entry had model answers that kept the wrong part or belonged to a different sentence.
+- Each model answer now keeps the full meaning of the original sentence and uses the target expression. Prompts still never contain the target expression.
+- Only the Reword data changed; nothing else in the app.
