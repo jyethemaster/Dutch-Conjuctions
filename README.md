@@ -69,3 +69,34 @@ All 570 bundled English sentence translations (`EXPRESSIONS[].sentenceTranslatio
 - Fixed 27 Reword exercises whose model answer did not match the sentence shown. For example *bovendien* showed a two-sentence prompt but the model answer was a single sentence that dropped the second half; *hierdoor* reversed cause and effect; *zolang*, *anderzijds*, *enerzijds*, *daarnaast* and the second *terwijl* entry had model answers that kept the wrong part or belonged to a different sentence.
 - Each model answer now keeps the full meaning of the original sentence and uses the target expression. Prompts still never contain the target expression.
 - Only the Reword data changed; nothing else in the app.
+
+
+## v39  two practice tools (is / was / had, and position verbs)
+
+Both tools live inside `index.html` (no extra files) and share one engine, so they behave the same way. Open them from the two buttons at the bottom of the main screen. Each has its own screens, sentences, progress and "Ik ken dit al" marks (`dutch-aux-*` and `dutch-pos-*` in browser storage), so the connectives game is untouched.
+
+**Is / was / had** (114 sentences, 6 stages): zijn/hebben in the present, perfect, past, pluperfect, unreal conditions and modal perfects, passive.
+
+**Staan / liggen / zitten / hangen / zetten / leggen / stoppen** (187 sentences, 8 stages):
+1. Which verb fits the thing (upright, flat, hanging, sitting or attached)
+2. Plural subjects and ik / jij / wij
+3. Put it there: zetten, leggen, hangen, stoppen
+4. State or action: the same noun with staan vs zetten, liggen vs leggen
+5. Past tense
+6. Perfect tense (gelegen vs gelegd, gezeten vs gezet)
+7. Fixed expressions (het staat je goed, het ligt aan jou, het zit me niet mee)
+
+Exercise types in both: choose the word, type the word, build the sentence (short sentences only), find the mistake, mixed.
+
+
+## v42 navigation fix
+- Keeps the auxiliary/position launcher elements hidden on the Conjunctions page so the main topic chooser can still open those tools without showing cross-links.
+- Fixes the standalone tool Home buttons to return to the main topic landing page.
+- Restores the original v40 tool initialization path; only navigation behavior is changed.
+
+
+## v45  position verbs: talking about people and yourself
+
+- New stage 8 in the position-verb practice, "People and yourself" (29 sentences). It covers: zijn for where a person is (ik ben in de stad), places lie (Utrecht ligt in het midden), set phrases where the position verb is the normal choice (in de rij staan, in de trein zitten, in bed liggen, in de gevangenis zitten), staan / zitten / liggen / lopen + te + infinitive (ik sta te koken), getting into a position with gaan (ga zitten), and informal zitten (ik zit in de problemen, we zitten zonder koffie).
+- The position-verb guide has a new section, "Talking about people and yourself", with an English-to-Dutch table.
+- Stage 8 is added at the end, so saved progress for stages 1-7 is unchanged.

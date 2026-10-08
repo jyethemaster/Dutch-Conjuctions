@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dutch Connectives Trainer · B1–C1 · v33</title>
+<title>Flow Dutch · Grammar Practice · v40</title>
 <meta name="theme-color" content="#3157c8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Connectives">
+<meta name="apple-mobile-web-app-title" content="Flow Dutch">
 <link rel="manifest" href="./manifest.json">
 <link rel="apple-touch-icon" href="./icon-192.png">
 <link rel="icon" href="./icon-192.png" type="image/png">
@@ -69,16 +69,93 @@ details.picker[open]>summary .chev::after{transform:translateY(2px) rotate(-135d
 details.picker>summary .chev{font-size:0}
 details.picker>summary .chev::before{font-size:13px}
 details.picker .progress-summary{margin:6px 0 14px}
+
+/* ===== auxiliaries practice (is / was / had) ===== */
+.aux-sentence{font-size:22px;line-height:1.55;font-weight:600;margin:4px 0 18px}
+.aux-gap{display:inline-block;min-width:64px;text-align:center;border-bottom:3px solid var(--blue);color:var(--blue);margin:0 3px;padding:0 6px}
+.aux-gap.good{color:var(--green);border-color:var(--green)}
+.aux-toks{display:flex;flex-wrap:wrap;gap:8px}
+.aux-tok{background:#fff;color:var(--ink);border:1.5px solid var(--line);padding:9px 12px;font-size:18px;font-weight:600}
+.aux-tok.selected{border-color:var(--blue);background:var(--blue2);color:var(--blue)}
+.aux-tok.correct{border-color:var(--green);background:#effaf3;color:var(--green)}
+.aux-tok.wrong{border-color:var(--red);background:#fdeeed;color:var(--red)}
+.aux-check-row{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:14px;color:var(--muted);cursor:pointer}
+.aux-check-row input{margin-top:4px;width:18px;height:18px;flex:none}
+.aux-h{margin:24px 0 10px;font-size:18px}
+.aux-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+.aux-table{width:100%;border-collapse:collapse;min-width:640px;font-size:14px}
+.aux-table th,.aux-table td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.aux-table th{background:#f5f7fb;font-size:13px}
+.aux-table tr:last-child td{border-bottom:0}
+@media(max-width:620px){.aux-sentence{font-size:19px}.aux-tok{font-size:16px;padding:8px 10px}}
+
+.aux-wrap+p,.aux-wrap+.lk,.aux-h+p{margin-top:10px}
+#posSheet ul,#auxSheet ul{padding-left:20px;line-height:1.55}
+
+/* v40 landing page */
+.home-page{padding:4px 0 12px}
+.home-hero{padding:30px 30px 26px;background:linear-gradient(135deg,#eef3ff 0%,#f8faff 58%,#effaf4 100%);border:1px solid #e0e8f7;border-radius:24px;margin-bottom:18px}
+.home-hero h2{font-size:clamp(28px,4vw,38px);letter-spacing:-.035em;line-height:1.12;margin:9px 0 10px}
+.home-hero p{max-width:620px;color:var(--muted);margin:0;font-size:16px}
+.topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.topic-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-height:285px;padding:22px 20px 18px;border:1px solid var(--line);border-radius:20px;background:white;color:var(--ink);box-shadow:0 8px 24px rgba(22,34,58,.05);transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;white-space:normal}
+.topic-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(22,34,58,.1)}
+.topic-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;font-size:27px;font-weight:800;margin-bottom:20px}
+.topic-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:850;color:var(--muted);margin-bottom:7px}
+.topic-card strong{font-size:20px;line-height:1.2;letter-spacing:-.02em}
+.topic-description{font-size:14px;font-weight:450;line-height:1.5;color:var(--muted);margin-top:11px}
+.topic-cta{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;margin-top:auto;padding-top:22px;font-size:13px;font-weight:850}
+.topic-blue{border-top:4px solid #3157c8}.topic-blue .topic-icon{background:#eaf0ff;color:#3157c8}.topic-blue .topic-cta{color:#3157c8}
+.topic-green{border-top:4px solid #16834a}.topic-green .topic-icon{background:#e8f7ee;color:#16834a}.topic-green .topic-cta{color:#16834a}
+.topic-violet{border-top:4px solid #7854c7}.topic-violet .topic-icon{background:#f0eaff;color:#7854c7}.topic-violet .topic-cta{color:#7854c7}
+.home-footnote{text-align:center;font-size:13px;color:var(--muted);margin:20px 0 0}.home-footnote span{color:var(--green);font-weight:900;margin-right:5px}
+.home-return{margin-bottom:16px}
+@media(max-width:760px){.topic-grid{grid-template-columns:1fr}.topic-card{min-height:0;padding:19px}.topic-icon{margin-bottom:13px}.topic-cta{padding-top:16px}.home-hero{padding:24px 21px}.wrap{margin:20px auto}}
+
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="brand"><div class="logo">NL</div><div><div class="eyebrow">B1–C1 language practice</div><h1>Dutch Connectives Trainer</h1></div></div>
+    <div class="brand"><div class="logo">NL</div><div><div class="eyebrow">Dutch grammar · B1–C1</div><h1>Flow Dutch</h1></div></div>
     <div class="pill">15-question challenge</div>
   </header>
 
-  <section id="setup" class="card">
+
+  <section id="homePage" class="home-page">
+    <div class="home-hero">
+      <div class="eyebrow">Your personal Dutch practice space</div>
+      <h2>What would you like to practise?</h2>
+      <p>Choose a topic to focus your session. Practise offline, at your own pace, with feedback after every answer.</p>
+    </div>
+    <div class="topic-grid">
+      <button type="button" class="topic-card topic-blue" id="chooseConjunctions">
+        <span class="topic-icon" aria-hidden="true">↔</span>
+        <span class="topic-kicker">Connect ideas</span>
+        <strong>Conjunctions &amp; Linking Words</strong>
+        <span class="topic-description">Join thoughts, explain reasons, show contrast and talk about conditions.</span>
+        <span class="topic-cta">Practise conjunctions <span aria-hidden="true">→</span></span>
+      </button>
+      <button type="button" class="topic-card topic-green" id="chooseTenses">
+        <span class="topic-icon" aria-hidden="true">◷</span>
+        <span class="topic-kicker">Talk about time</span>
+        <strong>Verb Tenses &amp; Time</strong>
+        <span class="topic-description">Practise present and past forms, perfect tenses, and active and passive sentences.</span>
+        <span class="topic-cta">Practise verb forms <span aria-hidden="true">→</span></span>
+      </button>
+      <button type="button" class="topic-card topic-violet" id="choosePositions">
+        <span class="topic-icon" aria-hidden="true">▤</span>
+        <span class="topic-kicker">Describe where things are</span>
+        <strong>Position &amp; Placement Verbs</strong>
+        <span class="topic-description">Learn when Dutch uses staan, liggen, zitten, hangen, zetten and leggen, for things and for yourself.</span>
+        <span class="topic-cta">Practise position verbs <span aria-hidden="true">→</span></span>
+      </button>
+    </div>
+    <p class="home-footnote"><span aria-hidden="true">✓</span> Works offline · Progress is saved on this device</p>
+  </section>
+
+  <section id="setup" class="card hidden">
+    <div class="actions home-return"><button type="button" class="ghost" id="backHomeFromConjunctions">← Back to main page</button></div>
     <div class="intro">
       <div><div class="eyebrow">Build fluency, one connector at a time</div><h2>Make your Dutch flow.</h2><p>Practise conjunctions, linking adverbs and conditional expressions from your Excel list. Get instant feedback, grammar explanations and a score at the end.</p></div>
       <div class="stat"><strong id="wordCount">0</strong><span>expressions</span></div>
@@ -112,6 +189,7 @@ details.picker .progress-summary{margin:6px 0 14px}
       <button type="button" class="secondary" id="openLesson">📖 Lesson for this stage →</button>
       <button type="button" class="secondary" id="openReference">Reference table →</button>
     </div>
+    <div class="hidden" aria-hidden="true"><button type="button" id="openAux">Is / was / had practice →</button><button type="button" id="openPos">Staan / liggen / zetten practice →</button></div>
   </section>
 
   <section id="lessonPage" class="card hidden">
@@ -254,6 +332,31 @@ function lessonExample(s,w){
 }
 function renderLesson(){const s=+$('stage').value,l=LESSONS[s];if(!l)return;$('lessonEyebrow').textContent=`Lesson · ${STAGE_NAMES[s]} · ${l.n.length} expressions`;$('lessonTitle').textContent=`Stage ${s+1}: ${l.t}`;$('lessonBody').innerHTML=`<p class="lk">${esc(l.k)}</p><dl>${l.n.map(([w,t])=>`<dt>${esc(w)}</dt><dd>${esc(lessonText(s,w,t))}${lessonExample(s,w)}</dd>`).join('')}</dl>`;$('lessonPrev').textContent=s>0?`← Stage ${s} lesson`:'';$('lessonPrev').classList.toggle('hidden',s===0);$('lessonNext').textContent=s<LESSONS.length-1?`Stage ${s+2} lesson →`:'';$('lessonNext').classList.toggle('hidden',s>=LESSONS.length-1)}
 function setStage(){renderLesson();const stage=$('stage').value;pool=EXPRESSIONS.filter(x=>x.stage===+stage);selectedWords=new Set(pool.map(x=>x.dutch));renderWordPicker()}
+
+// v40 topic landing page navigation.
+function showTopicHome(){
+  document.querySelectorAll('.wrap > section').forEach(section=>{
+    section.classList.toggle('hidden', section.id !== 'homePage');
+  });
+  window.scrollTo(0,0);
+}
+$('chooseConjunctions').onclick=()=>{
+  $('homePage').classList.add('hidden');
+  $('setup').classList.remove('hidden');
+  window.scrollTo(0,0);
+};
+$('chooseTenses').onclick=()=>{
+  $('homePage').classList.add('hidden');
+  $('openAux').click();
+  window.scrollTo(0,0);
+};
+$('choosePositions').onclick=()=>{
+  $('homePage').classList.add('hidden');
+  $('openPos').click();
+  window.scrollTo(0,0);
+};
+$('backHomeFromConjunctions').onclick=showTopicHome;
+
 $('stage').onchange=setStage;
 setStage();
 // Keep sentence pools locally so corrections and extra examples survive a refresh.
@@ -957,6 +1060,607 @@ if ("serviceWorker" in navigator && (location.protocol === "https:" || location.
 const fix=el=>{if(el.matches&&el.matches('input:not([type=checkbox]),textarea')){for(const k in A)el.setAttribute(k,A[k]);if(!el.name)el.name='f'+Math.random().toString(36).slice(2,8)}};
 document.querySelectorAll('input,textarea').forEach(fix);
 new MutationObserver(ms=>ms.forEach(r=>r.addedNodes.forEach(n=>{if(n.nodeType===1){fix(n);n.querySelectorAll&&n.querySelectorAll('input,textarea').forEach(fix)}}))).observe(document.body,{childList:true,subtree:true});})();
+</script>
+<script>
+/* ===== Practice tools engine: one tested codebase, several sentence sets =====
+   Each tool (auxiliaries, position verbs) has its own screens, data and storage keys.
+   Nothing here touches the connectives game. */
+(function(){
+'use strict';
+const g=id=>document.getElementById(id);
+const SCREENS=['setup','lessonPage','referencePage','game','results'];
+function show(id){SCREENS.forEach(s=>{const e=g(s);if(e)e.classList.toggle('hidden',s!==id)});window.scrollTo(0,0)}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const tokens=s=>String(s).match(/\S+/g)||[];
+const bare=t=>t.replace(/^[^\p{L}]+|[^\p{L}]+$/gu,'').toLowerCase();
+const normTyped=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').replace(/[\s.!?,;:]+$/,'').trim();
+const load=k=>{try{const v=JSON.parse(localStorage.getItem(k)||'{}');return v&&typeof v==='object'?v:{}}catch(e){return {}}};
+const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+
+function markup(p,c){
+ return `
+  <section id="${p}Setup" class="card hidden">
+    <div class="intro"><div><div class="eyebrow">${esc(c.eyebrow)}</div><h2>${esc(c.title)}</h2><p>${esc(c.intro)}</p></div></div>
+    <div class="settings">
+      <div class="field"><label for="${p}Stage">Stage</label><select id="${p}Stage"></select></div>
+      <div class="field"><label for="${p}Count">Questions per session</label><select id="${p}Count"><option>10</option><option selected>15</option><option>20</option></select></div>
+    </div>
+    <div class="lk" id="${p}Rule"></div>
+    <div class="field" style="margin-top:16px"><label>Exercise mode</label><div class="modes" id="${p}Modes">
+      <button type="button" class="mode active" data-tool-mode="Choose">Choose the word</button>
+      <button type="button" class="mode" data-tool-mode="Type">Type the word</button>
+      <button type="button" class="mode" data-tool-mode="Build">Build the sentence</button>
+      <button type="button" class="mode" data-tool-mode="Mistake">Find the mistake</button>
+      <button type="button" class="mode" data-tool-mode="Mixed" style="grid-column:1/-1">Mixed (variety)</button>
+    </div></div>
+    <label class="aux-check-row"><input type="checkbox" id="${p}IncludeKnown"> Also practise sentences I marked as known (Ik ken dit al)</label>
+    <details class="picker" id="${p}Progress"><summary class="pickersum"><b>Your progress</b><span class="chev"></span><div class="selection-note" id="${p}ProgressNote">Progress is saved in this browser.</div></summary><div class="word-progress" id="${p}ProgressRows"></div><div class="actions" style="margin-top:12px"><button type="button" class="ghost" id="${p}Reset">Reset progress for this tool</button></div></details>
+    <div class="small" id="${p}Note" style="margin-top:14px"></div>
+    <div class="actions" style="margin-top:14px"><button type="button" id="${p}Start">Start practising \u2192</button></div>
+    <div class="actions" style="margin-top:14px"><button type="button" class="secondary" id="${p}OpenSheet">Cheat sheet: forms and rules</button><button type="button" class="ghost" id="${p}Home">\u2190 Back to main page</button></div>
+  </section>
+
+  <section id="${p}Sheet" class="card hidden">
+    <div class="intro"><div><div class="eyebrow">Cheat sheet</div><h2>${esc(c.sheetTitle)}</h2></div></div>
+    ${c.sheetHtml}
+    <div class="actions" style="margin-top:18px"><button type="button" id="${p}SheetBack">\u2190 Back to practice</button></div>
+  </section>
+
+  <section id="${p}Game" class="card hidden">
+    <div class="quiz-head"><span class="tag" id="${p}Kind">Choose the word</span><span class="small" id="${p}Counter">Question 1 / 15</span><span class="score" id="${p}Points">0 points</span></div>
+    <div class="progress"><div class="bar" id="${p}Bar"></div></div>
+    <div class="eyebrow" id="${p}Category">Stage</div>
+    <h2 class="qtitle" id="${p}Prompt"></h2>
+    <p class="cue hidden" id="${p}En"></p>
+    <div class="fill-hint"><button type="button" class="ghost" id="${p}ShowEn">Show English hint</button></div>
+    <div id="${p}Response"></div>
+    <div id="${p}Feedback" class="feedback hidden" aria-live="polite"></div>
+    <div class="foot"><button type="button" class="secondary" id="${p}Quit">End session</button><button type="button" id="${p}Check" disabled>Check answer</button></div>
+  </section>
+
+  <section id="${p}Results" class="card hidden result">
+    <div class="eyebrow">Session complete</div><h2>Goed gedaan!</h2><div class="big" id="${p}FinalScore">0/15</div><p id="${p}Summary"></p>
+    <div class="review" id="${p}Review"></div>
+    <div class="actions" style="justify-content:center;margin-top:22px"><button type="button" id="${p}Again">Play again</button><button type="button" class="secondary" id="${p}Back">Back to settings</button></div>
+  </section>`;
+}
+
+function makeTool(c){
+ const p=c.p, gi=n=>g(p+n), STAGES=c.stages, STAGE_RULES=c.rules;
+ const ITEMS=[],cnt={};
+ c.raw.forEach(r=>{cnt[r[0]]=(cnt[r[0]]||0)+1;ITEMS.push({id:r[0]+'.'+cnt[r[0]],stage:r[0]-1,s:r[1],a:r[2],o:r[3],en:r[4],why:r[5],tag:r[6]})});
+ ['Setup','Sheet','Game','Results'].forEach(n=>SCREENS.push(p+n));
+ document.querySelector('.wrap').insertAdjacentHTML('beforeend',markup(p,c));
+
+ const PK=c.pk,KK=c.kk;
+ const prog=it=>load(PK)[it.id]||{a:0,c:0,s:0};
+ const isKnown=it=>!!load(KK)[it.id];
+ const mastered=it=>isKnown(it)||prog(it).s>=2;
+ function record(it,ok){const d=load(PK),q=d[it.id]||{a:0,c:0,s:0};q.a++;if(ok){q.c++;q.s++}else q.s=0;d[it.id]=q;save(PK,d)}
+ const full=it=>it.s.replace('___',it.a);
+ const gapHtml=(cls,text)=>`<span class="aux-gap ${cls||''}">${text?esc(text):'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'}</span>`;
+ const sentenceHtml=(it,fill,cls)=>it.s.split('___').map(esc).join(gapHtml(cls,fill));
+
+ let mode='Choose',count=15;
+ const buildable=it=>{const n=tokens(full(it)).length;return n>=3&&n<=10};
+ function mistakeVariant(it){
+  for(const w of shuffle(it.o)){
+   const sent=it.s.replace('___',w),toks=tokens(sent);
+   const idxs=toks.map((t,i)=>bare(t)===w.toLowerCase()?i:-1).filter(i=>i>=0);
+   if(idxs.length===1)return {sent,toks,idx:idxs[0],wrong:w};
+  }
+  return null;
+ }
+ function fitsMode(it){return mode==='Build'?buildable(it):mode==='Mistake'?!!mistakeVariant(it):true}
+ function poolFor(){
+  const v=gi('Stage').value,incl=gi('IncludeKnown').checked;
+  return ITEMS.filter(it=>(v==='all'||it.stage===+v)&&(incl||!isKnown(it))&&fitsMode(it));
+ }
+ function renderSetup(){
+  const sel=gi('Stage');
+  if(!sel.options.length){
+   const all=document.createElement('option');all.value='all';all.textContent=`All stages (${ITEMS.length})`;sel.appendChild(all);
+   STAGES.forEach((n,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=`Stage ${i+1}: ${n} (${ITEMS.filter(x=>x.stage===i).length})`;sel.appendChild(o)});
+   sel.value='0';
+  }
+  const v=sel.value;
+  gi('Rule').textContent=v==='all'?c.tip:STAGE_RULES[+v];
+  gi('Modes').querySelectorAll('[data-tool-mode]').forEach(b=>b.classList.toggle('active',b.dataset.toolMode===mode));
+  const n=poolFor().length;
+  gi('Note').textContent=n?`${n} sentence${n===1?'':'s'} available${mode==='Build'||mode==='Mistake'?' for this mode':''}${n<count?` (the session will have ${n} questions)`:''}.`:'Nothing to practise here: every sentence is marked as known. Tick the box above to practise them anyway.';
+  gi('Start').disabled=!n;
+  gi('ProgressRows').innerHTML=STAGES.map((nm,i)=>{const its=ITEMS.filter(x=>x.stage===i),m=its.filter(mastered).length;return `<div class="word-progress-row"><span>${i+1}. ${esc(nm)}</span><span class="word-progress-track"><span class="word-progress-fill" style="width:${Math.round(m/its.length*100)}%"></span></span><span>${m}/${its.length}</span></div>`}).join('');
+  gi('ProgressNote').textContent=`${ITEMS.filter(mastered).length} of ${ITEMS.length} sentences mastered. Saved in this browser.`;
+ }
+
+ function chooseMode(it){
+  if(mode!=='Mixed')return mode;
+  const ok=['Choose','Choose','Choose','Type','Type'];
+  if(buildable(it))ok.push('Build');
+  if(mistakeVariant(it))ok.push('Mistake','Mistake');
+  return pick(ok);
+ }
+ function makeQuestion(it){
+  let m=chooseMode(it);
+  const q={it,mode:m};
+  if(m==='Mistake'){q.mv=mistakeVariant(it);if(!q.mv)m=q.mode='Choose'}
+  if(m==='Build'&&tokens(full(it)).length<2)m=q.mode='Choose';
+  if(m==='Choose')q.options=shuffle([it.a,...it.o]);
+  if(m==='Build'){q.answerTokens=tokens(full(it));q.tiles=shuffle(q.answerTokens);let t=0;while(q.tiles.join(' ')===q.answerTokens.join(' ')&&t++<8)q.tiles=shuffle(q.answerTokens)}
+  return q;
+ }
+ let qs=[],idx=0,score=0,total=0,outcomes=[],cur=null,checked=false,chosen=null,sel=null;
+ function start(){
+  const pool=poolFor();if(!pool.length)return;
+  const n=Math.min(count,pool.length);
+  const ranked=shuffle(pool).sort((a,b)=>(mastered(a)?1:0)-(mastered(b)?1:0));
+  qs=shuffle(ranked.slice(0,n)).map(makeQuestion);total=qs.length;idx=0;score=0;outcomes=[];
+  show(p+'Game');render();
+ }
+ const PROMPTS={Choose:'Choose the missing word:',Type:'Type the missing word:',Build:'Put the words in the correct order:',Mistake:'One word is wrong. Tap it:'};
+ const KINDS={Choose:'Choose the word',Type:'Type the word',Build:'Build the sentence',Mistake:'Find the mistake'};
+ function render(){
+  cur=qs[idx];checked=false;chosen=null;sel=null;
+  const q=cur,it=q.it;
+  gi('Kind').textContent=KINDS[q.mode]+(q.retry?'  retry (no points)':'');
+  gi('Counter').textContent=q.retry?`Retry ${idx+1} / ${qs.length}`:`Question ${idx+1} / ${qs.length}`;
+  gi('Points').textContent=`${score} points`;
+  gi('Bar').style.width=`${idx/qs.length*100}%`;
+  gi('Category').textContent=`Stage ${it.stage+1}: ${STAGES[it.stage]}`;
+  gi('Prompt').textContent=PROMPTS[q.mode];
+  gi('Feedback').classList.add('hidden');gi('Feedback').innerHTML='';
+  const en=gi('En');en.classList.add('hidden');en.textContent='';
+  const enBtn=gi('ShowEn'),showEnglishNow=q.mode==='Build';
+  enBtn.classList.toggle('hidden',showEnglishNow);enBtn.disabled=false;enBtn.textContent='Show English hint';
+  if(showEnglishNow){en.textContent=it.en;en.classList.remove('hidden')}
+  enBtn.onclick=()=>{en.textContent=it.en;en.classList.remove('hidden');enBtn.disabled=true;enBtn.textContent='English hint shown'};
+  const r=gi('Response');r.innerHTML='';
+  const chk=gi('Check');chk.classList.remove('hidden');chk.disabled=true;chk.textContent='Check answer';chk.onclick=grade;
+  const sentenceDiv=()=>{const s=document.createElement('div');s.className='aux-sentence';s.id=p+'Sentence';s.innerHTML=sentenceHtml(it,'');r.appendChild(s)};
+  if(q.mode==='Choose'){
+   sentenceDiv();
+   const wrap=document.createElement('div');wrap.className='options';
+   q.options.forEach(opt=>{const b=document.createElement('button');b.type='button';b.className='option';b.textContent=opt;b.onclick=()=>{if(checked)return;chosen=opt;[...wrap.children].forEach(x=>x.classList.remove('selected'));b.classList.add('selected');chk.disabled=false};wrap.appendChild(b)});
+   r.appendChild(wrap);
+  }else if(q.mode==='Type'){
+   sentenceDiv();
+   const inp=document.createElement('input');inp.className='answer';inp.placeholder='Type the missing word';inp.autocomplete='off';inp.autocapitalize='off';inp.spellcheck=false;
+   inp.addEventListener('input',()=>{chosen=inp.value;chk.disabled=!inp.value.trim()});
+   inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!chk.disabled)chk.click()});
+   r.appendChild(inp);inp.focus();
+  }else if(q.mode==='Build'){
+   const board=document.createElement('div');board.className='scramble-board';
+   const z1=document.createElement('div');z1.className='scramble-zone';z1.innerHTML='<div class="scramble-label">Your sentence</div>';
+   const mine=document.createElement('div');mine.className='scramble-words';z1.appendChild(mine);
+   const acts=document.createElement('div');acts.className='scramble-actions';const reset=document.createElement('button');reset.type='button';reset.className='ghost';reset.textContent='Reset';acts.appendChild(reset);z1.appendChild(acts);
+   const z2=document.createElement('div');z2.className='scramble-zone';z2.innerHTML='<div class="scramble-label">Scrambled words</div>';
+   const bank=document.createElement('div');bank.className='scramble-words';z2.appendChild(bank);
+   board.append(z1,z2);r.appendChild(board);
+   const avail=q.tiles.map((w,i)=>({w,i})),picked=[];
+   const refresh=()=>{
+    mine.innerHTML='';bank.innerHTML='';
+    if(!picked.length){const e=document.createElement('span');e.className='scramble-empty';e.textContent='Tap words below to build the sentence.';mine.appendChild(e)}
+    picked.forEach((t,pos)=>{const b=document.createElement('button');b.type='button';b.className='scramble-word';b.textContent=t.w;b.onclick=()=>{if(checked)return;picked.splice(pos,1);refresh()};mine.appendChild(b)});
+    avail.filter(t=>!picked.some(x=>x.i===t.i)).forEach(t=>{const b=document.createElement('button');b.type='button';b.className='scramble-word';b.textContent=t.w;b.onclick=()=>{if(checked)return;picked.push(t);refresh()};bank.appendChild(b)});
+    chk.disabled=picked.length!==q.tiles.length;
+   };
+   reset.onclick=()=>{if(checked)return;picked.length=0;refresh()};
+   q.getBuilt=()=>picked.map(x=>x.w).join(' ');
+   refresh();
+  }else if(q.mode==='Mistake'){
+   const box=document.createElement('div');box.className='aux-sentence aux-toks';
+   q.mv.toks.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.className='aux-tok';b.textContent=t;b.onclick=()=>{if(checked)return;sel=i;[...box.children].forEach(x=>x.classList.remove('selected'));b.classList.add('selected');chk.disabled=false};box.appendChild(b)});
+   r.appendChild(box);q.box=box;
+  }
+ }
+ function grade(){
+  if(checked)return;checked=true;
+  const q=cur,it=q.it;let ok=false;
+  if(q.mode==='Choose')ok=chosen===it.a;
+  else if(q.mode==='Type')ok=normTyped(chosen)===it.a.toLowerCase();
+  else if(q.mode==='Build')ok=q.getBuilt()===q.answerTokens.join(' ');
+  else if(q.mode==='Mistake')ok=sel===q.mv.idx;
+  if(!q.retry){
+   if(ok)score++;record(it,ok);
+   const o={ok,it,recovered:false};outcomes.push(o);
+   if(!ok)qs.push(Object.assign({},q,{retry:true,outcome:o}));
+  }else if(ok&&q.outcome)q.outcome.recovered=true;
+  if(q.mode==='Choose')document.querySelectorAll('#'+p+'Response .option').forEach(b=>{if(b.textContent===it.a)b.classList.add('correct');else if(b.textContent===chosen)b.classList.add('wrong')});
+  if(q.mode==='Choose'||q.mode==='Type'){const s=gi('Sentence');if(s)s.innerHTML=sentenceHtml(it,it.a,'good')}
+  if(q.mode==='Mistake')[...q.box.children].forEach((b,i)=>{if(i===q.mv.idx)b.classList.add(ok?'correct':'wrong');else if(i===sel)b.classList.add('wrong')});
+  const fb=gi('Feedback');fb.className='feedback '+(ok?'good':'bad');
+  const head=ok?(q.retry?'Correct (no points on a retry)':'Correct!'):'Not quite';
+  let extra='';
+  if(!ok){
+   if(q.mode==='Mistake')extra=`<p>The wrong word was <b>${esc(q.mv.wrong)}</b>. It should be <b>${esc(it.a)}</b>.</p>`;
+   else if(q.mode==='Type'||q.mode==='Choose')extra=`<p><b>Correct answer:</b> ${esc(it.a)}</p>`;
+   else if(q.mode==='Build')extra=`<p class="small">Dutch word order can sometimes vary. This exercise checks the model sentence below, so compare yours with it.</p>`;
+   if(!q.retry)extra+=`<p>This question comes back at the end (no points).</p>`;
+  }
+  const kn=isKnown(it);
+  fb.innerHTML=`<h3>${head}</h3>${extra}<div class="example"><b>${esc(full(it))}</b><br><span class="small">${esc(it.en)}</span></div><p style="margin-top:10px"><b>Why:</b> ${esc(it.why)}</p><p class="small">Type: ${esc(it.tag)}</p><div class="actions" style="margin-top:8px"><button type="button" class="ghost" id="${p}Know">${kn?'Marked as known (tap to undo)':'Ik ken dit al'}</button></div>`;
+  gi('Know').onclick=()=>{const d=load(KK);if(d[it.id]){delete d[it.id];gi('Know').textContent='Ik ken dit al'}else{d[it.id]=1;gi('Know').textContent='Marked as known (tap to undo)'}save(KK,d)};
+  gi('Points').textContent=`${score} points`;
+  const chk=gi('Check');chk.textContent=idx===qs.length-1?'Finish session':'Next question';chk.disabled=false;chk.onclick=next;
+ }
+ function next(){idx++;if(idx>=qs.length){finish();return}render()}
+ function finish(){
+  show(p+'Results');
+  gi('FinalScore').textContent=`${score}/${total}`;
+  const pct=total?Math.round(score/total*100):0;
+  gi('Summary').textContent=`${pct}% correct on the first try. ${pct>=85?'Uitstekend!':pct>=65?'Good progress. Practise the ones you missed.':'Keep going. Read the cheat sheet and try another round.'}`;
+  gi('Review').innerHTML=outcomes.map((o,i)=>`<div class="review-item"><span>${i+1}. ${esc(full(o.it))}</span><b style="color:${o.ok?'var(--green)':o.recovered?'#b7791f':'var(--red)'}">${o.ok?'\u2713':o.recovered?'Fixed on retry':'Review'}</b></div>`).join('');
+ }
+
+ g(c.openId).onclick=()=>{renderSetup();show(p+'Setup')};
+ gi('Home').onclick=()=>showTopicHome();
+ gi('Stage').onchange=renderSetup;
+ gi('IncludeKnown').onchange=renderSetup;
+ gi('Count').onchange=()=>{count=+gi('Count').value;renderSetup()};
+ gi('Modes').addEventListener('click',e=>{const b=e.target.closest('[data-tool-mode]');if(!b)return;mode=b.dataset.toolMode;renderSetup()});
+ gi('Start').onclick=start;
+ gi('Again').onclick=()=>start();
+ gi('Back').onclick=()=>{renderSetup();show(p+'Setup')};
+ gi('Quit').onclick=()=>{renderSetup();show(p+'Setup')};
+ gi('OpenSheet').onclick=()=>show(p+'Sheet');
+ gi('SheetBack').onclick=()=>{renderSetup();show(p+'Setup')};
+ gi('Reset').onclick=()=>{if(!confirm('Reset all progress and "Ik ken dit al" marks for this tool?'))return;try{localStorage.removeItem(PK);localStorage.removeItem(KK)}catch(e){}renderSetup()};
+ count=+gi('Count').value||15;
+ window.__tools=window.__tools||{};
+ window.__tools[p]={ITEMS,mistakeVariant,STAGES};
+}
+
+/* --- Tool 1: is / was / had --- */
+(function(){
+const RAW=[
+/* Stage 1: main verb zijn / hebben (present) */
+[1,"Ik ___ honger.","heb",["ben"],"I'm hungry.","Hunger is a need you have: ik heb honger (never ik ben honger).","need"],
+[1,"Hij ___ leraar.","is",["heeft"],"He is a teacher.","Identity or profession uses zijn.","identity"],
+[1,"Wij ___ erg moe.","zijn",["hebben"],"We are very tired.","Being tired is a state: moe zijn.","state"],
+[1,"Zij ___ pijn in haar rug.","heeft",["is"],"She has a pain in her back.","Pain is something you have: pijn hebben.","need"],
+[1,"Jij ___ gelijk.","hebt",["bent"],"You are right.","Gelijk hebben = to be right. Do not translate 'to be' word for word.","need"],
+[1,"Het ___ vandaag erg koud.","is",["heeft"],"It is very cold today.","Weather and temperature use zijn.","state"],
+[1,"Ik ___ dorst.","heb",["ben"],"I'm thirsty.","Thirst is a need: dorst hebben.","need"],
+[1,"De kinderen ___ bang voor honden.","zijn",["hebben"],"The children are afraid of dogs.","Bang, blij and boos are states with zijn. Honger, dorst and pijn take hebben.","state"],
+[1,"Wij ___ een nieuwe auto.","hebben",["zijn"],"We have a new car.","Possession uses hebben.","possession"],
+[1,"Mijn broer ___ haast.","heeft",["is"],"My brother is in a hurry.","Haast hebben = to be in a hurry.","need"],
+[1,"Waar ___ jij nu?","bent",["hebt"],"Where are you now?","Location uses zijn.","location"],
+[1,"Ik ___ zin in een kop koffie.","heb",["ben"],"I feel like a cup of coffee.","Zin hebben in = to feel like.","need"],
+[1,"De kinderen ___ klaar met het werk.","zijn",["hebben"],"The children are finished with the work.","Klaar zijn = to be finished.","state"],
+[1,"Mijn buurman ___ vandaag jarig.","is",["heeft"],"My neighbour has his birthday today.","Jarig zijn = to have a birthday.","state"],
+[1,"Ik ___ geen tijd om te helpen.","heb",["ben"],"I have no time to help.","Tijd hebben = to have time.","need"],
+[1,"Het ___ stil in de klas.","is",["heeft"],"It is quiet in the classroom.","The state of a place uses zijn.","state"],
+/* Stage 2: perfect, zijn or hebben */
+[2,"Gisteren ___ ik naar Utrecht gefietst.","ben",["heb"],"Yesterday I cycled to Utrecht.","Fietsen with a destination (naar Utrecht) takes zijn.","movement"],
+[2,"Gisteren ___ ik een uur gefietst.","heb",["ben"],"Yesterday I cycled for an hour.","Fietsen as an activity (no destination) takes hebben.","activity"],
+[2,"Mijn zus ___ naar huis gegaan.","is",["heeft"],"My sister went home.","Gaan is movement from A to B: zijn.","movement"],
+[2,"Wij ___ om acht uur aangekomen.","zijn",["hebben"],"We arrived at eight o'clock.","Aankomen is movement to a place: zijn.","movement"],
+[2,"De trein ___ net vertrokken.","is",["heeft"],"The train has just left.","Vertrekken is movement away: zijn.","movement"],
+[2,"Hij ___ gisteren naar Spanje gevlogen.","is",["heeft"],"Yesterday he flew to Spain.","Vliegen with a destination (naar Spanje) takes zijn.","movement"],
+[2,"Hij ___ tien uur gevlogen.","heeft",["is"],"He flew for ten hours.","A duration and no destination: hebben.","activity"],
+[2,"Ik ___ een boek gelezen.","heb",["ben"],"I read a book.","A direct object (een boek) means hebben.","object"],
+[2,"De les ___ begonnen.","is",["heeft"],"The lesson has started.","Beginnen is a change of state: zijn.","change of state"],
+[2,"Jij ___ goed geslapen.","hebt",["bent"],"You slept well.","Slapen is an activity: hebben.","activity"],
+[2,"Het ___ gelukt!","is",["heeft"],"It worked!","Lukken always takes zijn.","change of state"],
+[2,"Ik ___ de hele dag thuis gebleven.","ben",["heb"],"I stayed at home all day.","Blijven always takes zijn, even with a duration.","change of state"],
+[2,"Wij ___ lang op de trein gewacht.","hebben",["zijn"],"We waited a long time for the train.","Wachten is an activity: hebben.","activity"],
+[2,"Mijn opa ___ in 2019 gestorven.","is",["heeft"],"My grandfather died in 2019.","Sterven is a change of state: zijn.","change of state"],
+[2,"De boom ___ omgevallen.","is",["heeft"],"The tree has fallen over.","Vallen is a change of state: zijn.","change of state"],
+[2,"Het kind ___ snel gegroeid.","is",["heeft"],"The child has grown quickly.","Groeien is a change of state: zijn.","change of state"],
+[2,"Hij ___ voor zijn examen geslaagd.","is",["heeft"],"He passed his exam.","Slagen takes zijn.","change of state"],
+[2,"Wat ___ er gebeurd?","is",["heeft"],"What happened?","Gebeuren always takes zijn.","change of state"],
+[2,"Ik ___ mijn vriend gebeld.","heb",["ben"],"I called my friend.","A direct object (mijn vriend) means hebben.","object"],
+[2,"Mijn broertje ___ zich gewassen.","heeft",["is"],"My little brother washed himself.","Reflexive verbs take hebben.","reflexive"],
+[2,"Ik ___ naar het station gelopen.","ben",["heb"],"I walked to the station.","Lopen with a destination takes zijn.","movement"],
+[2,"Mijn zus ___ een uur gezwommen.","heeft",["is"],"My sister swam for an hour.","Zwemmen as an activity takes hebben.","activity"],
+[2,"Het meisje ___ naar de overkant gezwommen.","is",["heeft"],"The girl swam to the other side.","Zwemmen with a destination takes zijn.","movement"],
+[2,"Wij ___ met de auto naar Berlijn gereden.","zijn",["hebben"],"We drove to Berlin by car.","Rijden with a destination takes zijn.","movement"],
+[2,"Wij ___ de hele dag gereden.","hebben",["zijn"],"We drove all day.","Rijden as an activity takes hebben.","activity"],
+[2,"Ik ___ gisteren moeten werken.","heb",["ben"],"I had to work yesterday.","Modal verbs take hebben.","modal"],
+[2,"De sneeuw ___ gesmolten.","is",["heeft"],"The snow has melted.","Smelten is a change of state: zijn.","change of state"],
+[2,"Zij ___ haar sleutels vergeten.","heeft",["is"],"She forgot her keys.","A direct object (haar sleutels) means hebben.","object"],
+[2,"Hij ___ gisteren veel gelachen.","heeft",["is"],"He laughed a lot yesterday.","Lachen is an activity: hebben.","activity"],
+[2,"Ik ___ twee jaar in Rotterdam gewoond.","heb",["ben"],"I lived in Rotterdam for two years.","Wonen is an activity or state without movement: hebben.","activity"],
+[2,"De bus ___ te laat gekomen.","is",["heeft"],"The bus came too late.","Komen is movement: zijn.","movement"],
+[2,"Mijn zus ___ vorig jaar verhuisd.","is",["heeft"],"My sister moved house last year.","Verhuizen is a move from one place to another: zijn.","movement"],
+[2,"De buren ___ mij gisteren niet gezien.","hebben",["zijn"],"The neighbours did not see me yesterday.","A direct object (mij) means hebben.","object"],
+[2,"Ik ___ vroeg opgestaan.","ben",["heb"],"I got up early.","Opstaan takes zijn.","change of state"],
+[2,"Het weer ___ veel beter geworden.","is",["heeft"],"The weather has become much better.","Worden always takes zijn.","change of state"],
+[2,"Wij ___ gisteren veel gedanst.","hebben",["zijn"],"We danced a lot yesterday.","Dansen is an activity: hebben.","activity"],
+/* Stage 3: past, was / had */
+[3,"Ik ___ gisteren erg moe.","was",["had"],"I was very tired yesterday.","A past state: was.","state"],
+[3,"Ik ___ gisteren koorts.","had",["was"],"I had a fever yesterday.","Koorts is something you have: had.","feeling or need"],
+[3,"Het ___ koud in de kamer.","was",["had"],"It was cold in the room.","Past background or state: was.","state"],
+[3,"Wij ___ ziek tijdens de vakantie.","waren",["hadden"],"We were ill during the holiday.","Ziek zijn is a state: waren.","state"],
+[3,"Mijn ouders ___ een groot huis.","hadden",["waren"],"My parents had a big house.","Past possession: hadden.","possession"],
+[3,"De winkel ___ gisteren dicht.","was",["had"],"The shop was closed yesterday.","Dicht zijn is a state: was.","state"],
+[3,"Na de wandeling ___ wij honger.","hadden",["waren"],"After the walk we were hungry.","Honger hebben: hadden.","feeling or need"],
+[3,"Toen ik klein ___, woonden we in Leeds.","was",["had"],"When I was small, we lived in Leeds.","Klein zijn is a state: was.","state"],
+[3,"Jij ___ gelijk, het was echt te laat.","had",["was"],"You were right, it really was too late.","Gelijk hebben: had.","feeling or need"],
+[3,"De kinderen ___ bang in het donker.","waren",["hadden"],"The children were afraid in the dark.","Bang zijn is a state: waren.","state"],
+[3,"Ik ___ geen tijd om te koken.","had",["was"],"I had no time to cook.","Tijd hebben: had.","feeling or need"],
+[3,"Mijn vader ___ vroeger een motor.","had",["was"],"My father used to have a motorbike.","Past possession: had.","possession"],
+[3,"De film ___ erg lang.","was",["had"],"The film was very long.","Describing something in the past: was.","state"],
+[3,"Wij ___ haast en namen een taxi.","hadden",["waren"],"We were in a hurry and took a taxi.","Haast hebben: hadden.","feeling or need"],
+[3,"Het kind ___ pijn in zijn buik.","had",["was"],"The child had a pain in its stomach.","Pijn hebben: had.","feeling or need"],
+[3,"Er ___ veel mensen op het feest.","waren",["hadden"],"There were many people at the party.","Er waren: existence is expressed with zijn.","state"],
+/* Stage 4: pluperfect and which tense */
+[4,"Toen ik aankwam, ___ de film al begonnen.","was",["is","heeft","had"],"When I arrived, the film had already started.","Earlier than another past event: pluperfect. Beginnen takes zijn, so was.","pluperfect"],
+[4,"Ik ___ al gegeten toen hij belde.","had",["heb","ben","was"],"I had already eaten when he called.","Eten takes hebben and the event is earlier in the past: had.","pluperfect"],
+[4,"Toen wij thuiskwamen, ___ de gasten al vertrokken.","waren",["zijn","hebben","hadden"],"When we got home, the guests had already left.","Vertrekken takes zijn and it is past: waren.","pluperfect"],
+[4,"Hij zei dat hij zijn sleutels vergeten ___.","had",["heeft","is","was"],"He said he had forgotten his keys.","Vergeten takes hebben, and reported speech in the past gives had.","pluperfect"],
+[4,"Nadat ik gegeten ___, ging ik wandelen.","had",["heb","ben","was"],"After I had eaten, I went for a walk.","Nadat plus an earlier past action: had gegeten.","pluperfect"],
+[4,"Nadat zij naar Amsterdam verhuisd ___, vond ze een baan.","was",["is","heeft","had"],"After she had moved to Amsterdam, she found a job.","Verhuizen takes zijn, earlier past: was.","pluperfect"],
+[4,"Toen de politie arriveerde, ___ de dief al weggelopen.","was",["is","heeft","had"],"When the police arrived, the thief had already run away.","Weglopen is movement away: zijn, in the past: was.","pluperfect"],
+[4,"Ik ___ de brief al geschreven voordat je belde.","had",["heb","ben","was"],"I had already written the letter before you called.","Schrijven takes hebben, earlier past: had.","pluperfect"],
+[4,"Toen wij aankwamen, ___ het feest al afgelopen.","was",["is","heeft","had"],"When we arrived, the party was already over.","Afgelopen zijn is a state that already existed in the past: was.","pluperfect"],
+[4,"Mijn zus ___ al lang geslapen toen de wekker ging.","had",["heeft","is","was"],"My sister had already been sleeping for a long time when the alarm went off.","Slapen takes hebben, earlier past: had.","pluperfect"],
+[4,"Wij ___ al vertrokken toen het begon te regenen.","waren",["zijn","hebben","hadden"],"We had already left when it started to rain.","Vertrekken takes zijn, earlier past: waren.","pluperfect"],
+[4,"Het is gelukt omdat jij zo goed geholpen ___.","hebt",["had","bent","was"],"It worked because you helped so well.","The result matters now, so this is a normal perfect: hebt. Helpen takes hebben.","perfect or pluperfect"],
+[4,"Ik weet het niet, want ik ___ het boek nog niet gelezen.","heb",["had","ben","was"],"I don't know, because I haven't read the book yet.","Relevant now, so a perfect (heb), not a pluperfect.","perfect or pluperfect"],
+[4,"De kinderen ___ al naar school gegaan toen ik opstond.","waren",["zijn","hebben","hadden"],"The children had already gone to school when I got up.","Gaan takes zijn, earlier past: waren.","pluperfect"],
+[4,"Hij had honger, want hij ___ de hele dag niets gegeten.","had",["heeft","is","was"],"He was hungry, because he had eaten nothing all day.","Eten takes hebben, and the story is in the past: had.","pluperfect"],
+[4,"Gisteren ___ ik laat thuisgekomen.","ben",["was","heb","had"],"Yesterday I came home late.","There is no earlier past event, so this is an ordinary perfect with zijn: ben.","perfect or pluperfect"],
+/* Stage 5: unreal conditions and modal perfects */
+[5,"Als ik tijd ___, zou ik komen.","had",["was"],"If I had time, I would come.","Unreal present: had here is not a real past. Tijd is something you have.","unreal present"],
+[5,"Als ik rijk ___, zou ik de wereld rondreizen.","was",["had"],"If I were rich, I would travel the world.","Unreal present: rijk zijn gives was.","unreal present"],
+[5,"Als wij een auto ___, zouden we vaker op bezoek gaan.","hadden",["waren"],"If we had a car, we would visit more often.","Unreal present: een auto hebben gives hadden.","unreal present"],
+[5,"Als het mooi weer ___, zouden we naar het strand gaan.","was",["had"],"If the weather were nice, we would go to the beach.","Unreal present: weather is a state, so was.","unreal present"],
+[5,"Als jij ziek ___, zou je thuisblijven.","was",["had"],"If you were ill, you would stay at home.","Unreal present: ziek zijn gives was.","unreal present"],
+[5,"Als zij meer geld ___, zou ze een huis kopen.","had",["was"],"If she had more money, she would buy a house.","Unreal present: geld hebben gives had.","unreal present"],
+[5,"Als ik jou ___, zou ik het niet doen.","was",["had"],"If I were you, I wouldn't do it.","A set phrase: als ik jou was.","unreal present"],
+[5,"Als ik het ___ geweten, was ik niet gegaan.","had",["was"],"If I had known, I wouldn't have gone.","Weten takes hebben in the als-clause. Gaan takes zijn in the main clause (two auxiliaries).","unreal past"],
+[5,"Als ik het had geweten, ___ ik niet gegaan.","was",["had"],"If I had known it, I wouldn't have gone.","Gaan is movement: zijn, so was ik gegaan.","unreal past"],
+[5,"Als hij eerder ___ vertrokken, had hij de trein gehaald.","was",["had"],"If he had left earlier, he would have caught the train.","Vertrekken takes zijn: was vertrokken. Halen takes hebben: had gehaald.","unreal past"],
+[5,"Als wij meer ___ geoefend, hadden we de test gehaald.","hadden",["waren"],"If we had practised more, we would have passed the test.","Oefenen takes hebben: hadden geoefend.","unreal past"],
+[5,"Als ik het geld ___ gehad, had ik de fiets gekocht.","had",["was"],"If I had had the money, I would have bought the bike.","Hebben takes hebben: had gehad.","unreal past"],
+[5,"Ik ___ moeten bellen.","had",["was"],"I should have called.","Should have, could have and would have always use had.","modal perfect"],
+[5,"Wij ___ kunnen helpen als je het had gevraagd.","hadden",["waren"],"We could have helped if you had asked.","Modal perfects always use had.","modal perfect"],
+[5,"Zij ___ willen komen, maar ze was ziek.","had",["was"],"She would have liked to come, but she was ill.","Always had with a modal, never was.","modal perfect"],
+[5,"Je ___ eerder moeten vertrekken.","had",["was"],"You should have left earlier.","Vertrekken takes zijn, but with a modal the auxiliary is always had.","modal perfect"],
+/* Stage 6: passive, wordt / is / werd */
+[6,"Het huis ___ op dit moment gebouwd.","wordt",["is"],"The house is being built at the moment.","A process in progress: wordt plus participle.","process or result"],
+[6,"Het huis ___ gebouwd; je kunt er volgende week in.","is",["wordt"],"The house is built; you can move in next week.","A finished result: is plus participle (this is not the perfect).","process or result"],
+[6,"De brug ___ momenteel gerepareerd, dus er is een omleiding.","wordt",["is"],"The bridge is currently being repaired, so there is a diversion.","Momenteel signals a process: wordt.","process or result"],
+[6,"De brug ___ gerepareerd, dus je kunt er weer overheen.","is",["wordt"],"The bridge has been repaired, so you can cross it again.","The repair is finished: is.","process or result"],
+[6,"Het eten ___ nu klaargemaakt; het is bijna klaar.","wordt",["is"],"The food is being prepared now; it is almost ready.","Still in progress: wordt.","process or result"],
+[6,"Het eten ___ klaargemaakt; kom maar aan tafel.","is",["wordt"],"The food has been prepared; come to the table.","Finished: is.","process or result"],
+[6,"De deur ___ nog steeds geschilderd, dus raak hem niet aan.","wordt",["is"],"The door is still being painted, so don't touch it.","Nog steeds signals a process: wordt.","process or result"],
+[6,"De deur ___ geschilderd; de verf is al droog.","is",["wordt"],"The door has been painted; the paint is already dry.","The painting is finished: is.","process or result"],
+[6,"Het rapport ___ nu geschreven door onze stagiair.","wordt",["is"],"The report is now being written by our intern.","Nu, in progress: wordt.","process or result"],
+[6,"Het rapport ___ geschreven en ligt op je bureau.","is",["wordt"],"The report has been written and is on your desk.","Finished result: is.","process or result"],
+[6,"Elk jaar ___ hier een groot feest georganiseerd.","wordt",["werd"],"A big party is organised here every year.","Present tense: wordt.","tense"],
+[6,"Vroeger ___ hier elk jaar een groot feest georganiseerd.","werd",["wordt"],"In the past a big party was organised here every year.","Past tense: werd.","tense"],
+[6,"Gisteren ___ de nieuwe school geopend.","werd",["wordt"],"The new school was opened yesterday.","Past tense: werd.","tense"],
+[6,"Morgen ___ de nieuwe school geopend.","wordt",["werd"],"The new school will be opened tomorrow.","Dutch uses the present tense for the near future: wordt.","tense"]
+];
+makeTool({
+ p:'aux',openId:'openAux',
+ eyebrow:'Is, was, had, hadden and friends',title:'Auxiliary verbs practice',
+ intro:'One sentence, one gap. Train zijn and hebben in the present, perfect, past, pluperfect, unreal sentences and the passive, one step at a time.',
+ sheetTitle:'Zijn, hebben, was, had',
+ sheetHtml:"<h3 class=\"aux-h\">The forms and what they do</h3>\n    <div class=\"aux-wrap\"><table class=\"aux-table\">\n      <thead><tr><th>Form</th><th>What it does</th><th>Example</th><th>Common trap</th></tr></thead>\n      <tbody>\n        <tr><td><b>ben, bent, is, zijn</b></td><td>States, identity, location</td><td>Ik ben moe. Hij is leraar.</td><td>English \"I am hungry\" is <i>ik heb honger</i></td></tr>\n        <tr><td><b>heb, hebt/heeft, hebben</b></td><td>Possession, feelings and needs (honger, dorst, pijn, gelijk, zin, tijd, haast)</td><td>Ik heb pijn. We hebben een auto.</td><td>Don't translate \"to be\" word for word</td></tr>\n        <tr><td><b>was, waren</b></td><td>Past state or background</td><td>Het was koud. We waren ziek.</td><td>Not for possession</td></tr>\n        <tr><td><b>had, hadden</b></td><td>Past possession or feeling</td><td>Ik had koorts. Zij hadden een huis.</td><td>Easy to mix up with was</td></tr>\n        <tr><td><b>heb/ben + participle</b></td><td>Perfect, mostly spoken</td><td>Ik heb gegeten. Ik ben gegaan.</td><td>Which auxiliary (see below)</td></tr>\n        <tr><td><b>had/was + participle</b></td><td>Pluperfect: an earlier past before another past event</td><td>Toen ik aankwam, was de film al begonnen. Ik had al gegeten.</td><td>Same auxiliary as in the perfect, just in the past</td></tr>\n        <tr><td><b>als ik had/was, zou ik</b></td><td>Unreal present or future</td><td>Als ik tijd had, zou ik komen. Als ik rijk was, zou ik reizen.</td><td>had/was here is not a real past</td></tr>\n        <tr><td><b>als ik had + participle, was ik/zou ik</b></td><td>Unreal past (\"if I had known\")</td><td>Als ik het had geweten, was ik niet gegaan.</td><td>Two auxiliaries in one sentence</td></tr>\n        <tr><td><b>had moeten/kunnen/willen + infinitive</b></td><td>\"Should/could/would have\"</td><td>Ik had moeten bellen.</td><td>Always had, never was</td></tr>\n        <tr><td><b>wordt/werd vs is/was + participle</b></td><td>Passive: process vs result</td><td>Het huis wordt gebouwd (being built), is gebouwd (is finished)</td><td>Is here is not the perfect</td></tr>\n      </tbody>\n    </table></div>\n    <h3 class=\"aux-h\">Which auxiliary for the perfect and pluperfect: zijn or hebben</h3>\n    <div class=\"aux-wrap\"><table class=\"aux-table\">\n      <thead><tr><th>Use zijn</th><th>Use hebben</th></tr></thead>\n      <tbody>\n        <tr><td>Movement from A to B with no object: gaan, komen, vertrekken, aankomen.<br><i>Ik ben naar huis gegaan.</i></td><td>Verbs with a direct object.<br><i>Ik heb een boek gelezen.</i></td></tr>\n        <tr><td>Change of state: worden, vallen, sterven, groeien, slagen, beginnen.<br><i>De les is begonnen.</i></td><td>Most other verbs: werken, slapen, lachen, denken.<br><i>Ik heb goed geslapen.</i></td></tr>\n        <tr><td>blijven, zijn, gebeuren, lukken.<br><i>Het is gelukt. Ik ben thuis gebleven.</i></td><td>Modals: <i>Ik heb gemoeten.</i> Reflexives: <i>Ik heb me gewassen.</i></td></tr>\n        <tr><td colspan=\"2\"><b>Both are possible</b> with lopen, rijden, vliegen, fietsen, zwemmen: with a destination, zijn (<i>Ik ben naar Utrecht gefietst</i>); as an activity, hebben (<i>Ik heb een uur gefietst</i>).</td></tr>\n      </tbody>\n    </table></div>\n    <div class=\"lk\"><b>The quick test:</b> is there a destination or a change of state? Then zijn. Is there an object, or just an activity? Then hebben.</div>\n    <h3 class=\"aux-h\">Why these are hard</h3>\n    <p>The choice depends on three different things: the verb (which auxiliary), the time relation (is/heeft vs was/had) and the mood (real or unreal). Learners usually mix them up because they practise them all at once. That is why the stages separate them first and combine them later.</p>",
+ stages:["Main verb: zijn or hebben", "Perfect: zijn or hebben?", "Past: was or had", "Pluperfect: which tense?", "Unreal conditions and modal perfects", "Passive: wordt or is"],
+ rules:["Zijn is for states, identity, location and weather. Hebben is for possession and for feelings or needs: honger, dorst, pijn, gelijk, zin, tijd, haast. English \"I am hungry\" is ik heb honger.", "Is there a destination or a change of state? Then zijn. Is there an object, or just an activity? Then hebben. Blijven, gebeuren and lukken always take zijn. Modals and reflexives take hebben.", "Was and waren give a past state or background (het was koud). Had and hadden give past possession or a feeling (ik had koorts). Easy to mix up.", "The pluperfect is an earlier past before another past event, with the same auxiliary as the perfect but in the past: ik had gegeten, de film was begonnen. A perfect still matters now: ik heb gegeten.", "In unreal sentences had and was are not a real past: als ik tijd had, zou ik komen. Unreal past uses two auxiliaries: als ik het had geweten, was ik niet gegaan. Should/could/would have is always had + moeten/kunnen/willen.", "Wordt + participle is a process (the house is being built). Is + participle is the result (the house is built). Werd is the past of wordt. This is not the perfect."],
+ tip:'Tip: practise one stage at a time first, then use all stages to mix them. The choice depends on three things: the verb (which auxiliary), the time relation (is/heeft or was/had) and the mood (real or unreal).',
+ raw:RAW,pk:'dutch-aux-progress-v1',kk:'dutch-aux-known-v1'
+});
+})();
+/* --- Tool 2: staan, liggen, zitten, hangen, zetten, leggen --- */
+(function(){
+const RAW=[
+/* Stage 1: which verb? (one thing, present) */
+[1,"De fles ___ op tafel.","staat",["ligt","zit","hangt"],"The bottle is on the table.","Bottles stand upright: staan.","upright"],
+[1,"De kast ___ in de slaapkamer.","staat",["ligt","zit","hangt"],"The wardrobe is in the bedroom.","Furniture that stands on the floor: staan.","upright"],
+[1,"De auto ___ voor de deur.","staat",["ligt","zit","hangt"],"The car is in front of the door.","Cars stand (parked): staan.","upright"],
+[1,"De fiets ___ in de schuur.","staat",["ligt","zit","hangt"],"The bike is in the shed.","Bikes stand: staan.","upright"],
+[1,"De boom ___ midden in de tuin.","staat",["ligt","zit","hangt"],"The tree is in the middle of the garden.","Trees stand: staan.","upright"],
+[1,"De pan ___ op het vuur.","staat",["ligt","zit","hangt"],"The pan is on the heat.","Pots and pans stand: staan.","upright"],
+[1,"Het huis ___ er al honderd jaar.","staat",["ligt","zit","hangt"],"The house has been there for a hundred years.","Buildings stand: staan.","upright"],
+[1,"De lamp ___ op mijn bureau.","staat",["ligt","zit","hangt"],"The lamp is on my desk.","A lamp on a desk or the floor stands: staan. (One on the ceiling hangs: hangen.)","upright"],
+[1,"Het boek ___ op de bank.","ligt",["staat","zit","hangt"],"The book is on the sofa.","A book lying flat: liggen.","flat"],
+[1,"De krant ___ op de keukentafel.","ligt",["staat","zit","hangt"],"The newspaper is on the kitchen table.","Flat things lie: liggen.","flat"],
+[1,"De brief ___ al een week op mijn bureau.","ligt",["staat","zit","hangt"],"The letter has been on my desk for a week.","Flat things lie: liggen.","flat"],
+[1,"De pen ___ naast je bord.","ligt",["staat","zit","hangt"],"The pen is next to your plate.","A pen lying flat: liggen.","flat"],
+[1,"Het kussen ___ op de grond.","ligt",["staat","zit","hangt"],"The cushion is on the floor.","Flat things lie: liggen.","flat"],
+[1,"De baby ___ in bed te slapen.","ligt",["staat","zit","hangt"],"The baby is asleep in bed.","A person or animal lying down: liggen.","flat"],
+[1,"De sneeuw ___ op de daken.","ligt",["staat","zit","hangt"],"The snow is on the roofs.","Snow lies: liggen.","flat"],
+[1,"Het geld ___ op de keukentafel.","ligt",["staat","zit","hangt"],"The money is on the kitchen table.","Things lying loose on a surface: liggen.","flat"],
+[1,"De vogel ___ op een tak.","zit",["staat","ligt","hangt"],"The bird is on a branch.","Birds sit: zitten.","sitting or attached"],
+[1,"De batterij ___ in de afstandsbediening.","zit",["staat","ligt","hangt"],"The battery is in the remote control.","Something fitted inside something else: zitten.","sitting or attached"],
+[1,"De sleutel ___ nog in het slot.","zit",["staat","ligt","hangt"],"The key is still in the lock.","Something fixed in place: zitten.","sitting or attached"],
+[1,"De knoop ___ los.","zit",["staat","ligt","hangt"],"The button is loose.","Attached things use zitten: de knoop zit los.","sitting or attached"],
+[1,"Er ___ een vlek op je overhemd.","zit",["staat","ligt","hangt"],"There is a stain on your shirt.","A stain is attached to the surface: zitten.","sitting or attached"],
+[1,"De baby ___ in zijn kinderstoel.","zit",["staat","ligt","hangt"],"The baby is sitting in his highchair.","People sitting: zitten.","sitting or attached"],
+[1,"Mijn opa ___ de hele dag in zijn stoel.","zit",["staat","ligt","hangt"],"My grandad sits in his chair all day.","People sitting: zitten.","sitting or attached"],
+[1,"De pleister ___ op mijn knie.","zit",["staat","ligt","hangt"],"The plaster is on my knee.","Something stuck on: zitten.","sitting or attached"],
+[1,"De jas ___ aan de kapstok.","hangt",["staat","ligt","zit"],"The coat is on the coat rack.","Hanging from something: hangen.","hanging"],
+[1,"Het schilderij ___ boven de bank.","hangt",["staat","ligt","zit"],"The painting is above the sofa.","Hanging on a wall: hangen.","hanging"],
+[1,"De lamp ___ boven de eettafel.","hangt",["staat","ligt","zit"],"The lamp is above the dining table.","Hanging from the ceiling: hangen.","hanging"],
+[1,"De was ___ aan de lijn.","hangt",["staat","ligt","zit"],"The washing is on the line.","Hanging on a line: hangen.","hanging"],
+[1,"De klok ___ aan de muur.","hangt",["staat","ligt","zit"],"The clock is on the wall.","Hanging on a wall: hangen.","hanging"],
+[1,"De vlag ___ voor het raam.","hangt",["staat","ligt","zit"],"The flag is in front of the window.","Hanging: hangen.","hanging"],
+[1,"De spiegel ___ boven de wastafel.","hangt",["staat","ligt","zit"],"The mirror is above the washbasin.","A mirror on the wall: hangen.","hanging"],
+[2,"De sleutels ___ aan een haakje bij de deur.","hangen",["staan","liggen","zitten"],"The keys are on a hook by the door.","Hanging from a hook: hangen. The subject is plural (de sleutels), so hangen.","hanging"],
+/* Stage 2: plural and persons (ik, jij, wij) */
+[2,"De flessen ___ in de koelkast.","staan",["liggen","zitten","hangen"],"The bottles are in the fridge.","Plural: the verb ends in -en. Bottles stand: staan.","plural"],
+[2,"De glazen ___ in de kast.","staan",["liggen","zitten","hangen"],"The glasses are in the cupboard.","Plural: staan.","plural"],
+[2,"De stoelen ___ in de klas.","staan",["liggen","zitten","hangen"],"The chairs are in the classroom.","Chairs stand: staan.","plural"],
+[2,"De bomen ___ langs de weg.","staan",["liggen","zitten","hangen"],"The trees are along the road.","Trees stand: staan.","plural"],
+[2,"De schoenen ___ bij de deur.","staan",["liggen","zitten","hangen"],"The shoes are by the door.","Shoes are placed upright on the floor: staan.","plural"],
+[2,"De auto's ___ in de file.","staan",["liggen","zitten","hangen"],"The cars are in the traffic jam.","Cars stand (still) in a queue: staan.","plural"],
+[2,"De kranten ___ op tafel.","liggen",["staan","zitten","hangen"],"The newspapers are on the table.","Flat things lie: liggen.","plural"],
+[2,"De kleren ___ op het bed.","liggen",["staan","zitten","hangen"],"The clothes are on the bed.","Clothes lying flat: liggen.","plural"],
+[2,"De kaarten ___ op tafel.","liggen",["staan","zitten","hangen"],"The cards are on the table.","Flat things lie: liggen.","plural"],
+[2,"De boeken ___ op de grond naast het bed.","liggen",["staan","zitten","hangen"],"The books are on the floor next to the bed.","Books lying flat: liggen.","plural"],
+[2,"De tassen ___ in de kofferbak.","liggen",["staan","zitten","hangen"],"The bags are in the boot.","Bags lying in a boot: liggen.","plural"],
+[2,"De kinderen ___ aan tafel.","zitten",["staan","liggen","hangen"],"The children are sitting at the table.","People sitting: zitten.","plural"],
+[2,"De mensen ___ in de wachtkamer.","zitten",["staan","liggen","hangen"],"The people are sitting in the waiting room.","People sitting: zitten.","plural"],
+[2,"De vogels ___ op het dak.","zitten",["staan","liggen","hangen"],"The birds are on the roof.","Birds sit: zitten.","plural"],
+[2,"De batterijen ___ in de afstandsbediening.","zitten",["staan","liggen","hangen"],"The batteries are in the remote control.","Fitted inside: zitten.","plural"],
+[2,"De jassen ___ aan de kapstok.","hangen",["staan","liggen","zitten"],"The coats are on the coat rack.","Hanging: hangen.","plural"],
+[2,"De foto's ___ aan de muur.","hangen",["staan","liggen","zitten"],"The photos are on the wall.","Hanging on a wall: hangen.","plural"],
+[2,"De lampen ___ boven de bar.","hangen",["staan","liggen","zitten"],"The lamps are above the bar.","Hanging from the ceiling: hangen.","plural"],
+[2,"Ik ___ bij de bushalte te wachten.","sta",["lig","zit","hang"],"I am waiting at the bus stop.","Ik takes the stem: sta. Standing around waiting: staan.","person"],
+[2,"Jij ___ op mijn voet!","staat",["ligt","zit","hangt"],"You are standing on my foot!","Jij takes -t: staat.","person"],
+[2,"Ik ___ languit op de bank.","lig",["sta","zit","hang"],"I am stretched out on the sofa.","Ik takes the stem: lig. Lying down: liggen.","person"],
+[2,"Wij ___ met zijn vieren aan tafel.","zitten",["staan","liggen","hangen"],"The four of us are sitting at the table.","Wij takes -en: zitten.","person"],
+[2,"Ik ___ in de trein naar Utrecht.","zit",["sta","lig","hang"],"I am on the train to Utrecht.","Ik takes the stem: zit. Sitting on a train: zitten.","person"],
+[2,"Jij ___ niet recht op je stoel.","zit",["staat","ligt","hangt"],"You are not sitting straight on your chair.","Jij zit (no extra -t for zitten, because the stem already ends in -t).","person"],
+[2,"Wij ___ in de rij voor de kassa.","staan",["liggen","zitten","hangen"],"We are in the queue at the till.","Wij takes -en. Queuing: staan.","person"],
+[2,"Jullie ___ aan de verkeerde kant van de tafel.","zitten",["staan","liggen","hangen"],"You are sitting on the wrong side of the table.","Jullie takes -en: zitten.","person"],
+/* Stage 3: put it there (zetten, leggen, hangen, stoppen) */
+[3,"Ik ___ het glas op het aanrecht.","zet",["leg","hang","stop"],"I put the glass on the counter.","With an object (het glas) and an upright thing: zetten. Ik takes the stem: zet.","zetten"],
+[3,"Mijn moeder ___ de bloemen in een vaas.","zet",["legt","hangt","stopt"],"My mother puts the flowers in a vase.","Putting something upright: zetten. The 3rd person takes -t, but zet already ends in -t.","zetten"],
+[3,"Hij ___ de stoel naast het raam.","zet",["legt","hangt","stopt"],"He puts the chair next to the window.","Chairs are put upright: zetten.","zetten"],
+[3,"Jij ___ de pan op het vuur.","zet",["legt","hangt","stopt"],"You put the pan on the heat.","Jij zet (the stem ends in -t, so no extra -t).","zetten"],
+[3,"De kinderen ___ de fietsen in de schuur.","zetten",["leggen","hangen","stoppen"],"The children put the bikes in the shed.","Plural subject: zetten.","zetten"],
+[3,"Wij ___ de glazen op het dienblad.","zetten",["leggen","hangen","stoppen"],"We put the glasses on the tray.","Glasses are put upright: zetten.","zetten"],
+[3,"Ik ___ het boek op de bank.","leg",["zet","hang","stop"],"I put the book on the sofa.","Putting something down flat: leggen. Ik takes the stem: leg.","leggen"],
+[3,"Mijn zus ___ haar brief naast haar bord.","legt",["zet","hangt","stopt"],"My sister puts her letter next to her plate.","Putting something flat: leggen. The 3rd person takes -t.","leggen"],
+[3,"Hij ___ de baby in het bedje.","legt",["zet","hangt","stopt"],"He lays the baby in the cot.","Laying someone down: leggen.","leggen"],
+[3,"Jij ___ je sleutels altijd op dezelfde plek.","legt",["zet","hangt","stopt"],"You always put your keys in the same place.","Jij takes -t: legt.","leggen"],
+[3,"Wij ___ de kranten op tafel.","leggen",["zetten","hangen","stoppen"],"We put the newspapers on the table.","Plural subject: leggen.","leggen"],
+[3,"De kinderen ___ de kussens op de grond.","leggen",["zetten","hangen","stoppen"],"The children put the cushions on the floor.","Plural subject: leggen.","leggen"],
+[3,"Ik ___ mijn jas aan de kapstok.","hang",["zet","leg","stop"],"I hang my coat on the coat rack.","Hanging something up: hangen. Ik takes the stem: hang.","hangen"],
+[3,"Mijn vader ___ het schilderij aan de muur.","hangt",["zet","legt","stopt"],"My father hangs the painting on the wall.","Hanging something up: hangen. The 3rd person takes -t.","hangen"],
+[3,"Jij ___ de was aan de lijn.","hangt",["zet","legt","stopt"],"You hang the washing on the line.","Jij takes -t: hangt.","hangen"],
+[3,"Wij ___ de lamp boven de eettafel.","hangen",["zetten","leggen","stoppen"],"We hang the lamp above the dining table.","Plural subject: hangen.","hangen"],
+[3,"De kinderen ___ hun jassen aan de haakjes.","hangen",["zetten","leggen","stoppen"],"The children hang their coats on the hooks.","Plural subject: hangen.","hangen"],
+[3,"Mijn zus ___ een poster boven haar bed.","hangt",["zet","legt","stopt"],"My sister hangs a poster above her bed.","Hanging something up: hangen.","hangen"],
+[3,"Ik ___ mijn handen in mijn zakken.","stop",["zet","leg","hang"],"I put my hands in my pockets.","Putting something into a small space such as a pocket: stoppen.","stoppen"],
+[3,"Hij ___ zijn portemonnee in zijn zak.","stopt",["zet","legt","hangt"],"He puts his wallet in his pocket.","Into a pocket: stoppen.","stoppen"],
+[3,"Jij ___ je hand in je zak.","stopt",["zet","legt","hangt"],"You put your hand in your pocket.","Into a pocket: stoppen.","stoppen"],
+[3,"Wij ___ de sleutels in onze zakken.","stoppen",["zetten","leggen","hangen"],"We put the keys in our pockets.","Plural subject: stoppen.","stoppen"],
+[3,"De kinderen ___ hun handen in hun zakken.","stoppen",["zetten","leggen","hangen"],"The children put their hands in their pockets.","Plural subject: stoppen.","stoppen"],
+/* Stage 4: staan or zetten? A state or an action? */
+[4,"Ik ___ de fles op tafel.","zet",["sta","lig","leg"],"I put the bottle on the table.","There is an object (de fles) and someone acts: zetten, not staan.","state or action"],
+[4,"De fles ___ al een week in de koelkast.","staat",["zet","ligt","legt"],"The bottle has been in the fridge for a week.","No one acts, it just is there: staan.","state or action"],
+[4,"Hij ___ zijn bril op het nachtkastje.","legt",["staat","ligt","zet"],"He puts his glasses on the bedside table.","Someone acts and the thing goes down flat: leggen.","state or action"],
+[4,"Zijn bril ___ op het nachtkastje.","ligt",["staat","legt","zet"],"His glasses are on the bedside table.","A state, lying flat: liggen.","state or action"],
+[4,"De kinderen ___ de stoelen rond de tafel.","zetten",["staan","liggen","leggen"],"The children put the chairs around the table.","Plural subject and an action: zetten.","state or action"],
+[4,"De stoelen ___ rond de tafel.","staan",["zetten","liggen","leggen"],"The chairs are around the table.","Plural and a state: staan.","state or action"],
+[4,"Ik ___ mijn telefoon plat op de tafel.","leg",["sta","lig","zet"],"I lay my phone flat on the table.","An action that puts it down flat: leggen.","state or action"],
+[4,"Mijn telefoon ___ plat op de tafel.","ligt",["staat","legt","zet"],"My phone is lying flat on the table.","A state, lying flat: liggen.","state or action"],
+[4,"Wij ___ de fietsen tegen de muur.","zetten",["staan","liggen","leggen"],"We put the bikes against the wall.","An action: zetten.","state or action"],
+[4,"De fietsen ___ tegen de muur.","staan",["zetten","liggen","leggen"],"The bikes are against the wall.","A state: staan.","state or action"],
+[4,"De baby ___ in bed.","ligt",["staat","legt","zet"],"The baby is in bed.","A state: liggen.","state or action"],
+[4,"De moeder ___ de baby in bed.","legt",["staat","ligt","zet"],"The mother puts the baby to bed.","Someone acts and lays the baby down: leggen.","state or action"],
+[4,"Hij ___ de lamp op het kastje.","zet",["staat","ligt","legt"],"He puts the lamp on the cabinet.","An action with an upright object: zetten.","state or action"],
+[4,"De lamp ___ op het kastje.","staat",["zet","ligt","legt"],"The lamp is on the cabinet.","A state: staan.","state or action"],
+[4,"De ober ___ de glazen op het dienblad.","zet",["staat","ligt","legt"],"The waiter puts the glasses on the tray.","An action: zetten.","state or action"],
+[4,"Het servies ___ al klaar op tafel.","staat",["zet","ligt","legt"],"The crockery is already out on the table.","A state: staan.","state or action"],
+[4,"Ik ___ het kussen op de bank.","leg",["sta","lig","zet"],"I put the cushion on the sofa.","An action: leggen.","state or action"],
+[4,"Het kussen ___ op de bank.","ligt",["staat","legt","zet"],"The cushion is on the sofa.","A state: liggen.","state or action"],
+[4,"Mijn vader ___ de bloemen in een vaas.","zet",["staat","ligt","legt"],"My father puts the flowers in a vase.","An action: zetten.","state or action"],
+[4,"De bloemen ___ in een vaas.","staan",["zetten","liggen","leggen"],"The flowers are in a vase.","A state, plural: staan.","state or action"],
+/* Stage 5: past tense */
+[5,"Gisteren ___ de fles nog op tafel.","stond",["lag","zat","hing"],"Yesterday the bottle was still on the table.","Past of staan: stond.","past"],
+[5,"Vroeger ___ hier een oude boerderij.","stond",["lag","zat","hing"],"There used to be an old farm here.","Past of staan: stond. A building stands.","past"],
+[5,"Op de foto ___ mijn opa naast zijn auto.","stond",["lag","zat","hing"],"In the photo my grandad was standing next to his car.","Past of staan: stond.","past"],
+[5,"Toen ik binnenkwam, ___ de krant op de grond.","lag",["stond","zat","hing"],"When I came in, the newspaper was on the floor.","Past of liggen: lag.","past"],
+[5,"Vorig jaar ___ er veel sneeuw.","lag",["stond","zat","hing"],"Last year there was a lot of snow.","Past of liggen: lag. Snow lies.","past"],
+[5,"Gisteren ___ de brief nog op mijn bureau.","lag",["stond","zat","hing"],"Yesterday the letter was still on my desk.","Past of liggen: lag.","past"],
+[5,"Vanmorgen ___ een vogel op ons dak.","zat",["stond","lag","hing"],"This morning a bird was sitting on our roof.","Past of zitten: zat.","past"],
+[5,"Toen ik wegging, ___ de sleutel nog in het slot.","zat",["stond","lag","hing"],"When I left, the key was still in the lock.","Past of zitten: zat.","past"],
+[5,"Vroeger ___ er een schilderij boven de bank.","hing",["stond","lag","zat"],"There used to be a painting above the sofa.","Past of hangen: hing.","past"],
+[5,"De vlag ___ gisteren nog voor het raam.","hing",["stond","lag","zat"],"The flag was still in front of the window yesterday.","Past of hangen: hing.","past"],
+[5,"De flessen ___ gisteren nog in de koelkast.","stonden",["lagen","zaten","hingen"],"The bottles were still in the fridge yesterday.","Past plural of staan: stonden.","past plural"],
+[5,"De kranten ___ vanmorgen op tafel.","lagen",["stonden","zaten","hingen"],"The newspapers were on the table this morning.","Past plural of liggen: lagen.","past plural"],
+[5,"Toen wij aankwamen, ___ de kinderen al aan tafel.","zaten",["stonden","lagen","hingen"],"When we arrived, the children were already sitting at the table.","Past plural of zitten: zaten.","past plural"],
+[5,"De jassen ___ vanmorgen nog aan de kapstok.","hingen",["stonden","lagen","zaten"],"The coats were still on the coat rack this morning.","Past plural of hangen: hingen.","past plural"],
+[5,"Wij ___ gisteren een uur in de wachtkamer.","zaten",["stonden","lagen","hingen"],"Yesterday we sat in the waiting room for an hour.","Wij takes the plural past: zaten.","past plural"],
+[5,"Gisteren ___ ik de fles op tafel.","zette",["legde","stopte","stond"],"Yesterday I put the bottle on the table.","Past of zetten: zette.","past causative"],
+[5,"Gisteren ___ ik het boek op de bank.","legde",["zette","stopte","lag"],"Yesterday I put the book on the sofa.","Past of leggen: legde.","past causative"],
+[5,"Mijn vader ___ de lamp op het kastje.","zette",["legde","stopte","stond"],"My father put the lamp on the cabinet.","Past of zetten: zette.","past causative"],
+[5,"De vader ___ de baby in bed.","legde",["zette","stopte","lag"],"The father put the baby to bed.","Past of leggen: legde.","past causative"],
+[5,"De kinderen ___ gisteren hun boeken op tafel.","legden",["zetten","stopten","lagen"],"Yesterday the children put their books on the table.","Past plural of leggen: legden.","past causative"],
+[5,"Hij ___ zijn handen in zijn zakken.","stopte",["zette","legde","zat"],"He put his hands in his pockets.","Past of stoppen: stopte.","past causative"],
+/* Stage 6: perfect */
+[6,"De fles heeft de hele nacht op tafel ___.","gestaan",["gezet","gelegen","gelegd"],"The bottle stood on the table all night.","Staan: heeft gestaan.","perfect"],
+[6,"De auto heeft drie weken in de garage ___.","gestaan",["gezet","gelegen","gelegd"],"The car has been in the garage for three weeks.","Staan: heeft gestaan.","perfect"],
+[6,"De vaas heeft jarenlang op die plank ___.","gestaan",["gezet","gelegen","gelegd"],"The vase stood on that shelf for years.","Staan: heeft gestaan.","perfect"],
+[6,"Wij hebben een uur in de rij ___.","gestaan",["gezet","gezeten","gelegd"],"We stood in the queue for an hour.","Staan: hebben gestaan.","perfect"],
+[6,"Het boek heeft op de bank ___.","gelegen",["gelegd","gestaan","gezeten"],"The book was on the sofa.","Liggen: heeft gelegen. (Gelegd belongs to leggen.)","perfect"],
+[6,"De sneeuw heeft de hele week op de daken ___.","gelegen",["gelegd","gestaan","gezeten"],"The snow lay on the roofs all week.","Liggen: heeft gelegen.","perfect"],
+[6,"Het geld heeft jarenlang in de kluis ___.","gelegen",["gelegd","gestaan","gezeten"],"The money lay in the safe for years.","Liggen: heeft gelegen.","perfect"],
+[6,"De kinderen hebben urenlang aan tafel ___.","gezeten",["gezet","gelegen","gestaan"],"The children sat at the table for hours.","Zitten: hebben gezeten. (Gezet belongs to zetten.)","perfect"],
+[6,"Ik heb twee uur in de trein ___.","gezeten",["gezet","gelegen","gestaan"],"I sat on the train for two hours.","Zitten: heb gezeten.","perfect"],
+[6,"De jas heeft de hele winter aan de kapstok ___.","gehangen",["gezet","gelegd","gestaan"],"The coat hung on the coat rack all winter.","Hangen: heeft gehangen.","perfect"],
+[6,"De klok heeft altijd aan die muur ___.","gehangen",["gezet","gelegd","gestaan"],"The clock has always hung on that wall.","Hangen: heeft gehangen.","perfect"],
+[6,"Er heeft een briefje op de deur ___.","gehangen",["gezet","gelegd","gestaan"],"There was a note on the door.","Hangen: heeft gehangen.","perfect"],
+[6,"Ik heb de fles op tafel ___.","gezet",["gestaan","gelegd","gelegen"],"I put the bottle on the table.","Zetten: heb gezet. There is an object and someone acts.","perfect causative"],
+[6,"Zij heeft de vaas op de plank ___.","gezet",["gestaan","gelegd","gelegen"],"She put the vase on the shelf.","Zetten: heeft gezet.","perfect causative"],
+[6,"Zij heeft het boek op de bank ___.","gelegd",["gelegen","gezet","gestaan"],"She put the book on the sofa.","Leggen: heeft gelegd.","perfect causative"],
+[6,"Hij heeft zijn bril op het nachtkastje ___.","gelegd",["gelegen","gezet","gestaan"],"He put his glasses on the bedside table.","Leggen: heeft gelegd.","perfect causative"],
+[6,"Waar heb je mijn telefoon ___?","gelegd",["gelegen","gezet","gestaan"],"Where did you put my phone?","Leggen: heb gelegd.","perfect causative"],
+[6,"Hij heeft de baby in bed ___.","gelegd",["gelegen","gezet","gestaan"],"He put the baby to bed.","Leggen: heeft gelegd.","perfect causative"],
+[6,"Ik heb mijn handen in mijn zakken ___.","gestopt",["gezet","gelegd","gehangen"],"I put my hands in my pockets.","Stoppen: heb gestopt.","perfect causative"],
+[6,"Heb je de was al ___?","opgehangen",["gezet","gelegd","gestopt"],"Have you hung out the washing yet?","Ophangen: heb opgehangen. With an object the verb is ophangen.","perfect causative"],
+/* Stage 7: fixed expressions and other uses */
+[7,"Dat jasje ___ je goed.","staat",["ligt","zit","hangt"],"That jacket suits you.","Something suits you: het staat je goed.","expression"],
+[7,"Het ___ aan het weer.","ligt",["staat","zit","hangt"],"It is because of the weather.","Het ligt aan ...: it is due to.","expression"],
+[7,"Wat ___ er in die brief?","staat",["ligt","zit","hangt"],"What does it say in that letter?","Written or printed text stands: staan.","expression"],
+[7,"Hoe ___ dat precies?","zit",["staat","ligt","hangt"],"How exactly does that work?","Hoe zit dat?: how is that arranged or what is the story.","expression"],
+[7,"Er ___ een geur van gebakken vis in de keuken.","hangt",["staat","ligt","zit"],"There is a smell of fried fish in the kitchen.","A smell or atmosphere hangs: hangen.","expression"],
+[7,"Amsterdam ___ aan de Amstel.","ligt",["staat","zit","hangt"],"Amsterdam is on the Amstel.","Places and geography lie: liggen.","expression"],
+[7,"De koffie ___ klaar.","staat",["ligt","zit","hangt"],"The coffee is ready.","Something ready on the table stands: klaar staan.","expression"],
+[7,"Het eten ___ op tafel.","staat",["ligt","zit","hangt"],"Dinner is on the table.","Het eten staat op tafel: dinner is ready.","expression"],
+[7,"De wekker ___ op zeven uur.","staat",["ligt","zit","hangt"],"The alarm is set for seven o'clock.","An alarm or a setting stands on a time: staan.","expression"],
+[7,"Het ___ me niet mee vandaag.","zit",["staat","ligt","hangt"],"I have no luck today.","Het zit me niet mee: things are going wrong.","expression"],
+[7,"Daar ___ een addertje onder het gras.","zit",["staat","ligt","hangt"],"There is a catch there.","A fixed phrase: er zit een addertje onder het gras.","expression"],
+[7,"Op de deur ___ een bordje: gesloten.","hangt",["staat","ligt","zit"],"There is a sign on the door: closed.","A sign on a door hangs: hangen.","expression"],
+[7,"De prijs ___ op het etiket.","staat",["ligt","zit","hangt"],"The price is on the label.","Written information stands: staan.","expression"],
+[7,"De trein ___ vol.","zit",["staat","ligt","hangt"],"The train is full.","Vol zitten: to be full.","expression"],
+[7,"Deze stoel ___ lekker.","zit",["staat","ligt","hangt"],"This chair is comfortable.","Lekker zitten: to be comfortable to sit in.","expression"],
+[7,"Die broek ___ te strak.","zit",["staat","ligt","hangt"],"Those trousers are too tight.","How clothes fit: zitten.","expression"],
+/* Stage 8: talking about people and yourself */
+[8,"Ik ___ vandaag in de stad.","ben",["sta","lig"],"I'm in the city today.","Where a person is in general (a city, a country, a building): zijn. Ik sta in de stad only means you are literally standing there.","be"],
+[8,"Mijn zus ___ morgen in Parijs voor haar werk.","is",["staat","ligt"],"My sister is in Paris tomorrow for work.","A person in a city or country: zijn. People do not stand or lie in Paris unless their position matters.","be"],
+[8,"Wij ___ dit weekend bij mijn oma.","zijn",["staan","liggen"],"We are at my grandma's this weekend.","Being at someone's place: zijn. (Spoken Dutch also says we zitten bij mijn oma.)","be"],
+[8,"___ je al thuis?","Ben",["Sta","Lig"],"Are you home yet?","Asking where someone is: zijn. (Informally you also hear Zit je al thuis?)","be"],
+[8,"Utrecht ___ in het midden van Nederland.","ligt",["staat","zit","hangt"],"Utrecht is in the middle of the Netherlands.","A city lies on the map: liggen. You, however, are in it: ik ben in Utrecht.","place"],
+[8,"Het dorp ___ aan de rivier.","ligt",["staat","zit","hangt"],"The village is on the river.","Villages and cities on a map lie: liggen.","place"],
+[8,"Ik ___ vandaag even in Utrecht voor een afspraak.","ben",["sta","lig"],"I'm in Utrecht briefly today for an appointment.","The city lies (Utrecht ligt in het midden), but a person is in it: ik ben in Utrecht.","place"],
+[8,"Mijn opa ___ al twee weken in het ziekenhuis.","ligt",["staat","hangt"],"My grandad has been in hospital for two weeks.","A patient in hospital lies: in het ziekenhuis liggen.","posture"],
+[8,"Hij ___ al vijf jaar in de gevangenis.","zit",["staat","ligt","hangt"],"He has been in prison for five years.","In prison: zitten (in de gevangenis zitten).","posture"],
+[8,"Ik ___ in de auto en luister naar de radio.","zit",["sta","lig"],"I'm in the car listening to the radio.","In a car, bus, train or plane you sit: in de auto, de bus, de trein zitten.","posture"],
+[8,"Ze ___ in het vliegtuig naar Madrid.","zit",["staat","ligt","hangt"],"She is on the plane to Madrid.","In a vehicle you sit: in het vliegtuig zitten.","posture"],
+[8,"Ik ___ al twee dagen ziek in bed.","lig",["sta","loop"],"I've been in bed ill for two days.","In bed: liggen (in bed liggen).","posture"],
+[8,"De leraar ___ voor de klas en legt de regels uit.","staat",["ligt","hangt"],"The teacher is at the front of the class explaining the rules.","In front of a group you stand: voor de klas staan.","posture"],
+[8,"Mijn broer ___ onder de douche.","staat",["ligt","hangt"],"My brother is in the shower.","Under the shower you stand: onder de douche staan.","posture"],
+[8,"Mijn vader ___ de hele dag aan zijn bureau.","zit",["ligt","loopt"],"My father is at his desk all day.","At a desk or table you sit: aan een bureau, aan tafel zitten.","posture"],
+[8,"Ik ___ al een uur in de file.","sta",["ben","lig","hang"],"I've been in a traffic jam for an hour.","In a queue or traffic jam: staan (in de rij, in de file staan). Zitten is also used, but ik ben in de file is not natural.","traffic"],
+[8,"Ik ___ buiten in de regen op je te wachten.","sta",["zit","lig"],"I'm standing outside in the rain waiting for you.","staan + te + infinitive: what you are busy doing while standing. Ik sta te wachten.","progressive"],
+[8,"Mijn zus ___ aan de keukentafel haar huiswerk te maken.","zit",["staat","ligt"],"My sister is doing her homework at the kitchen table.","zitten + te + infinitive: ik zit te werken, hij zit te lezen.","progressive"],
+[8,"De baby ___ in zijn bedje te slapen.","ligt",["staat","zit"],"The baby is sleeping in his cot.","liggen + te + infinitive: hij ligt te slapen.","progressive"],
+[8,"Ik ___ al een uur in de keuken te koken.","sta",["zit","lig"],"I've been cooking in the kitchen for an hour.","Ik sta te koken is the natural way to say what you are busy doing. Ik ben aan het koken is also correct.","progressive"],
+[8,"Ik ___ al de hele ochtend door het huis te zoeken naar mijn sleutels.","loop",["sta","zit"],"I've been walking around the house all morning looking for my keys.","lopen + te + infinitive for busy moving about: ik loop te zoeken.","progressive"],
+[8,"Neem een stoel en ga ___.","zitten",["staan","liggen"],"Take a chair and sit down.","To get into a position Dutch uses gaan + the verb: ga zitten, ga staan, ga liggen. The verb alone (ik zit) is the state.","change"],
+[8,"Mijn rug doet pijn, dus ik ga even plat ___.","liggen",["zitten","staan"],"My back hurts, so I'm going to lie down flat for a bit.","gaan + liggen: to lie down. The state is ik lig.","change"],
+[8,"Ik ___ elke ochtend om zeven uur op.","sta",["zit","lig"],"I get up at seven every morning.","opstaan (to get up): ik sta op.","change"],
+[8,"Ik ___ vandaag thuis te werken.","zit",["sta","lig"],"I'm working from home today.","zitten is very common for what you are doing at home: ik zit thuis te werken.","informal"],
+[8,"Mijn dochter ___ in groep vijf.","zit",["staat","ligt"],"My daughter is in year five of primary school.","In a school year: zitten (in groep 5 zitten). Ze is in groep 5 also works; zitten sounds more natural.","informal"],
+[8,"Hij ___ op voetbal.","zit",["staat","ligt"],"He plays football at a club.","Informal: op voetbal, hockey, ballet zitten means you are a member and take part.","informal"],
+[8,"Ik ___ in de problemen.","zit",["sta","lig"],"I'm in trouble.","Being in a situation: zitten (in de problemen, in de knoei zitten).","informal"],
+[8,"Wij ___ zonder koffie.","zitten",["staan","liggen"],"We have run out of coffee.","zonder ... zitten: to be left without something.","informal"]
+];
+makeTool({
+ p:'pos',openId:'openPos',
+ eyebrow:'Staan, liggen, zitten, hangen, zetten, leggen',title:'Position verbs practice',
+ intro:'In English you can just say "is" or "put". Dutch makes you say how a thing is positioned. Train the verb, the plural and the tense with many different nouns.',
+ sheetTitle:'Staan, liggen, zitten, hangen, zetten, leggen',
+ sheetHtml:"<h3 class=\"aux-h\">The core idea</h3>\n<p>English says \"is\" or \"put\" for almost everything: <i>the bottle is on the table</i>, <i>I put the bottle on the table</i>. Dutch makes you say how the thing is positioned: standing, lying, hanging or sitting. There is one verb for the state (nothing happens) and one for the action (someone puts it there).</p>\n<div class=\"aux-wrap\"><table class=\"aux-table\">\n  <thead><tr><th>Position</th><th>State (no object)</th><th>Action (with an object)</th><th>Typical nouns</th></tr></thead>\n  <tbody>\n    <tr><td><b>Upright</b></td><td><b>staan</b><br><i>De fles staat op tafel.</i></td><td><b>zetten</b><br><i>Ik zet de fles op tafel.</i></td><td>fles, glas, stoel, kast, pan, auto, fiets, boom, huis</td></tr>\n    <tr><td><b>Flat, lying</b></td><td><b>liggen</b><br><i>Het boek ligt op de bank.</i></td><td><b>leggen</b><br><i>Ik leg het boek op de bank.</i></td><td>boek, krant, brief, pen, kussen, geld, sneeuw, baby in bed</td></tr>\n    <tr><td><b>Hanging</b></td><td><b>hangen</b><br><i>De jas hangt aan de kapstok.</i></td><td><b>(op)hangen</b><br><i>Ik hang de jas aan de kapstok.</i></td><td>jas, schilderij, klok, spiegel, lamp aan het plafond, was</td></tr>\n    <tr><td><b>Sitting, attached, inside</b></td><td><b>zitten</b><br><i>De vogel zit op de tak.</i></td><td><b>zetten</b><br><i>Ik zet het kind op de stoel.</i></td><td>mensen, vogels, knoop, vlek, pleister, batterij, sleutel in het slot</td></tr>\n    <tr><td><b>Into a small space</b></td><td>(zitten)</td><td><b>stoppen</b><br><i>Ik stop mijn handen in mijn zakken.</i></td><td>zak, brievenbus</td></tr>\n  </tbody>\n</table></div>\n<h3 class=\"aux-h\">The forms</h3>\n<div class=\"aux-wrap\"><table class=\"aux-table\">\n  <thead><tr><th>Verb</th><th>ik</th><th>jij / hij</th><th>wij / zij (pl.)</th><th>Past sg.</th><th>Past pl.</th><th>Perfect</th></tr></thead>\n  <tbody>\n    <tr><td><b>staan</b></td><td>sta</td><td>staat</td><td>staan</td><td>stond</td><td>stonden</td><td>heeft gestaan</td></tr>\n    <tr><td><b>liggen</b></td><td>lig</td><td>ligt</td><td>liggen</td><td>lag</td><td>lagen</td><td>heeft gelegen</td></tr>\n    <tr><td><b>zitten</b></td><td>zit</td><td>zit</td><td>zitten</td><td>zat</td><td>zaten</td><td>heeft gezeten</td></tr>\n    <tr><td><b>hangen</b></td><td>hang</td><td>hangt</td><td>hangen</td><td>hing</td><td>hingen</td><td>heeft gehangen</td></tr>\n    <tr><td><b>zetten</b></td><td>zet</td><td>zet</td><td>zetten</td><td>zette</td><td>zetten</td><td>heeft gezet</td></tr>\n    <tr><td><b>leggen</b></td><td>leg</td><td>legt</td><td>leggen</td><td>legde</td><td>legden</td><td>heeft gelegd</td></tr>\n    <tr><td><b>ophangen</b></td><td>hang ... op</td><td>hangt ... op</td><td>hangen ... op</td><td>hing ... op</td><td>hingen ... op</td><td>heeft opgehangen</td></tr>\n    <tr><td><b>stoppen</b></td><td>stop</td><td>stopt</td><td>stoppen</td><td>stopte</td><td>stopten</td><td>heeft gestopt</td></tr>\n  </tbody>\n</table></div>\n<p class=\"small\" style=\"margin-top:8px\">Zitten and zetten: <i>jij zit</i>, <i>jij zet</i> (the stem already ends in -t, so no extra -t). The past plural of zetten, <i>zetten</i>, looks like the infinitive; the sentence tells you the tense. In Belgian Dutch you will also hear <i>is gestaan / gelegen / gezeten</i>; in the Netherlands use hebben.</p>\n<div class=\"lk\"><b>The quick test:</b> does someone do something to an object? Then zetten, leggen, (op)hangen or stoppen. Is the thing just there? Then staan, liggen, hangen or zitten. Then ask how it is positioned: upright, flat, hanging, or attached, inside, sitting.</div>\n<h3 class=\"aux-h\">Watch out</h3>\n<ul>\n  <li><b>gelegen or gelegd?</b> <i>Het boek heeft gelegen</i> (state), <i>ik heb het boek gelegd</i> (action).</li>\n  <li><b>gezeten or gezet?</b> <i>Ik heb gezeten</i> (state), <i>ik heb de fles gezet</i> (action).</li>\n  <li><b>liggen is also for</b> snow, money lying around and places on a map: <i>Amsterdam ligt aan de Amstel</i>.</li>\n  <li><b>staan is also for</b> written things and settings: <i>Wat staat er in de brief?</i>, <i>De wekker staat op zeven uur.</i></li>\n  <li><b>zitten is also for</b> fit and luck: <i>De broek zit te strak</i>, <i>Het zit me niet mee</i>.</li>\n</ul>\n<h3 class='aux-h'>Talking about people and yourself</h3>\n<p>For the plain fact of where a person is, Dutch uses <i>zijn</i> just like English: <i>Ik ben in de stad</i>, <i>Mijn zus is in Parijs</i>, <i>Ben je al thuis?</i> You do not say <i>Ik sta in de stad</i>: that only means you are literally standing there. A position verb is used for a person in four situations:</p>\n<ul>\n  <li><b>The position is the point:</b> <i>Ik zit op de bank</i>, <i>Hij staat bij de deur</i>, <i>Ze ligt in bed</i>.</li>\n  <li><b>It is the set way to say it:</b> <i>in de rij staan</i>, <i>in de file staan</i> (zitten is also used), <i>in de trein, de bus of de auto zitten</i>, <i>in bed liggen</i>, <i>in het ziekenhuis liggen</i> (as a patient), <i>in de gevangenis zitten</i>, <i>voor de klas staan</i>.</li>\n  <li><b>You say what you are busy doing:</b> staan, zitten, liggen or lopen + <i>te</i> + infinitive. <i>Ik sta te koken</i>, <i>Ik zit te werken</i>, <i>Hij ligt te slapen</i>, <i>Ik loop te zoeken</i>. (<i>Ik ben aan het koken</i> is also correct; the position verb just sounds more natural.)</li>\n  <li><b>Informal zitten for being somewhere or in a situation:</b> <i>Waar zit je?</i>, <i>Ik zit thuis te werken</i>, <i>Ze zit in groep 5</i>, <i>Ik zit in de problemen</i>, <i>We zitten zonder koffie</i>. Zijn is usually fine here too; zitten just sounds more spoken.</li>\n</ul>\n<p>To get into a position Dutch uses <i>gaan</i>: <i>Ga zitten</i> (sit down), <i>Ik ga even liggen</i> (I'm going to lie down), <i>Ik sta om zeven uur op</i> (I get up at seven). Cities and villages on a map <i>liggen</i> (<i>Utrecht ligt in het midden van het land</i>), but you are in them: <i>Ik ben in Utrecht</i>.</p>\n<div class='aux-wrap'><table class='aux-table'>\n  <thead><tr><th>English</th><th>Natural Dutch</th><th>Careful</th></tr></thead>\n  <tbody>\n    <tr><td>I'm in the city today</td><td><b>Ik ben in de stad.</b></td><td><i>Ik sta in de stad</i> = you are literally standing there</td></tr>\n    <tr><td>I'm in the queue</td><td><b>Ik sta in de rij.</b></td><td>Not <i>ik ben in de rij</i></td></tr>\n    <tr><td>I'm in a traffic jam</td><td><b>Ik sta in de file.</b></td><td><i>Ik zit in de file</i> is also common</td></tr>\n    <tr><td>I'm on the train</td><td><b>Ik zit in de trein.</b></td><td><i>Ik ben in de trein</i> is also heard</td></tr>\n    <tr><td>I'm in bed</td><td><b>Ik lig in bed.</b></td><td></td></tr>\n    <tr><td>He's in hospital</td><td><b>Hij ligt in het ziekenhuis.</b></td><td>as a patient</td></tr>\n    <tr><td>He's in prison</td><td><b>Hij zit in de gevangenis.</b></td><td></td></tr>\n    <tr><td>I'm cooking</td><td><b>Ik sta te koken.</b></td><td><i>Ik ben aan het koken</i> is also correct</td></tr>\n    <tr><td>Where are you?</td><td><b>Waar ben je?</b> / <b>Waar zit je?</b></td><td><i>Zit</i> is informal; <i>Waar sta je?</i> is for finding each other in a crowd</td></tr>\n  </tbody>\n</table></div>\n<h3 class=\"aux-h\">Why these are hard</h3>\n<p>English hides the position, so you never had to choose. In Dutch the choice depends on the thing (upright, flat, hanging, attached), on whether anyone acts (state or action), on the subject (singular or plural, ik, jij, wij) and on the tense. The stages separate these first and combine them later.</p>",
+ stages:["Which verb? One thing", "Plural and persons", "Put it there: zetten, leggen, hangen, stoppen", "State or action?", "Past tense", "Perfect tense", "Fixed expressions", "People and yourself"],
+ rules:["Which verb fits the thing? Upright things stand (staan), flat things lie (liggen), things on a wall or line hang (hangen), and people, birds and attached or enclosed things sit (zitten).", "Plural subjects take -en: de boeken liggen. With ik the verb loses -en (ik sta, ik lig, ik zit, ik hang), and with jij or hij it takes -t (je staat, ligt, hangt; zitten stays zit).", "When someone puts something somewhere, Dutch uses an action verb: zetten (upright), leggen (flat), hangen (hang up), stoppen (into a pocket or letterbox).", "The same noun can take either verb: de fles staat op tafel (state), ik zet de fles op tafel (action). Ask: does anyone do something to an object?", "Simple past: stond, lag, zat, hing; plural stonden, lagen, zaten, hingen. Actions: zette, legde, stopte (plural legden, stopten).", "Perfect with hebben. The state verbs give gestaan, gelegen, gezeten, gehangen. The action verbs give gezet, gelegd, gestopt, opgehangen. Watch gelegen/gelegd and gezeten/gezet.", "Fixed uses: clothes suit you (het staat je goed), things depend on something (het ligt aan jou), text stands (wat staat er in de brief), fit and luck use zitten (de broek zit strak, het zit me niet mee).", "People: use zijn for where you are in general (ik ben in de stad, ik ben thuis). Use staan, zitten or liggen when the position matters or in set phrases (in de rij staan, in de trein zitten, in bed liggen), staan, zitten, liggen or lopen + te + infinitive for what you are busy doing (ik sta te koken), and gaan + verb to get into a position (ga zitten)."],
+ tip:'Tip: practise one stage at a time first, then use all stages to mix them. The choice depends on the thing (upright, flat, hanging, attached), on whether anyone acts (state or action), on the subject (singular, plural, ik, jij, wij) and on the tense.',
+ raw:RAW,pk:'dutch-pos-progress-v1',kk:'dutch-pos-known-v1'
+});
+})();
+})();
+
 </script>
 </body>
 </html>
